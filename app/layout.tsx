@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { SiteChrome } from "@/components/site-chrome";
 import { PageTransition } from "@/components/page-transition";
+import { Scrollbar } from "@/components/scrollbar";
 import { siteConfig } from "@/lib/content";
 export const metadata: Metadata = {
   title: {
@@ -32,6 +33,7 @@ export default function RootLayout({
         </a>
         <SiteChrome>{children}</SiteChrome>
         <PageTransition />
+        <Scrollbar />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

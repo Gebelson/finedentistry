@@ -16,33 +16,58 @@ html {
   scroll-padding-top: 6rem;
 }
 @media (pointer: fine) and (forced-colors: none) {
-  html {
-    scrollbar-width: thin;
-    scrollbar-color: #8d9790 var(--soft);
+  html[data-custom-scroll] {
+    scrollbar-width: none;
   }
-  @supports selector(::-webkit-scrollbar) {
-    html {
-      scrollbar-width: auto;
-      scrollbar-color: auto;
-    }
-    html::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    html::-webkit-scrollbar-track,
-    html::-webkit-scrollbar-corner {
-      background: var(--soft);
-    }
-    html::-webkit-scrollbar-thumb {
-      min-height: 40px;
-      border: 2px solid var(--soft);
-      border-radius: 999px;
-      background: #8d9790;
-      background-clip: padding-box;
-    }
-    html::-webkit-scrollbar-thumb:hover {
-      background-color: #596b60;
-    }
+  html[data-custom-scroll]::-webkit-scrollbar {
+    display: none;
+  }
+}
+.scroll-rail,
+.scroll-rail[hidden] {
+  display: none;
+}
+@media (pointer: fine) and (forced-colors: none) {
+  .scroll-rail:not([hidden]) {
+    display: block;
+    position: fixed;
+    top: 16px;
+    bottom: 16px;
+    right: 3px;
+    width: 20px;
+    z-index: 80;
+    opacity: 0.18;
+    mix-blend-mode: difference;
+    touch-action: none;
+    transition: opacity 0.4s;
+    cursor: pointer;
+  }
+  .scroll-rail[data-active],
+  .scroll-rail:hover,
+  .scroll-rail:focus-visible {
+    opacity: 0.85;
+  }
+  .scroll-rail:focus-visible {
+    outline: 1px solid white;
+    outline-offset: 2px;
+    border-radius: 10px;
+  }
+  .scroll-rail-thumb {
+    position: absolute;
+    top: 0;
+    right: 8px;
+    width: 3px;
+    border-radius: 999px;
+    background: white;
+    will-change: transform;
+  }
+  body:has(dialog[open]) .scroll-rail {
+    visibility: hidden;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-rail {
+    transition: none;
   }
 }
 body {
