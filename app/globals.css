@@ -70,6 +70,17 @@ html {
     transition: none;
   }
 }
+@media (max-width: 767px), (pointer: coarse) {
+  html {
+    scrollbar-width: none;
+  }
+  html::-webkit-scrollbar {
+    display: none;
+  }
+  .scroll-rail:not([hidden]) {
+    display: none;
+  }
+}
 body {
   margin: 0;
   background: var(--paper);
