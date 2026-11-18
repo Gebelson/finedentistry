@@ -9,5 +9,5 @@ export function SiteImage({
   ...props
 }: Omit<ImageProps, "src"> & { src: string }) {
   const restored = enhancements[src as keyof typeof enhancements] || src;
-  return <Image {...props} alt={alt} src={restored} sizes={sizes} quality={95} />;
+  return <Image {...props} alt={alt} src={restored} sizes={sizes} quality={85} />;
 }

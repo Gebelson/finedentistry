@@ -194,6 +194,7 @@ export function ServicesGrid({
             <div className="service-image">
               <SiteImage
                 src={"/images/" + s.image}
+                sizes="(min-width: 1440px) 427px, (min-width: 1024px) calc((100vw - 160px) / 3), (min-width: 768px) calc((100vw - 85px) / 2), calc(100vw - 40px)"
                 alt={s.alt}
                 loading="lazy"
                 width="600"

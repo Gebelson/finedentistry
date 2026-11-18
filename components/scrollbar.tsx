@@ -20,6 +20,13 @@ export function Scrollbar() {
 
     function update() {
       frame = 0;
+      const progress = maxScroll
+        ? Math.min(1, Math.max(0, scrollY / maxScroll))
+        : 0;
+      thumb.style.transform = `translateY(${progress * travel}px)`;
+      rail.setAttribute("aria-valuenow", String(Math.round(progress * 100)));
+    }
+    function measure() {
       const height = rail.clientHeight;
       maxScroll = Math.max(0, root.scrollHeight - innerHeight);
       thumbHeight = Math.min(
@@ -27,13 +34,9 @@ export function Scrollbar() {
         Math.max(48, Math.min(120, (height * innerHeight) / root.scrollHeight)),
       );
       travel = height - thumbHeight;
-      const progress = maxScroll
-        ? Math.min(1, Math.max(0, scrollY / maxScroll))
-        : 0;
       thumb.style.height = `${thumbHeight}px`;
-      thumb.style.transform = `translateY(${progress * travel}px)`;
-      rail.setAttribute("aria-valuenow", String(Math.round(progress * 100)));
       rail.hidden = !maxScroll;
+      schedule();
     }
     function schedule() {
       if (!frame) frame = requestAnimationFrame(update);
@@ -59,7 +62,7 @@ export function Scrollbar() {
     function down(event: PointerEvent) {
       if (event.button !== 0) return;
       event.preventDefault();
-      update();
+      measure();
       dragging = true;
       grabOffset =
         event.target === thumb
@@ -88,11 +91,11 @@ export function Scrollbar() {
       activate();
     }
     root.dataset.customScroll = "";
-    update();
-    const observer = new ResizeObserver(schedule);
+    measure();
+    const observer = new ResizeObserver(measure);
     observer.observe(document.body);
     window.addEventListener("scroll", activate, { passive: true });
-    window.addEventListener("resize", schedule);
+    window.addEventListener("resize", measure);
     rail.addEventListener("pointerdown", down);
     rail.addEventListener("pointermove", move);
     rail.addEventListener("pointerup", up);
@@ -104,7 +107,7 @@ export function Scrollbar() {
       cancelAnimationFrame(frame);
       clearTimeout(timer);
       window.removeEventListener("scroll", activate);
-      window.removeEventListener("resize", schedule);
+      window.removeEventListener("resize", measure);
       rail.removeEventListener("pointerdown", down);
       rail.removeEventListener("pointermove", move);
       rail.removeEventListener("pointerup", up);

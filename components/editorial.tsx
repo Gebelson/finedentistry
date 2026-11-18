@@ -32,6 +32,7 @@ export function Doctors({ detailed = false }: { detailed?: boolean }) {
           <div className="doctor-image">
             <SiteImage
               src={"/images/" + d.image}
+              sizes="(min-width: 1440px) 427px, (min-width: 768px) calc((100vw - 112px) / 3), calc(100vw - 40px)"
               alt={d.name}
               width="600"
               height="750"

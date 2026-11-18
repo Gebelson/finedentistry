@@ -4,18 +4,25 @@ import { SiteChrome } from "@/components/site-chrome";
 import { PageTransition } from "@/components/page-transition";
 import { Scrollbar } from "@/components/scrollbar";
 import { siteConfig } from "@/lib/content";
+const siteUrl = process.env.SITE_URL;
 export const metadata: Metadata = {
+  metadataBase: siteUrl ? new URL(siteUrl) : undefined,
+  alternates: siteUrl ? { canonical: "/" } : undefined,
   title: {
     default: "Fine Dentistry of Downtown Orlando | Care, Thoughtfully Crafted",
     template: "%s | Fine Dentistry of Downtown Orlando",
   },
   description:
     "Personalized general, cosmetic and restorative dentistry in Downtown Orlando. Meet our doctors and explore Invisalign, veneers, implants and same-day crowns.",
-  robots: { index: false, follow: false },
+  robots: {
+    index: process.env.SITE_INDEXABLE === "true" && !!siteUrl,
+    follow: process.env.SITE_INDEXABLE === "true" && !!siteUrl,
+  },
   openGraph: {
     type: "website",
     locale: "en_US",
     siteName: siteConfig.name,
+    url: siteUrl,
     title: siteConfig.name,
     description: "Personalized dental care in Downtown Orlando.",
   },

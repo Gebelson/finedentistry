@@ -29,7 +29,8 @@ export default function Home() {
             fill
             priority
             sizes="(max-width: 767px) 1686px, (max-aspect-ratio: 9/5) 181vh, 100vw"
-            quality={95}
+            quality={85}
+            fetchPriority="high"
           />
         </div>
         <div className="hero-shade" />
@@ -77,6 +78,7 @@ export default function Home() {
             <div className="about-bottom">
               <SiteImage
                 src="/images/Dentist_orlando.webp"
+                sizes="(min-width: 1440px) 466px, (min-width: 768px) 33vw, calc(100vw - 40px)"
                 data-reveal="visual"
                 alt="A personal consultation with Dr. Trivedi"
                 width="600"
