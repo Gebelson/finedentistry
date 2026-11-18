@@ -1,0 +1,68 @@
+{
+  "date": "2026-11-17",
+  "environment": "Chrome headless, Lighthouse simulated mobile, localhost production build",
+  "lighthouse": {
+    "performance": 100,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 66
+  },
+  "metrics": {
+    "largest-contentful-paint": "0.8 s",
+    "cumulative-layout-shift": "0",
+    "total-blocking-time": "20 ms",
+    "first-contentful-paint": "0.8 s"
+  },
+  "knownFailures": [
+    {
+      "id": "is-crawlable",
+      "title": "Page is blocked from indexing"
+    }
+  ],
+  "build": "pass",
+  "lint": "pass",
+  "typecheck": "pass",
+  "routes": 291,
+  "viewports": [
+    320,
+    375,
+    390,
+    430,
+    768,
+    1024,
+    1440,
+    1920
+  ],
+  "finalAxeScenarios": [
+    {
+      "route": "/",
+      "width": 390,
+      "violations": 0
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "violations": 0
+    },
+    {
+      "route": "/services",
+      "width": 1440,
+      "violations": 0
+    },
+    {
+      "route": "/our-team",
+      "width": 390,
+      "violations": 0
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "violations": 0
+    },
+    {
+      "route": "/faq",
+      "width": 390,
+      "violations": 0
+    }
+  ]
+}

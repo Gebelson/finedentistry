@@ -1,0 +1,34 @@
+# Assets
+
+- /images/team_photo.webp — https://finedentistry.blob.core.windows.net/content/images/team_photo.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dr-Trivedi.jpg — https://finedentistry.blob.core.windows.net/content/images/Dr-Trivedi.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dental-Office-Front-1-sm.jpg — https://finedentistry.blob.core.windows.net/content/images/Dental-Office-Front-1-sm.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dental-Office-Inside-1-sm.jpg — https://finedentistry.blob.core.windows.net/content/images/Dental-Office-Inside-1-sm.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dental-Office-Front-3-sm.jpg — https://finedentistry.blob.core.windows.net/content/images/Dental-Office-Front-3-sm.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dental-Office-Front-2-sm.jpg — https://finedentistry.blob.core.windows.net/content/images/Dental-Office-Front-2-sm.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dental-Office-Inside-2-sm.jpg — https://finedentistry.blob.core.windows.net/content/images/Dental-Office-Inside-2-sm.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/dr-trivedi.webp — https://finedentistry.blob.core.windows.net/content/images/dr-trivedi.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/2-optimized.webp — https://finedentistry.blob.core.windows.net/content/images/images/2-optimized.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dr-Amanda-Perez.webp — https://finedentistry.blob.core.windows.net/content/images/images/Dr-Amanda-Perez.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/fine_dentistry_sign.webp — https://finedentistry.blob.core.windows.net/content/images/fine_dentistry_sign.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dntl_Web_728x90-1.png — https://finedentistry.blob.core.windows.net/content/images/Dntl_Web_728x90-1.png — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dr_Trivedi.webp — https://finedentistry.blob.core.windows.net/content/images/Dr_Trivedi.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/ser1.webp — https://finedentistry.blob.core.windows.net/content/images/ser1.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/ser2.webp — https://finedentistry.blob.core.windows.net/content/images/ser2.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/ser3.webp — https://finedentistry.blob.core.windows.net/content/images/ser3.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/ser4.webp — https://finedentistry.blob.core.windows.net/content/images/ser4.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-20.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-20.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-9.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-9.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-10.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-10.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-11.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-11.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-12.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-12.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-13.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-13.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-14.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-14.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-15.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-15.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-16.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-16.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Before-After-17.jpg — https://finedentistry.blob.core.windows.net/content/images/Before-After-17.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dentist_orlando.webp — https://finedentistry.blob.core.windows.net/content/images/Dentist_orlando.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Dentist_orlando2.webp — https://finedentistry.blob.core.windows.net/content/images/Dentist_orlando2.webp — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/Orlando-Invisalign-Dentist.jpg — https://finedentistry.blob.core.windows.net/content/images/Orlando-Invisalign-Dentist.jpg — Fonte oficial; uso apenas em revisão local. Confirmar direitos e consentimento antes de publicar.
+- /images/team-banner.jpg — https://finedentistry.blob.core.windows.net/content/images/2025/banner.jpg — 2257x1248, JPEG original da fonte oficial.
+- /images/team-enhanced-v2.png — image_gen integrada, edição do banner oficial solicitada pelo usuário — 1686x933, PNG; revisão dos detalhes reconstruídos antes de publicação. Prompt e limites em image-enhancement.md.

@@ -1,0 +1,142 @@
+[
+  {
+    "original": "ser1.webp",
+    "master": "ser1-enhanced-v2.png",
+    "served": "ser1-enhanced-v2.webp",
+    "originalSize": {
+      "width": 399,
+      "height": 550
+    },
+    "enhancedSize": {
+      "width": 1068,
+      "height": 1473
+    },
+    "servedBytes": 280386
+  },
+  {
+    "original": "ser2.webp",
+    "master": "ser2-enhanced-v2.png",
+    "served": "ser2-enhanced-v2.webp",
+    "originalSize": {
+      "width": 400,
+      "height": 551
+    },
+    "enhancedSize": {
+      "width": 1068,
+      "height": 1472
+    },
+    "servedBytes": 278614
+  },
+  {
+    "original": "ser3.webp",
+    "master": "ser3-enhanced-v2.png",
+    "served": "ser3-enhanced-v2.webp",
+    "originalSize": {
+      "width": 400,
+      "height": 551
+    },
+    "enhancedSize": {
+      "width": 1068,
+      "height": 1472
+    },
+    "servedBytes": 312226
+  },
+  {
+    "original": "ser4.webp",
+    "master": "ser4-enhanced-v2.png",
+    "served": "ser4-enhanced-v2.webp",
+    "originalSize": {
+      "width": 400,
+      "height": 551
+    },
+    "enhancedSize": {
+      "width": 1069,
+      "height": 1472
+    },
+    "servedBytes": 385978
+  },
+  {
+    "original": "dr-trivedi.webp",
+    "master": "dr-trivedi-enhanced-v2.png",
+    "served": "dr-trivedi-enhanced-v2.webp",
+    "originalSize": {
+      "width": 835,
+      "height": 1253
+    },
+    "enhancedSize": {
+      "width": 1024,
+      "height": 1536
+    },
+    "servedBytes": 355172
+  },
+  {
+    "original": "2-optimized.webp",
+    "master": "2-optimized-enhanced-v2.png",
+    "served": "2-optimized-enhanced-v2.webp",
+    "originalSize": {
+      "width": 1536,
+      "height": 1920
+    },
+    "enhancedSize": {
+      "width": 1121,
+      "height": 1403
+    },
+    "servedBytes": 294756
+  },
+  {
+    "original": "Dr-Amanda-Perez.webp",
+    "master": "Dr-Amanda-Perez-enhanced-v2.png",
+    "served": "Dr-Amanda-Perez-enhanced-v2.webp",
+    "originalSize": {
+      "width": 1000,
+      "height": 1250
+    },
+    "enhancedSize": {
+      "width": 1122,
+      "height": 1402
+    },
+    "servedBytes": 262398
+  },
+  {
+    "original": "Dentist_orlando2.webp",
+    "master": "Dentist_orlando2-enhanced-v2.png",
+    "served": "Dentist_orlando2-enhanced-v2.webp",
+    "originalSize": {
+      "width": 1280,
+      "height": 837
+    },
+    "enhancedSize": {
+      "width": 1551,
+      "height": 1014
+    },
+    "servedBytes": 176860
+  },
+  {
+    "original": "Dentist_orlando.webp",
+    "master": "Dentist_orlando-enhanced-v2.png",
+    "served": "Dentist_orlando-enhanced-v2.webp",
+    "originalSize": {
+      "width": 1536,
+      "height": 1024
+    },
+    "enhancedSize": {
+      "width": 1536,
+      "height": 1024
+    },
+    "servedBytes": 209402
+  },
+  {
+    "original": "team_photo.webp",
+    "master": "team_photo-enhanced-v2.png",
+    "served": "team_photo-enhanced-v2.webp",
+    "originalSize": {
+      "width": 2048,
+      "height": 1774
+    },
+    "enhancedSize": {
+      "width": 1347,
+      "height": 1168
+    },
+    "servedBytes": 484276
+  }
+]

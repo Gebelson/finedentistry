@@ -1,0 +1,94 @@
+{
+  "services/same-day-crowns": {
+    "image": "treatments/same-day-crowns.webp",
+    "alt": "Ceramic crown beside a milling block and digital scanner"
+  },
+  "services/emergency-dentistry": {
+    "image": "treatments/emergency-dentistry.webp",
+    "alt": "Gloved hands preparing dental examination instruments"
+  },
+  "services/tooth-pain": {
+    "image": "treatments/tooth-pain.webp",
+    "alt": "Illustrative portrait of an adult gently touching his jaw"
+  },
+  "services/dental-hygiene": {
+    "image": "treatments/dental-hygiene.webp",
+    "alt": "Electric toothbrush, dental floss and examination mirror"
+  },
+  "services/pediatric-dentistry": {
+    "image": "treatments/pediatric-dentistry.webp",
+    "alt": "Child-sized toothbrush, dental model and wooden elephant"
+  },
+  "services/periodontics": {
+    "image": "treatments/periodontics.webp",
+    "alt": "Educational gumline model beside a periodontal probe"
+  },
+  "services/root-canal": {
+    "image": "treatments/root-canal.webp",
+    "alt": "Sectioned tooth teaching model and endodontic hand files"
+  },
+  "services/oral-surgery": {
+    "image": "treatments/oral-surgery.webp",
+    "alt": "Dental forceps and a wisdom tooth teaching model"
+  },
+  "services/tmj-treatment": {
+    "image": "treatments/tmj-treatment.webp",
+    "alt": "Clear night guard on a dental cast with a jaw model"
+  },
+  "services/cosmetic-dentistry": {
+    "image": "treatments/cosmetic-dentistry.webp",
+    "alt": "Illustrative portrait featuring a natural smile"
+  },
+  "services/veneers": {
+    "image": "treatments/veneers.webp",
+    "alt": "Thin porcelain veneer shells beside a tooth shade guide"
+  },
+  "services/teeth-whitening": {
+    "image": "treatments/teeth-whitening.webp",
+    "alt": "Clear whitening tray and capped whitening gel syringes"
+  },
+  "services/invisalign-teens": {
+    "image": "treatments/invisalign-teens.webp",
+    "alt": "Clear aligners with a sage case and school notebook"
+  },
+  "services/invisalign-adults": {
+    "image": "treatments/invisalign-adults.webp",
+    "alt": "Adult hands holding a transparent orthodontic aligner"
+  },
+  "services/dental-implants": {
+    "image": "treatments/dental-implants.webp",
+    "alt": "Titanium dental implant and ivory ceramic crown"
+  },
+  "services/restorative-dentistry": {
+    "image": "treatments/restorative-dentistry.webp",
+    "alt": "Ceramic dental bridge and a prepared tooth teaching model"
+  },
+  "services/all-on-4": {
+    "image": "treatments/all-on-4.webp",
+    "alt": "Educational full-arch dental model with four implant supports"
+  },
+  "services/teeth-xpress": {
+    "image": "treatments/teeth-xpress.webp",
+    "alt": "Gloved hand presenting a full-arch dental prosthesis"
+  },
+  "services/botox": {
+    "image": "treatments/botox.webp",
+    "alt": "Unlabelled medical vial and a safely capped aesthetic syringe"
+  },
+  "services/lip-fillers": {
+    "image": "treatments/lip-fillers.webp",
+    "alt": "Illustrative beauty portrait with natural lips"
+  },
+  "services/dermal-fillers": {
+    "image": "treatments/dermal-fillers.webp",
+    "alt": "Illustrative mature beauty portrait with natural facial contours"
+  },
+  "services/smile-makeovers": {
+    "image": "treatments/smile-makeovers.webp",
+    "alt": "Smile-design planning with a dental cast, shade guide and mirror"
+  },
+  "services/curodont": {
+    "image": "treatments/curodont.webp",
+    "alt": "Fine microbrush applicator beside an ivory tooth teaching model"
+  }
+}

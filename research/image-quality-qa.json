@@ -1,0 +1,142 @@
+{
+  "reports": [
+    {
+      "route": "/",
+      "width": 390,
+      "images": 17,
+      "broken": 0
+    },
+    {
+      "route": "/services",
+      "width": 390,
+      "images": 24,
+      "broken": 0
+    },
+    {
+      "route": "/our-team",
+      "width": 390,
+      "images": 4,
+      "broken": 0
+    },
+    {
+      "route": "/about",
+      "width": 390,
+      "images": 3,
+      "broken": 0
+    },
+    {
+      "route": "/contact",
+      "width": 390,
+      "images": 2,
+      "broken": 0
+    },
+    {
+      "route": "/smile-gallery",
+      "width": 390,
+      "images": 11,
+      "broken": 0
+    },
+    {
+      "route": "/services/veneers",
+      "width": 390,
+      "images": 2,
+      "broken": 0
+    },
+    {
+      "route": "/",
+      "width": 768,
+      "images": 17,
+      "broken": 0
+    },
+    {
+      "route": "/services",
+      "width": 768,
+      "images": 24,
+      "broken": 0
+    },
+    {
+      "route": "/our-team",
+      "width": 768,
+      "images": 4,
+      "broken": 0
+    },
+    {
+      "route": "/about",
+      "width": 768,
+      "images": 3,
+      "broken": 0
+    },
+    {
+      "route": "/contact",
+      "width": 768,
+      "images": 2,
+      "broken": 0
+    },
+    {
+      "route": "/smile-gallery",
+      "width": 768,
+      "images": 11,
+      "broken": 0
+    },
+    {
+      "route": "/services/veneers",
+      "width": 768,
+      "images": 2,
+      "broken": 0
+    },
+    {
+      "route": "/",
+      "width": 1440,
+      "images": 17,
+      "broken": 0
+    },
+    {
+      "route": "/services",
+      "width": 1440,
+      "images": 24,
+      "broken": 0
+    },
+    {
+      "route": "/our-team",
+      "width": 1440,
+      "images": 4,
+      "broken": 0
+    },
+    {
+      "route": "/about",
+      "width": 1440,
+      "images": 3,
+      "broken": 0
+    },
+    {
+      "route": "/contact",
+      "width": 1440,
+      "images": 2,
+      "broken": 0
+    },
+    {
+      "route": "/smile-gallery",
+      "width": 1440,
+      "images": 11,
+      "broken": 0
+    },
+    {
+      "route": "/services/veneers",
+      "width": 1440,
+      "images": 2,
+      "broken": 0
+    }
+  ],
+  "clinicalOriginalHashes": {
+    "Before-After-10.jpg": "083a24dc467825539e65da8cafe72e4be10adc1845e8511c1447d55c44656fed",
+    "Before-After-11.jpg": "a9d3d23c3786f3b68476d0993bcc1d6c0b70522f74a3652342ab74794a09deca",
+    "Before-After-12.jpg": "211bc575092cded0f25bfc951e20d2b81a1703b4525932bc7ff63db4e9897ae4",
+    "Before-After-13.jpg": "b981c6db47a21dae6b947ddac439747425bc9bdea7886aaa6162dd169e510c42",
+    "Before-After-14.jpg": "3177f2c67e170e632df73b3a375044782bc08e4876f67104ce18b089b7c766e6",
+    "Before-After-15.jpg": "2a81d99ec4300031ae84c04b05208ad147c1299aeafb355a2ed8b0b3d0f33f5d",
+    "Before-After-16.jpg": "118ca75126e255452ae6c670e3f98e205ff5e726eece5e3765a6ccd99b8569c1",
+    "Before-After-17.jpg": "803ccc25e15255d9c413f4b815ba60a87e54d53d878b320955626c071aa5ecf5",
+    "Before-After-20.jpg": "52ee3cbdf918b1e92e5e904df379722eb335e21bcea36062880fd45611921fbe",
+    "Before-After-9.jpg": "000df9bf1285e96b2ae6a1ce2626925081e6189057e3f37e73d134a90e75bf8a"
+  }
+}

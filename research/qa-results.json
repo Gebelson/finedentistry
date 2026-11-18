@@ -1,0 +1,1548 @@
+{
+  "origin": "http://127.0.0.1:3000",
+  "checkedAt": "2026-11-17T06:55:02.749Z",
+  "routes": [
+    {
+      "route": "/",
+      "status": 200,
+      "h1": "Your smile.Our dedication.Beautifully personal."
+    },
+    {
+      "route": "/technology/comfort-options",
+      "status": 200,
+      "h1": "Comfort Options"
+    },
+    {
+      "route": "/technology/cone-beam-ct",
+      "status": 200,
+      "h1": "Cone Beam CT"
+    },
+    {
+      "route": "/technology/intraoral-camera",
+      "status": 200,
+      "h1": "Intraoral Camera"
+    },
+    {
+      "route": "/services/same-day-crowns",
+      "status": 200,
+      "h1": "Same-Day Crowns"
+    },
+    {
+      "route": "/technology/oral-cancer-screenings",
+      "status": 200,
+      "h1": "Oral Cancer Screenings"
+    },
+    {
+      "route": "/technology/digital-x-ray",
+      "status": 200,
+      "h1": "Digital X-Ray"
+    },
+    {
+      "route": "/about",
+      "status": 200,
+      "h1": "Our Practice"
+    },
+    {
+      "route": "/our-team",
+      "status": 200,
+      "h1": "Meet Our Doctors"
+    },
+    {
+      "route": "/our-team/team",
+      "status": 200,
+      "h1": "Meet Our Team"
+    },
+    {
+      "route": "/about/our-approach",
+      "status": 200,
+      "h1": "Our Approach"
+    },
+    {
+      "route": "/about/fagd",
+      "status": 200,
+      "h1": "Why Choose an FAGD Dentist?"
+    },
+    {
+      "route": "/invisalign",
+      "status": 200,
+      "h1": "Invisalign"
+    },
+    {
+      "route": "/specials",
+      "status": 200,
+      "h1": "New Patient Specials"
+    },
+    {
+      "route": "/careers",
+      "status": 200,
+      "h1": "Build Your Career with Us"
+    },
+    {
+      "route": "/services/emergency-dentistry",
+      "status": 200,
+      "h1": "Emergency Dentistry"
+    },
+    {
+      "route": "/services/tooth-pain",
+      "status": 200,
+      "h1": "Tooth Pain Treatment"
+    },
+    {
+      "route": "/services/dental-hygiene",
+      "status": 200,
+      "h1": "Preventive Dentistry"
+    },
+    {
+      "route": "/services/pediatric-dentistry",
+      "status": 200,
+      "h1": "Pediatric Dentistry"
+    },
+    {
+      "route": "/services/periodontics",
+      "status": 200,
+      "h1": "Periodontic Dentistry"
+    },
+    {
+      "route": "/services/root-canal",
+      "status": 200,
+      "h1": "Root Canal Therapy"
+    },
+    {
+      "route": "/services/oral-surgery",
+      "status": 200,
+      "h1": "Oral Surgery"
+    },
+    {
+      "route": "/services/tmj-treatment",
+      "status": 200,
+      "h1": "TMJ Treatment"
+    },
+    {
+      "route": "/services/cosmetic-dentistry",
+      "status": 200,
+      "h1": "Cosmetic Dentistry"
+    },
+    {
+      "route": "/services/veneers",
+      "status": 200,
+      "h1": "Dental Veneers"
+    },
+    {
+      "route": "/services/teeth-whitening",
+      "status": 200,
+      "h1": "Teeth Whitening"
+    },
+    {
+      "route": "/services/invisalign-teens",
+      "status": 200,
+      "h1": "Invisalign for Teens"
+    },
+    {
+      "route": "/services/invisalign-adults",
+      "status": 200,
+      "h1": "Invisalign for Adults"
+    },
+    {
+      "route": "/services/dental-implants",
+      "status": 200,
+      "h1": "Dental Implants"
+    },
+    {
+      "route": "/services/restorative-dentistry",
+      "status": 200,
+      "h1": "Restorative Dentistry"
+    },
+    {
+      "route": "/services/all-on-4",
+      "status": 200,
+      "h1": "All-on-4 Implant-Retained Dentures"
+    },
+    {
+      "route": "/services/teeth-xpress",
+      "status": 200,
+      "h1": "TeethXpress"
+    },
+    {
+      "route": "/services/botox",
+      "status": 200,
+      "h1": "Botox Treatment"
+    },
+    {
+      "route": "/services/lip-fillers",
+      "status": 200,
+      "h1": "Lip Fillers"
+    },
+    {
+      "route": "/services/dermal-fillers",
+      "status": 200,
+      "h1": "Dermal Fillers"
+    },
+    {
+      "route": "/about/dawson-certified",
+      "status": 200,
+      "h1": "Dawson Certified Practice"
+    },
+    {
+      "route": "/membership",
+      "status": 200,
+      "h1": "Dental Membership Plans"
+    },
+    {
+      "route": "/new-patients",
+      "status": 200,
+      "h1": "Your First Visit"
+    },
+    {
+      "route": "/blog",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/patient-reviews",
+      "status": 200,
+      "h1": "Words from Our Patients"
+    },
+    {
+      "route": "/news",
+      "status": 200,
+      "h1": "News & Media"
+    },
+    {
+      "route": "/faq",
+      "status": 200,
+      "h1": "Your Questions, Answered"
+    },
+    {
+      "route": "/post-op",
+      "status": 200,
+      "h1": "After Your Treatment"
+    },
+    {
+      "route": "/financing",
+      "status": 200,
+      "h1": "Financing Your Care"
+    },
+    {
+      "route": "/smile-gallery",
+      "status": 200,
+      "h1": "Real Smiles. Individual Stories."
+    },
+    {
+      "route": "/contact",
+      "status": 200,
+      "h1": "Let’s Meet."
+    },
+    {
+      "route": "/services",
+      "status": 200,
+      "h1": "Care for Every Smile"
+    },
+    {
+      "route": "/services/smile-makeovers",
+      "status": 200,
+      "h1": "Smile Makeovers"
+    },
+    {
+      "route": "/services/curodont",
+      "status": 200,
+      "h1": "Curodont Cavity Treatment"
+    },
+    {
+      "route": "/blog/welcome",
+      "status": 200,
+      "h1": "Welcome to our dental blog!"
+    },
+    {
+      "route": "/blog/the-difference-custom-whitening-trays-can-make",
+      "status": 200,
+      "h1": "The Difference Custom Whitening Trays Can Make"
+    },
+    {
+      "route": "/blog/the-proper-way-to-brush-your-teeth",
+      "status": 200,
+      "h1": "The Proper Way to Brush Your Teeth"
+    },
+    {
+      "route": "/blog/benefits-of-invisalign",
+      "status": 200,
+      "h1": "Benefits of Invisalign"
+    },
+    {
+      "route": "/blog/managing-dental-anxiety",
+      "status": 200,
+      "h1": "Managing Dental Anxiety"
+    },
+    {
+      "route": "/blog/the-dental-implant-process",
+      "status": 200,
+      "h1": "The Dental Implant Process"
+    },
+    {
+      "route": "/blog/benefits-of-veneers",
+      "status": 200,
+      "h1": "Benefits of Veneers"
+    },
+    {
+      "route": "/blog/the-beauty-of-same-day-crowns",
+      "status": 200,
+      "h1": "The Beauty of Same Day Crowns"
+    },
+    {
+      "route": "/blog/best-dental-practice-for-kids",
+      "status": 200,
+      "h1": "Best Dental Practice for Kids"
+    },
+    {
+      "route": "/blog/how-implant-supported-dentures-can-give-you-back-your-smile",
+      "status": 200,
+      "h1": "How Implant Supported Dentures Can Give You Back Your Smile"
+    },
+    {
+      "route": "/blog/the-importance-of-professional-teeth-cleaning",
+      "status": 200,
+      "h1": "Why Professional Teeth Cleaning Matters"
+    },
+    {
+      "route": "/blog/why-invisalign-is-popular-for-adults",
+      "status": 200,
+      "h1": "Why Invisalign is Popular for Adults"
+    },
+    {
+      "route": "/blog/what-is-tmd",
+      "status": 200,
+      "h1": "What is TMD?"
+    },
+    {
+      "route": "/blog/from-here-to-there",
+      "status": 200,
+      "h1": "From here to There"
+    },
+    {
+      "route": "/blog/happy-new-you",
+      "status": 200,
+      "h1": "Happy New You!!"
+    },
+    {
+      "route": "/blog/invisalign-an-affordable-alternative",
+      "status": 200,
+      "h1": "Invisalign An Affordable Alternative"
+    },
+    {
+      "route": "/blog/the-tooth-fairy",
+      "status": 200,
+      "h1": "The Tooth Fairy"
+    },
+    {
+      "route": "/blog/the-strength-lies-at-ground-level",
+      "status": 200,
+      "h1": "The Strength Lies at Ground Level"
+    },
+    {
+      "route": "/blog/the-tooth-of-the-matter-to-save-or-not-to-save",
+      "status": 200,
+      "h1": "The Tooth of the Matter to Save or Not to Save"
+    },
+    {
+      "route": "/blog/a-time-for-love",
+      "status": 200,
+      "h1": "A Time for Love"
+    },
+    {
+      "route": "/blog/the-benefits-of-teeth-whitening",
+      "status": 200,
+      "h1": "The Benefits of Teeth Whitening"
+    },
+    {
+      "route": "/blog/the-benefits-of-root-canal-therapy",
+      "status": 200,
+      "h1": "The Benefits of Root Canal Therapy"
+    },
+    {
+      "route": "/blog/time-a-most-precious-commodity",
+      "status": 200,
+      "h1": "Time A Most Precious Commodity"
+    },
+    {
+      "route": "/blog/the-benefits-of-sedation-dentistry",
+      "status": 200,
+      "h1": "The Benefits of Sedation Dentistry"
+    },
+    {
+      "route": "/blog/types-of-dentures",
+      "status": 200,
+      "h1": "Types of Dentures"
+    },
+    {
+      "route": "/blog/benefits-of-botox-for-tmj-treatment",
+      "status": 200,
+      "h1": "Benefits of Botox for TMJ treatment"
+    },
+    {
+      "route": "/blog/the-benefits-of-dental-implants",
+      "status": 200,
+      "h1": "The Benefits of Dental Implants"
+    },
+    {
+      "route": "/blog/how-dentures-can-improve-your-oral-health",
+      "status": 200,
+      "h1": "How Dentures Can Improve Your Oral Health"
+    },
+    {
+      "route": "/blog/how-veneers-can-change-your-smile",
+      "status": 200,
+      "h1": "How Veneers Can Change Your Smile"
+    },
+    {
+      "route": "/blog/what-is-tmj-disorder",
+      "status": 200,
+      "h1": "What is TMJ Disorder?"
+    },
+    {
+      "route": "/blog/how-botox-can-treat-tmj-disorders",
+      "status": 200,
+      "h1": "How Botox Can Treat TMJ Disorders"
+    },
+    {
+      "route": "/blog/benefits-of-pediatric-dentistry",
+      "status": 200,
+      "h1": "Benefits of Pediatric Dentistry"
+    },
+    {
+      "route": "/blog/professional-teeth-whitening-vs-otc-teeth-whitening",
+      "status": 200,
+      "h1": "Expert Teeth Whitening Vs. OTC Teeth Whitening"
+    },
+    {
+      "route": "/blog/advantages-of-dental-veneers",
+      "status": 200,
+      "h1": "Advantages of Dental Veneers"
+    },
+    {
+      "route": "/blog/how-cosmetic-dentistry-can-change-your-smile",
+      "status": 200,
+      "h1": "Transform Your Smile with Cosmetic Dentistry!"
+    },
+    {
+      "route": "/blog/the-importance-of-oral-cancer-screenings",
+      "status": 200,
+      "h1": "The Importance of Oral Cancer Screenings"
+    },
+    {
+      "route": "/blog/benefits-of-botox-treatment",
+      "status": 200,
+      "h1": "Benefits of Botox Treatment"
+    },
+    {
+      "route": "/blog/benefits-of-cosmetic-dentistry",
+      "status": 200,
+      "h1": "Benefits of Cosmetic Dentistry"
+    },
+    {
+      "route": "/blog/benefits-of-sedation-dentistry",
+      "status": 200,
+      "h1": "Benefits of Sedation Dentistry"
+    },
+    {
+      "route": "/blog/benefits-of-teeth-whitening",
+      "status": 200,
+      "h1": "Benefits of Teeth Whitening"
+    },
+    {
+      "route": "/blog/how-botox-can-help-with-tmj-disorders",
+      "status": 200,
+      "h1": "How Botox Can Help with TMJ Disorders"
+    },
+    {
+      "route": "/blog/what-is-invisalign",
+      "status": 200,
+      "h1": "What is Invisalign?"
+    },
+    {
+      "route": "/blog/benefits-of-getting-dental-veneers",
+      "status": 200,
+      "h1": "Benefits of Getting Dental Veneers"
+    },
+    {
+      "route": "/blog/invisalign-an-amazing-alternative-to-braces",
+      "status": 200,
+      "h1": "Invisalign: An Amazing Alternative to Braces"
+    },
+    {
+      "route": "/blog/the-difference-between-professional-teeth-whitening-and-otc-teeth-whitening",
+      "status": 200,
+      "h1": "Difference Between Professional Teeth Whitening VS OTC Teeth Whitening"
+    },
+    {
+      "route": "/blog/benefits-of-same-day-crowns",
+      "status": 200,
+      "h1": "Benefits of Same-Day Crowns"
+    },
+    {
+      "route": "/blog/what-you-need-to-know-about-invisalign",
+      "status": 200,
+      "h1": "What You Need to Know About Invisalign"
+    },
+    {
+      "route": "/blog/benefits-of-a-smile-makeover",
+      "status": 200,
+      "h1": "Benefits of a Smile Makeover"
+    },
+    {
+      "route": "/blog/full-mouth-cosmetic-treatment",
+      "status": 200,
+      "h1": "Full Mouth Cosmetic Treatment"
+    },
+    {
+      "route": "/blog/how-dentures-and-implants-can-work-together",
+      "status": 200,
+      "h1": "How Dentures and Implants Can Work Together"
+    },
+    {
+      "route": "/blog/how-cosmetic-dentistry-brightens-your-smile",
+      "status": 200,
+      "h1": "How Cosmetic Dentistry Brightens Your Smile"
+    },
+    {
+      "route": "/blog/everything-you-need-to-know-about-root-canals",
+      "status": 200,
+      "h1": "Everything You Need to Know About Root Canals"
+    },
+    {
+      "route": "/blog/how-to-prevent-gum-disease",
+      "status": 200,
+      "h1": "How to Prevent Gum Disease"
+    },
+    {
+      "route": "/blog/how-to-help-with-dental-anxiety",
+      "status": 200,
+      "h1": "How to Help with Dental Anxiety"
+    },
+    {
+      "route": "/blog/when-to-consider-invisalign-clear-aligners",
+      "status": 200,
+      "h1": "When to Consider Invisalign Clear Aligners"
+    },
+    {
+      "route": "/blog/how-dental-implants-transform-your-smile",
+      "status": 200,
+      "h1": "How Dental Implants Transform Your Smile"
+    },
+    {
+      "route": "/blog/dental-tips-for-kids",
+      "status": 200,
+      "h1": "Dental Tips for Kids"
+    },
+    {
+      "route": "/blog/is-botox-right-for-you",
+      "status": 200,
+      "h1": "Is Botox Right for You?"
+    },
+    {
+      "route": "/blog/what-makes-invisalign-special",
+      "status": 200,
+      "h1": "What Makes Invisalign Special?"
+    },
+    {
+      "route": "/blog/why-you-should-choose-a-cosmetic-dentist",
+      "status": 200,
+      "h1": "Why You Should Choose a Cosmetic Dentist"
+    },
+    {
+      "route": "/blog/adult-orthodontics",
+      "status": 200,
+      "h1": "Adult Orthodontics"
+    },
+    {
+      "route": "/blog/caring-for-your-smile-after-invisalign",
+      "status": 200,
+      "h1": "Caring for Your Smile After Invisalign"
+    },
+    {
+      "route": "/blog/importance-of-retainers",
+      "status": 200,
+      "h1": "Importance of Retainers"
+    },
+    {
+      "route": "/blog/how-to-lose-your-dental-fears",
+      "status": 200,
+      "h1": "How to Lose Your Dental Fears"
+    },
+    {
+      "route": "/blog/why-adults-choose-to-have-orthodontic-treatment",
+      "status": 200,
+      "h1": "Why Adults Choose to Have Orthodontic Treatment"
+    },
+    {
+      "route": "/blog/how-veneers-can-help-your-smile",
+      "status": 200,
+      "h1": "How Veneers Can Help Your Smile"
+    },
+    {
+      "route": "/blog/discover-the-benefits-of-sedation-dentistry",
+      "status": 200,
+      "h1": "Discover the Benefits of Sedation Dentistry"
+    },
+    {
+      "route": "/blog/top-5-benefits-of-invisalign-over-braces",
+      "status": 200,
+      "h1": "Top 5 Benefits of Invisalign over Braces"
+    },
+    {
+      "route": "/blog/tmj-treatment-at-your-downtown-orlando-dentist",
+      "status": 200,
+      "h1": "TMJ Treatment at Your Downtown Orlando Dentist"
+    },
+    {
+      "route": "/blog/cerec-same-day-crowns",
+      "status": 200,
+      "h1": "CEREC Same-Day Crowns"
+    },
+    {
+      "route": "/blog/healthy-teeth-during-the-holidays",
+      "status": 200,
+      "h1": "Healthy Teeth During the Holidays"
+    },
+    {
+      "route": "/blog/end-the-year-right-with-a-dental-checkup",
+      "status": 200,
+      "h1": "Give Your Smile a Year-End Boost with a Dental Checkup"
+    },
+    {
+      "route": "/blog/botox-make-the-most-of-your-smile",
+      "status": 200,
+      "h1": "Botox – Refresh Your Smile, Renew Your Confidence"
+    },
+    {
+      "route": "/blog/is-teeth-xpress-right-for-you",
+      "status": 200,
+      "h1": "Is Teeth Xpress the Best Option for You?"
+    },
+    {
+      "route": "/blog/discovering-dentistry-in-downtown-orlando",
+      "status": 200,
+      "h1": "Understanding Dentistry With Us"
+    },
+    {
+      "route": "/blog/what-does-it-mean-to-be-an-invisalign-platinum-elite-provider",
+      "status": 200,
+      "h1": "What It Means to Be an Invisalign Platinum Elite Provider?"
+    },
+    {
+      "route": "/blog/invisalign-for-teens",
+      "status": 200,
+      "h1": "Clear Aligners for Teens"
+    },
+    {
+      "route": "/blog/the-advantages-of-botox",
+      "status": 200,
+      "h1": "Exploring the Benefits of Botox"
+    },
+    {
+      "route": "/blog/discover-the-benefits-of-dental-veneers",
+      "status": 200,
+      "h1": "Enhance Your Smile: Key Advantages of Veneers"
+    },
+    {
+      "route": "/blog/what-are-dermal-fillers",
+      "status": 200,
+      "h1": "Everything You Need to Know About Dermal Fillers?"
+    },
+    {
+      "route": "/blog/professionally-whiten-your-teeth-this-summer",
+      "status": 200,
+      "h1": "Get Your Teeth Professionally Whitened This Summer"
+    },
+    {
+      "route": "/blog/smile-makeovers-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Smile Makeovers at Fine Dentistry of Downtown Orlando"
+    },
+    {
+      "route": "/blog/root-canal-therapy",
+      "status": 200,
+      "h1": "Root Canal Dental Treatment"
+    },
+    {
+      "route": "/blog/take-care-of-your-health-with-a-dental-exam",
+      "status": 200,
+      "h1": "Protect Your Health with a Routine Dental Exam"
+    },
+    {
+      "route": "/blog/botox-for-tmj",
+      "status": 200,
+      "h1": "Botox Treatment for TMJ"
+    },
+    {
+      "route": "/blog/the-appeal-of-a-single-tooth-dental-implant",
+      "status": 200,
+      "h1": "What Makes a Single Tooth Implant So Appealing?"
+    },
+    {
+      "route": "/blog/are-dental-implants-right-for-you",
+      "status": 200,
+      "h1": "Dental Implant the Right Choice for You?"
+    },
+    {
+      "route": "/blog/why-we-prefer-invisalign-clear-aligners",
+      "status": 200,
+      "h1": "Why Invisalign Clear Aligners Are Our Top Choice"
+    },
+    {
+      "route": "/blog/how-to-get-fuller-lips-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Achieve Fuller Lips at Fine Dentistry in Downtown Orlando"
+    },
+    {
+      "route": "/blog/things-you-should-know-if-you-have-dentures",
+      "status": 200,
+      "h1": "What You Need to Know When You Have Dentures"
+    },
+    {
+      "route": "/blog/cosmetic-makeovers-to-improve-smiles",
+      "status": 200,
+      "h1": "Cosmetic Treatments to Perfect Your Smile"
+    },
+    {
+      "route": "/blog/dental-veneers-in-orlando",
+      "status": 200,
+      "h1": "Porcelain vs. Composite Veneers"
+    },
+    {
+      "route": "/blog/how-fine-dentistry-uses-botox-for-effective-tmj-treatment-in-downtown-orlando",
+      "status": 200,
+      "h1": "How Fine Dentistry Uses Botox for Effective TMJ Treatment"
+    },
+    {
+      "route": "/blog/implant-dentistry-in-downtown-orlando-why-fine-dentistry-is-the-right-choice-for-your-dental-implants",
+      "status": 200,
+      "h1": "Why Fine Dentistry is the Right Choice for Your Dental Implants"
+    },
+    {
+      "route": "/blog/create-fuller-lips-with-botox-treatment-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Enhance Your Lips with Botox Treatment"
+    },
+    {
+      "route": "/blog/transform-your-smile-with-a-smile-makeover-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Boost Your Confidence with a Smile Makeover at Fine Dentistry of Downtown Orlando"
+    },
+    {
+      "route": "/blog/all-on-4-dentures-in-downtown-orlando",
+      "status": 200,
+      "h1": "All-on-4 Dentures"
+    },
+    {
+      "route": "/blog/the-expertise-of-fine-dentistry-your-invisalign-diamond-plus-provider",
+      "status": 200,
+      "h1": "Fine Dentistry Expertise – Your Trusted Invisalign Diamond Plus Provider"
+    },
+    {
+      "route": "/blog/fine-dentistry-premier-provider-of-cosmetic-dentistry-in-downtown-orlando",
+      "status": 200,
+      "h1": "Your Premier Choice for Cosmetic Dentistry in FL"
+    },
+    {
+      "route": "/blog/fine-dentistry-of-downtown-orlando-the-place-to-fix-your-teeth",
+      "status": 200,
+      "h1": "Expert Care to Restore Your Teeth"
+    },
+    {
+      "route": "/blog/enhance-your-smile-with-minimally-invasive-veneers-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Transform Your Smile with Minimally Invasive Veneers at Fine Dentistry Downtown Orlando"
+    },
+    {
+      "route": "/blog/fine-dentistry-of-downtown-orlando-achieve-fuller-lips-and-treat-tmj-with-botox",
+      "status": 200,
+      "h1": "Botox Solutions for Fuller Lips and TMJ Treatment"
+    },
+    {
+      "route": "/blog/experience-the-revolutionary-teeth-in-a-day-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Discover the revolutionary Teeth in a Day treatment at Fine Dentistry in Downtown Orlando"
+    },
+    {
+      "route": "/blog/transform-your-smile-with-cosmetic-makeovers-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Upgrade Your Smile with Professional Cosmetic Makeovers"
+    },
+    {
+      "route": "/blog/experience-a-smile-transformation-with-fine-dentistrys-dental-implants-in-downtown-orlando",
+      "status": 200,
+      "h1": "Transform Your Smile with the Expert Dental Implants Team at Fine Dentistry"
+    },
+    {
+      "route": "/blog/no-dental-insurance-ask-about-our-savings-plan-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Don’t have dental insurance? Learn about our Savings Plan at Fine Dentistry of Downtown Orlando"
+    },
+    {
+      "route": "/blog/discover-invisalign-treatment-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Explore Invisalign Treatment"
+    },
+    {
+      "route": "/blog/get-your-perfect-smile-with-invisalign-for-adults-in-downtown-orlando",
+      "status": 200,
+      "h1": "Invisalign for Adults: Your Path to a Perfect Smile"
+    },
+    {
+      "route": "/blog/invisalign-vs-braces-making-the-right-choice-for-your-smile",
+      "status": 200,
+      "h1": "Invisalign or Braces: Choosing the Best Option for Your Smile"
+    },
+    {
+      "route": "/blog/your-invisalign-journey-in-downtown-orlando",
+      "status": 200,
+      "h1": "Begin Your Invisalign Journey in Downtown Orlando"
+    },
+    {
+      "route": "/blog/empower-your-teens-smile-with-invisalign-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Transform Your Teen’s Smile with the Power of Invisalign"
+    },
+    {
+      "route": "/blog/fine-dentistry-of-downtown-orlando-your-solution-for-tooth-extractions-near-you",
+      "status": 200,
+      "h1": "Fine Dentistry Downtown Orlando: Your Trusted Choice for Nearby Tooth Extractions"
+    },
+    {
+      "route": "/blog/root-canal-treatment-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Root Canal Therapy"
+    },
+    {
+      "route": "/blog/why-invisalign-works-insights-from-your-invisalign-diamond-plus-provider",
+      "status": 200,
+      "h1": "How Invisalign Delivers Results – Tips from a Diamond Plus Provider"
+    },
+    {
+      "route": "/blog/providing-emergency-dentistry-services-in-downtown-orlando-fine-dentistry",
+      "status": 200,
+      "h1": "Fine Dentistry: Your Trusted Emergency Dentist in Downtown Orlando"
+    },
+    {
+      "route": "/blog/straighten-your-teeth-discreetly-with-invisalign-for-adults-in-orlando-fl",
+      "status": 200,
+      "h1": "Straighten Your Teeth Discreetly with Invisalign for Adults in FL"
+    },
+    {
+      "route": "/blog/the-invisalign-process-explained-by-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "How Invisalign Works: A Guide from Fine Dentistry of Downtown Orlando"
+    },
+    {
+      "route": "/blog/the-versatile-applications-of-botox-in-dentistry-by-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Exploring the Versatile Uses of Botox in Dentistry at Fine Dentistry of Downtown Orlando"
+    },
+    {
+      "route": "/blog/unlock-your-perfect-smile-with-invisalign-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Achieve Your Dream Smile with Invisalign"
+    },
+    {
+      "route": "/blog/transform-your-smile-with-dental-veneers-in-downtown-orlando",
+      "status": 200,
+      "h1": "Brighten Your Smile with Beautiful Dental Veneers"
+    },
+    {
+      "route": "/blog/revitalize-your-smile-with-teeth-in-a-day-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Transform Your Smile in Just One Day at Fine Dentistry"
+    },
+    {
+      "route": "/blog/fine-dentistry-of-downtown-orlando-your-invisalign-diamond-plus-provider",
+      "status": 200,
+      "h1": "Your Invisalign Diamond Plus Provider"
+    },
+    {
+      "route": "/blog/transform-your-smile-with-invisalign-solutions-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Achieve a Stunning Smile with Invisalign Clear Aligners"
+    },
+    {
+      "route": "/blog/saving-your-teeth-emergency-extractions-and-implants-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Protecting Your Smile: Emergency Extractions and Implant Options"
+    },
+    {
+      "route": "/blog/addressing-dental-problems-solutions-for-missing-teeth-pain-and-more-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Comprehensive Solutions for Missing Teeth, Pain, and Other Dental Problems"
+    },
+    {
+      "route": "/blog/a-beautifu-smile-you-way-customized-cosmetic-dentistry-in-orlando",
+      "status": 200,
+      "h1": "Crafting Beautiful Smiles with Personalized Cosmetic Care"
+    },
+    {
+      "route": "/blog/straighten-your-teeth-boost-your-confidence-discover-invisalign-in-orlando-with-fine-dentistry",
+      "status": 200,
+      "h1": "Transform Your Smile and Confidence with Invisalign"
+    },
+    {
+      "route": "/blog/fine-dentistry-of-downtown-orlando-providing-lasting-tmj-relief-solutions-in-orlando-fl",
+      "status": 200,
+      "h1": "Offering Long-Lasting TMJ Relief Solutions in Florida"
+    },
+    {
+      "route": "/blog/finding-quick-relief-for-dental-pain-emergency-dentistry-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Fast Relief for Dental Pain: Emergency Dentistry Services at Fine Dentistry Downtown Orlando"
+    },
+    {
+      "route": "/blog/achieve-your-dream-smile-with-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Get The Smile Of Your Dreams With Our Expert Team"
+    },
+    {
+      "route": "/blog/handling-dental-emergencies-expert-advice-from-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Managing Dental Emergencies: Professional Tips from Fine Dentistry Downtown Orlando"
+    },
+    {
+      "route": "/blog/from-crooked-to-confident-invisalign-for-a-perfect-smile",
+      "status": 200,
+      "h1": "From Crooked to Confident: How Invisalign Creates Perfect Smiles"
+    },
+    {
+      "route": "/blog/breathe-easier-feel-better-innovative-solutions-at-fine-dentistry-of-downtown-orlando",
+      "status": 200,
+      "h1": "Breathe Freely, Live Fully: Advanced Solutions for You"
+    },
+    {
+      "route": "/blog/achieve-a-radiant-smile-the-ultimate-guide-to-cosmetic-dentistry-options-in-orlando",
+      "status": 200,
+      "h1": "Achieve A Radiant Smile: The Ultimate Guide to Cosmetic Dentistry"
+    },
+    {
+      "route": "/blog/your-familys-dental-home-comprehensive-care",
+      "status": 200,
+      "h1": "Comprehensive Family Dental Care"
+    },
+    {
+      "route": "/blog/straighten-your-smile-naturally-invisalign",
+      "status": 200,
+      "h1": "Achieve a Straight Smile the Natural Way – Invisalign"
+    },
+    {
+      "route": "/blog/restore-your-smile-dental-implants-and-dentures",
+      "status": 200,
+      "h1": "Dental Implants & Dentures: Restore Your Natural Smile"
+    },
+    {
+      "route": "/blog/enhance-your-smile-everything-you-need-to-know-about-cosmetic-dentistry",
+      "status": 200,
+      "h1": "Transform Your Smile: A Complete Guide to Cosmetic Dentistry"
+    },
+    {
+      "route": "/blog/achieve-your-dream-smile-with-invisalign",
+      "status": 200,
+      "h1": "Get the Smile You’ve Always Wanted with Invisalign®"
+    },
+    {
+      "route": "/blog/enhance-your-natural-beauty-with-botox-fillers-and-more",
+      "status": 200,
+      "h1": "Boost Your Natural Beauty Using Botox, Fillers, and More"
+    },
+    {
+      "route": "/blog/transform-your-smile-instantly-expert-teeth-in-a-day-implants",
+      "status": 200,
+      "h1": "Transform Your Smile Instantly: Expert Teeth in a Day Implants"
+    },
+    {
+      "route": "/blog/your-smile-transformed-unveil-the-power-of-cosmetic-dentistry",
+      "status": 200,
+      "h1": "Transform Your Smile with the Magic of Cosmetic Dentistry"
+    },
+    {
+      "route": "/blog/achieve-a-straighter-smile-with-clear-aligners-your-guide-to-invisalign",
+      "status": 200,
+      "h1": "Transform Your Smile with Clear Aligners"
+    },
+    {
+      "route": "/blog/revitalize-your-look-with-botox-fillers",
+      "status": 200,
+      "h1": "Restore Your Radiance with Botox and Fillers"
+    },
+    {
+      "route": "/blog/same-day-dental-implants-teeth-in-a-day",
+      "status": 200,
+      "h1": "Teeth in a Day with Same Day Dental Implants"
+    },
+    {
+      "route": "/blog/transform-your-smile-cosmetic-dentist",
+      "status": 200,
+      "h1": "Achieve Your Dream Smile – Leading Cosmetic Dentist"
+    },
+    {
+      "route": "/blog/all-on-4-implants-a-revolutionary-solution-for-missing-teeth",
+      "status": 200,
+      "h1": "Restore Your Smile with All-on-4 Implants"
+    },
+    {
+      "route": "/blog/botox-for-tmj-derma-fillers-a-comprehensive-approach",
+      "status": 200,
+      "h1": "Comprehensive Care with Dermal Fillers"
+    },
+    {
+      "route": "/blog/finding-the-best-invisalign-dentist",
+      "status": 200,
+      "h1": "Your Guide to the Best Invisalign Dentist"
+    },
+    {
+      "route": "/blog/restoring-your-smile-confidence-with-dental-implants",
+      "status": 200,
+      "h1": "Restore Your Smile and Boost Confidence with Dental Implants"
+    },
+    {
+      "route": "/blog/transform-your-smile-seamlessly-with-invisalign",
+      "status": 200,
+      "h1": "Achieve a flawless smile effortlessly with Invisalign"
+    },
+    {
+      "route": "/blog/emergency-dentistry-fast-reliable-care-when-you-need-it",
+      "status": 200,
+      "h1": "Emergency Dentistry: Quick and Trusted Care When You Need It"
+    },
+    {
+      "route": "/blog/achieving-a-secure-and-comfortable-smile-with-implant-supported-dentures",
+      "status": 200,
+      "h1": "Creating a Stable and Comfortable Smile with Implant-Supported Dentures"
+    },
+    {
+      "route": "/blog/achieve-youthful-radiance-with-non-surgical-facial-rejuvenation-from-your-trusted-dentist",
+      "status": 200,
+      "h1": "Achieve Youthful Radiance with Non-Surgical Facial Rejuvenation from Your Trusted Dentist"
+    },
+    {
+      "route": "/blog/same-day-dental-implants",
+      "status": 200,
+      "h1": "Get Dental Implants in Just One Day"
+    },
+    {
+      "route": "/blog/facial-fillers",
+      "status": 200,
+      "h1": "Dermal & Facial Fillers"
+    },
+    {
+      "route": "/blog/extractions-root-canals-painless-efficient-procedures",
+      "status": 200,
+      "h1": "Painless, Efficient Extractions & Root Canals"
+    },
+    {
+      "route": "/blog/achieve-a-straighter-smile-with-invisalign-treatment",
+      "status": 200,
+      "h1": "Achieve a Straighter Smile with Invisalign"
+    },
+    {
+      "route": "/blog/how-to-choose-an-invisalign-provider",
+      "status": 200,
+      "h1": "Choosing the Best Invisalign Provider"
+    },
+    {
+      "route": "/blog/same-day-dental-implants-experience-the-difference",
+      "status": 200,
+      "h1": "Same-Day Dental Implants: Feel the Difference"
+    },
+    {
+      "route": "/blog/achieve-desired-volume-with-lip-fillers",
+      "status": 200,
+      "h1": "Get the Volume You Want with Lip Fillers"
+    },
+    {
+      "route": "/blog/dentures-affordable-comfortable-solutions",
+      "status": 200,
+      "h1": "Dentures: Affordable & Comfortable Solutions"
+    },
+    {
+      "route": "/blog/teen-invisalign-a-clear-way-to-get-a-smile-you-love",
+      "status": 200,
+      "h1": "Invisalign Teen : A Clear Way to Get a Smile You Love"
+    },
+    {
+      "route": "/blog/the-simple-solution-for-straight-teeth-invisalign-clear-aligners",
+      "status": 200,
+      "h1": "Invisalign Clear Aligners: The Easy Way to Straight Teeth"
+    },
+    {
+      "route": "/blog/same-day-dental-implants-a-faster-way-back-to-your-smile",
+      "status": 200,
+      "h1": "Same-Day Dental Implants: Restore Your Smile Fast"
+    },
+    {
+      "route": "/blog/jaw-pain-and-the-truth-about-tmj-disorders",
+      "status": 200,
+      "h1": "Jaw Pain and the Facts About TMJ Disorders"
+    },
+    {
+      "route": "/blog/schedule-your-invisalign-consultation-today-your-journey-to-a-confident-smile-starts-here",
+      "status": 200,
+      "h1": "Schedule Your Invisalign Consultation Today: Your Journey to a Confident Smile Starts Here"
+    },
+    {
+      "route": "/blog/minimally-invasive-veneers-achieve-a-hollywood-smile-without-the-drill",
+      "status": 200,
+      "h1": "Achieve a Hollywood Smile Without the Drill"
+    },
+    {
+      "route": "/blog/solutions-for-missing-teeth-from-same-day-implants-to-a-brand-new-smile",
+      "status": 200,
+      "h1": "Solutions for Missing Teeth: From Same Day Implants to a Brand New Smile"
+    },
+    {
+      "route": "/blog/anti-aging-treatments-less-wrinkles-and-more",
+      "status": 200,
+      "h1": "Anti - Aging Treatments: Less Wrinkles and More"
+    },
+    {
+      "route": "/blog/the-invisalign-reality-check-what-my-15-years-in-dentistry-have-actually-shown-me",
+      "status": 200,
+      "h1": "The Invisalign Reality Check: My 15+ Years in Dentistry Have Actually Shown Me"
+    },
+    {
+      "route": "/blog/the-art-of-subtlety-rethinking-lip-enhancement",
+      "status": 200,
+      "h1": "The Art of Subtlety: A Modern Approach to Lip Enhancement"
+    },
+    {
+      "route": "/blog/botox-for-jaw-pain-the-treatment-that-actually-stops-tmj-hell",
+      "status": 200,
+      "h1": "Botox for Jaw Pain: Real Relief for TMJ Suffering"
+    },
+    {
+      "route": "/blog/all-on-4-implants-the-last-resort-that-actually-works",
+      "status": 200,
+      "h1": "All on 4 Dental Implants: The Last Resort That Actually Works"
+    },
+    {
+      "route": "/blog/rethinking-the-dental-crown-how-technology-is-reshaping-care",
+      "status": 200,
+      "h1": "How Technology is Revolutionizing the Modern Dental Crown"
+    },
+    {
+      "route": "/blog/a-quiet-revolution-in-tooth-alignment",
+      "status": 200,
+      "h1": "A Modern Revolution in Smile Alignment"
+    },
+    {
+      "route": "/blog/when-muscle-tension-masquerades-as-a-dental-problem",
+      "status": 200,
+      "h1": "When Dental Pain Is Actually Muscle Tension"
+    },
+    {
+      "route": "/blog/botox-and-the-tension-behind-the-smile",
+      "status": 200,
+      "h1": "Botox and the Tension Behind Your Beautiful Smile"
+    },
+    {
+      "route": "/blog/a-surefire-way-to-keep-your-smile-healthy",
+      "status": 200,
+      "h1": "Keep Your Smile Healthy: The All-on-4 Implant Solution"
+    },
+    {
+      "route": "/blog/botox-and-the-jaw-an-elegant-solution-for-tmj-pain",
+      "status": 200,
+      "h1": "How Botox Can Relieve TMJ Jaw Pain and Tension"
+    },
+    {
+      "route": "/blog/a-foundation-for-getting-back-what-you-ve-lost",
+      "status": 200,
+      "h1": "How Dental Implants Restore What You’ve Lost: A Complete Guide"
+    },
+    {
+      "route": "/blog/the-art-and-science-of-lip-enhancement",
+      "status": 200,
+      "h1": "The Art and Science of Lip Enhancement: Achieve Natural, Fuller Lips with Expert Lip Fillers"
+    },
+    {
+      "route": "/blog/how-botox-can-enhance-your-jawline-without-surgery",
+      "status": 200,
+      "h1": "How Botox Enhances Your Jawline Without Surgery"
+    },
+    {
+      "route": "/blog/the-tooth-fairy-and-the-mystery-of-lost-teeth",
+      "status": 200,
+      "h1": "The Magical History of the Tooth Fairy"
+    },
+    {
+      "route": "/blog/can-i-brush-my-teeth-before-or-after-using-whitestrips",
+      "status": 200,
+      "h1": "Can I Brush My Teeth After Or Before Using Whitestrips"
+    },
+    {
+      "route": "/blog/what-does-a-dental-crown-look-like",
+      "status": 200,
+      "h1": "What Does A Dental Crown Look Like"
+    },
+    {
+      "route": "/blog/when-should-you-take-your-child-to-the-dentist",
+      "status": 200,
+      "h1": "When Should You Take Your Child To The Dentist"
+    },
+    {
+      "route": "/blog/how-to-relieve-pain-from-dental-implant",
+      "status": 200,
+      "h1": "How to Relieve Pain From Dental Implants"
+    },
+    {
+      "route": "/blog/can-invisalign-fix-overbite-how-long-does-it-take",
+      "status": 200,
+      "h1": "Can Invisalign Fix Overbite How Long Does it Take"
+    },
+    {
+      "route": "/blog/is-periodontitis-reversible",
+      "status": 200,
+      "h1": "Can Periodontal Disease Be Reversed?"
+    },
+    {
+      "route": "/blog/can-wisdom-teeth-cause-tmj-disorder",
+      "status": 200,
+      "h1": "Can Wisdom Teeth Cause TMJ Disorder"
+    },
+    {
+      "route": "/blog/how-do-you-know-if-you-need-a-root-canal",
+      "status": 200,
+      "h1": "How Do You Know if You Need a Root Canal Treatment"
+    },
+    {
+      "route": "/blog/how-long-does-it-take-for-invisalign-to-work",
+      "status": 200,
+      "h1": "How Long Does It Takes for Invisalign to Work"
+    },
+    {
+      "route": "/blog/how-to-use-invisalign-cleaning-crystals",
+      "status": 200,
+      "h1": "How To Use Invisalign Cleaning Crystals"
+    },
+    {
+      "route": "/blog/what-is-a-full-arch-dental-implant",
+      "status": 200,
+      "h1": "What is a Full Arch Dental Implant?"
+    },
+    {
+      "route": "/blog/how-long-to-keep-gauze-in-after-tooth-extraction",
+      "status": 200,
+      "h1": "How Long to Keep Gauze in After Tooth Extraction"
+    },
+    {
+      "route": "/blog/difference-between-a-mini-dental-implant-a-standard-implant",
+      "status": 200,
+      "h1": "Difference Between a Mini Dental Implant & a Standard Implant?"
+    },
+    {
+      "route": "/blog/how-botox-can-improve-your-smile",
+      "status": 200,
+      "h1": "How Botox Can Improve Your Smile?"
+    },
+    {
+      "route": "/blog/what-causes-tooth-pain-when-biting-down",
+      "status": 200,
+      "h1": "What Causes Tooth Pain When Biting Down"
+    },
+    {
+      "route": "/blog/what-are-the-main-stages-of-a-dental-implant-procedure",
+      "status": 200,
+      "h1": "What Are the Main Stages of a Dental Implant Procedure"
+    },
+    {
+      "route": "/blog/why-are-my-teeth-turning-yellow-even-though-i-brush",
+      "status": 200,
+      "h1": "Why Are My Teeth Turning Yellow Even Though I Brush"
+    },
+    {
+      "route": "/blog/what-to-expect-at-your-first-dental-visit-in-a-new-city",
+      "status": 200,
+      "h1": "What to Expect at Your First Dental Visit in a New City"
+    },
+    {
+      "route": "/blog/what-is-the-connection-between-gum-disease-and-heart-disease",
+      "status": 200,
+      "h1": "What Is the Connection Between Gum Disease and Heart Disease?"
+    },
+    {
+      "route": "/blog/why-does-my-jaw-pop-when-i-open-my-mouth-wide",
+      "status": 200,
+      "h1": "Why Does My Jaw Pop When I Open My Mouth Wide?"
+    },
+    {
+      "route": "/blog/what-are-snap-in-dentures-and-how-do-they-work",
+      "status": 200,
+      "h1": "What Are Snap-In Dentures and How Do They Work?"
+    },
+    {
+      "route": "/blog/what-is-the-recovery-process-after-getting-all-on-4-implants",
+      "status": 200,
+      "h1": "What Is the Recovery Process After Getting All-on-4 Implants?"
+    },
+    {
+      "route": "/blog/botox-for-tmj-how-it-relieves-jaw-pain-and-clenching",
+      "status": 200,
+      "h1": "Botox for TMJ: How It Relieves Jaw Pain and Clenching"
+    },
+    {
+      "route": "/blog/tmj-exercises-to-relieve-jaw-pain-at-home",
+      "status": 200,
+      "h1": "TMJ Exercises to Relieve Jaw Pain at Home"
+    },
+    {
+      "route": "/blog/how-long-do-porcelain-veneers-last",
+      "status": 200,
+      "h1": "How Long Do Porcelain Veneers Last?"
+    },
+    {
+      "route": "/blog/what-can-you-eat-with-invisalign-rules-for-eating-and-drinking",
+      "status": 200,
+      "h1": "What Can You Eat With Invisalign? Rules for Eating and Drinking"
+    },
+    {
+      "route": "/blog/how-long-does-invisalign-take-to-work",
+      "status": 200,
+      "h1": "How Long Does Invisalign Take to Work?"
+    },
+    {
+      "route": "/blog/botox-vs-dermal-fillers-whats-the-difference",
+      "status": 200,
+      "h1": "Botox vs. Dermal Fillers: What's the Difference?"
+    },
+    {
+      "route": "/blog/tmj-disorder-symptoms-you-shouldnt-ignore",
+      "status": 200,
+      "h1": "TMJ Disorder: Symptoms You Shouldn't Ignore"
+    },
+    {
+      "route": "/blog/professional-teeth-whitening-near-me-what-really-happens-at-the-dentist",
+      "status": 200,
+      "h1": "Professional Teeth Whitening Near Me: What Really Happens at the Dentist"
+    },
+    {
+      "route": "/blog/botox-for-hyperhidrosis-excessive-sweating-does-it-really-work",
+      "status": 200,
+      "h1": "Botox for Hyperhidrosis (Excessive Sweating): Does It Really Work?"
+    },
+    {
+      "route": "/blog/dental-implant-process-what-to-expect-from-consultation-to-crown",
+      "status": 200,
+      "h1": "Dental Implant Process: What to Expect From Consultation to Crown"
+    },
+    {
+      "route": "/blog/under-eye-filler-what-to-know-before-your-first-treatment",
+      "status": 200,
+      "h1": "Under-Eye Filler: What to Know Before Your First Treatment"
+    },
+    {
+      "route": "/blog/smile-makeover-combining-veneers-whitening-and-invisalign",
+      "status": 200,
+      "h1": "Smile Makeover: Combining Veneers, Whitening, and Invisalign"
+    },
+    {
+      "route": "/blog/veneers-vs-lumineers-whats-the-difference",
+      "status": 200,
+      "h1": "Veneers vs. Lumineers: What's the Difference?"
+    },
+    {
+      "route": "/blog/invisalign-attachments-what-they-are-and-why-you-need-them",
+      "status": 200,
+      "h1": "Invisalign Attachments: What They Are and Why You Need Them"
+    },
+    {
+      "route": "/blog/how-much-does-invisalign-cost-pricing-with-and-without-insurance",
+      "status": 200,
+      "h1": "How Much Does Invisalign Cost? Pricing With and Without Insurance"
+    },
+    {
+      "route": "/blog/dental-bridge-vs-dental-implant-which-is-better-for-a-missing-tooth",
+      "status": 200,
+      "h1": "Dental Bridge vs. Dental Implant: Which Is Better for a Missing Tooth?"
+    },
+    {
+      "route": "/technology",
+      "status": 200,
+      "h1": "Technology, Thoughtfully Applied"
+    },
+    {
+      "route": "/privacy",
+      "status": 200,
+      "h1": "Privacy Information"
+    },
+    {
+      "route": "/blog/page/2",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/3",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/4",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/5",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/6",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/7",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/8",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/9",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/10",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/11",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/12",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/13",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/14",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/15",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/16",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/17",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/18",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    },
+    {
+      "route": "/blog/page/19",
+      "status": 200,
+      "h1": "The Fine Dentistry Journal"
+    }
+  ],
+  "viewports": [
+    {
+      "width": 320,
+      "viewport": 320,
+      "scroll": 320,
+      "broken": []
+    },
+    {
+      "width": 375,
+      "viewport": 375,
+      "scroll": 375,
+      "broken": []
+    },
+    {
+      "width": 390,
+      "viewport": 390,
+      "scroll": 390,
+      "broken": []
+    },
+    {
+      "width": 430,
+      "viewport": 430,
+      "scroll": 430,
+      "broken": []
+    },
+    {
+      "width": 768,
+      "viewport": 768,
+      "scroll": 768,
+      "broken": []
+    },
+    {
+      "width": 1024,
+      "viewport": 1024,
+      "scroll": 1024,
+      "broken": []
+    },
+    {
+      "width": 1440,
+      "viewport": 1440,
+      "scroll": 1440,
+      "broken": []
+    },
+    {
+      "width": 1920,
+      "viewport": 1920,
+      "scroll": 1920,
+      "broken": []
+    }
+  ],
+  "interactions": [
+    "enhanced team hero and full-width compact map between location and final CTA",
+    "mobile menu navigation and treatment filter",
+    "FAQ accordion, patient carousel, gallery viewer and Escape",
+    "booking validation, back/preserved treatment, honest official fallback, Escape and focus return",
+    "reduced motion",
+    "200% equivalent reflow at 640 CSS pixels",
+    "real 404"
+  ],
+  "axe": [
+    {
+      "url": "/",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "url": "/",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "url": "/services",
+      "width": 1440,
+      "violations": []
+    },
+    {
+      "url": "/our-team",
+      "width": 390,
+      "violations": []
+    },
+    {
+      "url": "/contact",
+      "width": 390,
+      "violations": []
+    }
+  ],
+  "consoleErrors": []
+}

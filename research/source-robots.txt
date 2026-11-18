@@ -1,0 +1,4 @@
+User-agent: *
+Disallow:
+Disallow: /Account/*
+Sitemap: https://www.finedentistryorlando.com/sitemap.xml

@@ -1,0 +1,11 @@
+# Tratamento da foto da equipe
+
+Solicitação do usuário: aumentar muito a nitidez para aparência de fotografia em 8K. A imagem original de banner foi preservada em `public/images/team-banner.jpg` (2257 × 1248). Ferramenta usada: image_gen integrada, em modo de edição com referência local. Nenhuma API externa ou chave foi necessária.
+
+Resultado: `public/images/team-enhanced-v2.png`, 1686 × 933 pixels, 2,63 MB. Trata-se de restauração generativa de detalhes e exposição; **não é um arquivo 8K nativo e não aumenta a resolução física em relação ao original**. A imagem apresenta maior nitidez aparente, mas detalhes reconstruídos pela IA devem ser conferidos pela clínica, principalmente rostos, sorrisos, mãos e bordados. A versão original permanece disponível para reversão. A capa serve a imagem restaurada pelo next/image com qualidade 95.
+
+Prompt utilizado:
+
+> Use case: identity-preserve. Edit target: the provided real group photograph of the Fine Dentistry team. Task: conservatively restore and upscale the SAME photograph to the highest available resolution with the clean, crisp photographic appearance of an 8K professional team portrait. Preserve EVERY person's exact identity, facial geometry, age, skin tone, expression, teeth, eyes, hairstyle, clothing, jewelry, hands, body shape, pose and location. Preserve exactly the same count of people, the same wide composition, the wallpaper, wall panels, chairs and all room details. Do not add, remove, replace or beautify anyone. Enhance only existing fine detail: remove JPEG blur and compression artifacts, improve natural edge definition and realistic hair/fabric texture, gently balance exposure so faces are legible, keep true skin texture without waxy smoothing, no halos or artificial HDR. Do not invent facial features or change smiles. No creative redesign, no relighting, no new text, no watermark. Keep the original aspect ratio and full framing. This is a factual medical-practice staff photograph, identity fidelity is more important than apparent sharpness.
+
+A inspeção visual observou aumento de definição de olhos, cabelos e tecidos, e exposição mais clara. Não é possível certificar igualdade biométrica pela inspeção visual; essa limitação permanece explícita para aprovação antes de publicação.

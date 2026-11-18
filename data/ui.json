@@ -1,0 +1,164 @@
+{
+  "services": [
+    {
+      "slug": "services/same-day-crowns",
+      "title": "Same-Day Crowns",
+      "category": "Restorative",
+      "image": "ser4.webp"
+    },
+    {
+      "slug": "services/emergency-dentistry",
+      "title": "Emergency Dentistry",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/tooth-pain",
+      "title": "Tooth Pain Treatment",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/dental-hygiene",
+      "title": "Preventive Dentistry",
+      "category": "General",
+      "image": "Dentist_orlando2.webp"
+    },
+    {
+      "slug": "services/pediatric-dentistry",
+      "title": "Pediatric Dentistry",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/periodontics",
+      "title": "Periodontic Dentistry",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/root-canal",
+      "title": "Root Canal Therapy",
+      "category": "Restorative",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/oral-surgery",
+      "title": "Oral Surgery",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/tmj-treatment",
+      "title": "TMJ Treatment",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/cosmetic-dentistry",
+      "title": "Cosmetic Dentistry",
+      "category": "Cosmetic",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/veneers",
+      "title": "Dental Veneers",
+      "category": "Cosmetic",
+      "image": "ser2.webp"
+    },
+    {
+      "slug": "services/teeth-whitening",
+      "title": "Teeth Whitening",
+      "category": "Cosmetic",
+      "image": "ser4.webp"
+    },
+    {
+      "slug": "services/invisalign-teens",
+      "title": "Invisalign for Teens",
+      "category": "Cosmetic",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/invisalign-adults",
+      "title": "Invisalign for Adults",
+      "category": "Cosmetic",
+      "image": "ser3.webp"
+    },
+    {
+      "slug": "services/dental-implants",
+      "title": "Dental Implants",
+      "category": "Restorative",
+      "image": "ser1.webp"
+    },
+    {
+      "slug": "services/restorative-dentistry",
+      "title": "Restorative Dentistry",
+      "category": "Restorative",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/all-on-4",
+      "title": "All-on-4 Implant-Retained Dentures",
+      "category": "Restorative",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/teeth-xpress",
+      "title": "TeethXpress",
+      "category": "Restorative",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/botox",
+      "title": "Botox Treatment",
+      "category": "Aesthetics",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/lip-fillers",
+      "title": "Lip Fillers",
+      "category": "Aesthetics",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/dermal-fillers",
+      "title": "Dermal Fillers",
+      "category": "Aesthetics",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/smile-makeovers",
+      "title": "Smile Makeovers",
+      "category": "Cosmetic",
+      "image": "Dentist_orlando.webp"
+    },
+    {
+      "slug": "services/curodont",
+      "title": "Curodont Cavity Treatment",
+      "category": "General",
+      "image": "Dentist_orlando.webp"
+    }
+  ],
+  "doctorParagraphs": [
+    [
+      "Dr. Trivedi’s patients are privy to having needleless anesthesia for gum treatments and laser whitening. Her skills as a Cosmetic Dentist shine because she goes the extra mile to make customized veneers that deliver a truly natural smile. She actually has a Laboratory Technician visit on-site with the patient, for all of her Cosmetic Dentistry cases. Another Amazing service she offers her patients is straightening of teeth without the use of braces, by using the greatest Invisalign techniques. Dr. Trivedi has earned the loyalty of patients throughout the Central Florida community, as well throughout the entire country.",
+      "The secret to Dr. Trivedi’s success is treating her patients the way she would like to be treated,–just like Friends and Family!",
+      "Dr. Trivedi graduated from Bishop Moore high school and went to the University of Miami. She completed her Bachelors of Science with a degree in Microbiology. After a brief period as a school teacher, she heard her calling, applied and was accepted into one of the most reputable dental schools in the nation, Boston University.",
+      "After graduation, and not satisfied with such an accomplishment, Dr. Trivedi continued her education by completing a General Practice Residency at the West Palm Beach VA further expanding her knowledge and expertise.",
+      "Dr. Trivedi is an active member of the Academy of General Dentistry, the American Dental Association, the American Academy of Cosmetic Dentistry and a Fellow in the Academy of General Dentistry (FAGD).",
+      "Under the wing of Dr. Trivedi, the comfort of home and the welcome and gentleness of family awaits you, at Fine Dentistry of Downtown Orlando."
+    ],
+    [
+      "Dr. Sergio Lascurain is a dedicated general dentist committed to providing personalized, patient-centered care with a focus on quality, comfort, and lasting oral health.",
+      "Originally from Mexico, Dr. Lascurain earned his Doctor of Dental Surgery degree in 1999 before completing an Advanced Studies in Endodontics program in 2003. He practiced as an endodontist for 13 years, gaining extensive experience in complex dental procedures and advanced patient care.",
+      "Driven by a passion for expanding his expertise, Dr. Lascurain relocated to the United States and completed an Advanced Education in General Dentistry program at the University of Rochester in New York in 2019. Since then, he has been proudly serving patients in the Orlando area, providing comprehensive dental care for individuals, children, and families.",
+      "Fluent in both English and Spanish, Dr. Lascurain believes in building trusting relationships through open communication, compassion, and personalized treatment. He is committed to staying current with the latest advancements in dentistry and takes pride in delivering high-quality care tailored to each patient's unique needs and goals."
+    ],
+    [
+      "Originally from Miami, Florida, Dr. Amanda Perez is dedicated to providing compassionate, personalized dental care in a welcoming environment. She believes the best dental experiences begin with trust and open communication, and she strives to help every patient feel comfortable, informed, and confident throughout their care.",
+      "Dr. Perez earned her bachelor's degree from the University of Florida before completing her Doctor of Dental Surgery (DDS) degree in Richmond, Virginia. She is passionate about delivering comprehensive, high-quality dentistry while staying up to date with the latest techniques and advancements through continuing education.",
+      "With a gentle chairside manner and strong attention to detail, Dr. Perez enjoys helping patients of all ages achieve healthy, beautiful smiles. She believes in taking the time to educate patients about their oral health and creating individualized treatment plans that fit each person's goals and needs.",
+      "She is excited to be part of the practice and looks forward to building lasting relationships while helping patients smile with confidence."
+    ]
+  ]
+}

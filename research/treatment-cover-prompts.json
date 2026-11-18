@@ -1,0 +1,163 @@
+[
+  {
+    "slug": "dental-implants",
+    "mode": "built-in image_gen",
+    "prompt": "Create one premium dental website treatment cover photograph, portrait 4:5, high resolution. Treatment: dental implants. Subject: a single anatomically plausible titanium dental implant screw with a separate natural ivory ceramic molar crown, arranged elegantly on a honed pale limestone plinth. Quiet editorial product photography, realistic titanium machining and subtle ceramic translucency, warm soft daylight from left, deep muted forest green fabric folded in background, off-white and charcoal palette, understated luxury healthcare. Close three-quarter camera angle, shallow depth of field, uncluttered composition with generous margins, main object centered and safe for both portrait and landscape crop. No text, labels, logos, watermarks, people, blood, treatment before-after or claimed results. This is an illustrative editorial still life, not a photograph of an actual clinic.",
+    "asset": "public/images/treatments/dental-implants.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "same-day-crowns",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: same-day-crowns. Subject: A freshly milled single ivory ceramic molar crown beside its cylindrical ceramic milling block and a subtle silver digital dental scanner tip; clinical precision, a crown rather than a tooth implant. Three-quarter macro angle on a pale stone surface.",
+    "asset": "public/images/treatments/same-day-crowns.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "dental-hygiene",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: dental-hygiene. Subject: A premium preventive oral care still life: ivory electric toothbrush standing upright beside a spool of dental floss and a small stainless dental mirror, a folded forest green hand towel on a pale stone basin ledge. Fresh soft window light, tactile editorial wellness photography.",
+    "asset": "public/images/treatments/dental-hygiene.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "emergency-dentistry",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: emergency-dentistry. Subject: A calm urgent dental care setup: a single clean dental mirror and angled examination probe on a dark green linen tray beside a small ivory tooth model, gloved hands gently preparing the instruments at the frame edge. Reassuring readiness, no active surgery, no scary sharp instrument emphasis.",
+    "asset": "public/images/treatments/emergency-dentistry.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "tooth-pain",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: tooth-pain. Subject: Candid tight portrait of a generic adult man in his thirties, one hand gently touching his lower jaw with a slightly concerned but calm expression, neutral cream background, soft daylight, dark green shirt. Natural skin texture, no exaggerated distress, no clinician or clinic identity.",
+    "asset": "public/images/treatments/tooth-pain.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "pediatric-dentistry",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: pediatric-dentistry. Subject: A small child-sized toothbrush with a muted green handle, a tiny stainless dental mirror and a simple wooden animal toy beside a small ivory dental model. Gentle pediatric care still life, natural soft light, clean pale stone surface, playful yet sophisticated, no cartoon teeth or bright primary colors.",
+    "asset": "public/images/treatments/pediatric-dentistry.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "periodontics",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: periodontics. Subject: Close-up studio photograph of a realistic educational model of three ivory teeth set in pale pink healthy gum tissue, beside a slender periodontal measuring probe. Model supported on a pale stone plinth with a dark forest green background. Focus on the gumline, not a human mouth. No diseased tissue, bleeding or detailed numeric labels.",
+    "asset": "public/images/treatments/periodontics.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "cosmetic-dentistry",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: cosmetic-dentistry. Subject: Natural close editorial portrait crop of an anonymous adult woman laughing gently, showing an authentic healthy natural smile, visible lips and lower face, soft olive-green blouse, daylight. Realistic enamel variation and skin texture, no unnaturally white identical teeth, no before-after. Premium restrained lifestyle photography.",
+    "asset": "public/images/treatments/cosmetic-dentistry.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "tmj-treatment",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: tmj-treatment. Subject: A transparent custom night guard placed on an elegant ivory lower dental arch cast, side view showing the guard surface, with a softly out-of-focus anatomical jaw model behind. Forest green linen, pale stone. Quiet and precise still life about jaw comfort, not teeth alignment.",
+    "asset": "public/images/treatments/tmj-treatment.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "root-canal",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: root-canal. Subject: A realistic dental teaching model of a single molar cut vertically to reveal its clean central root canals, with three slender endodontic hand files with muted-color handles arranged neatly nearby on ivory stone. Clearly a physical educational model with no living tissue, no blood. Detailed quiet scientific still life.",
+    "asset": "public/images/treatments/root-canal.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "oral-surgery",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: oral-surgery. Subject: A closed stainless dental extraction forceps resting diagonally on folded dark green sterile fabric, an ivory wisdom tooth teaching model beside it, a softly blurred surgical instrument tray in the background. Restrained editorial still life, not a surgery scene, no patient, no blood, no incision.",
+    "asset": "public/images/treatments/oral-surgery.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "veneers",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: veneers. Subject: Three very thin translucent porcelain veneer shells, shaped like upper front incisors, fanned on a small round ivory ceramic dish beside a natural tooth shade guide with NO printed markings. Macro side angle clearly showing the delicate thin shells, darker forest green fabric backdrop, no gums or whole crowns.",
+    "asset": "public/images/treatments/veneers.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "teeth-whitening",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: teeth-whitening. Subject: A transparent tooth whitening tray on an ivory stone surface beside two capped clear whitening gel syringes WITHOUT needles and a folded forest-green towel. Close still-life with subtle reflections and plenty of negative space; no LED gadget, no before-after, no claims.",
+    "asset": "public/images/treatments/teeth-whitening.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "invisalign-teens",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: invisalign-teens. Subject: A pair of transparent clear orthodontic aligners resting across an open muted sage green aligner case beside a plain notebook and an unbranded pale pencil, hint of school life, overhead diagonal flat-lay. No braces, no logos, no legible words. Matte ivory desk, soft daylight.",
+    "asset": "public/images/treatments/invisalign-teens.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "restorative-dentistry",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: restorative-dentistry. Subject: A three-unit ivory ceramic dental bridge suspended above a physical educational model of adjacent prepared tooth abutments, neatly arranged on a low pale stone platform. Side-angle still life communicates restoration of missing teeth, dark green background, no single implant screw or surgical scene.",
+    "asset": "public/images/treatments/restorative-dentistry.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "invisalign-adults",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: invisalign-adults. Subject: Close-up of generic adult hands holding a transparent clear orthodontic aligner by its ends, with a dark forest green tailored sleeve and a softly blurred ivory background. The clear aligner and realistic fingertips are the focus, not a full dental arch model, no faces, no brand marks.",
+    "asset": "public/images/treatments/invisalign-adults.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "lip-fillers",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: lip-fillers. Subject: Close editorial beauty portrait crop concentrating on natural relaxed lips, nose and chin of a generic adult woman, softly hydrated lips with realistic texture and restrained natural shape. A single fingertip touches the side of the chin, cream background and muted green sleeve. No injection or exaggerated lips, no before-after, no claim this is a treatment result.",
+    "asset": "public/images/treatments/lip-fillers.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "botox",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: botox. Subject: A small sealed unlabelled clear glass medical vial with a silver cap and an unused fine aesthetic syringe capped safely, laid out in a precise minimalist still life on matte ivory ceramic, folded muted forest green linen behind. Elegant macro product photography. No brand name or drug label, no injection scene, no claimed dose.",
+    "asset": "public/images/treatments/botox.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "teeth-xpress",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: teeth-xpress. Subject: An anonymous gloved hand holding a complete natural-looking full-arch ivory implant-retained dental prosthesis, underside slightly tilted toward camera to show metal connection sockets, resting above a dark green tray. Close macro editorial dental laboratory photograph, no exposed implants in gums, no brand marks or text.",
+    "asset": "public/images/treatments/teeth-xpress.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "all-on-4",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: all-on-4. Subject: A realistic physical educational acrylic model of a complete lower dental arch with pink gum base supported on exactly four titanium implant posts, clean three-quarter frontal view. A technical teaching model, all four support posts visible beneath arch, warm side daylight on a stone plinth with forest green backdrop, no floating parts or extra screws.",
+    "asset": "public/images/treatments/all-on-4.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "curodont",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: curodont. Subject: Macro photograph of a very fine dental microbrush applicator with a pale green handle positioned gently near the smooth surface of a small ivory tooth teaching model, a tiny clear droplet on the applicator tip. Single focused composition on matte ivory stone with deep forest green blurred background. Non-invasive early-cavity treatment concept, no drilling, no syringe, no branded packaging or clinical claims.",
+    "asset": "public/images/treatments/curodont.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "dermal-fillers",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: dermal-fillers. Subject: Three-quarter beauty portrait of a generic mature adult woman around fifty with natural skin texture and fine lines, gentle expression, one hand near cheekbone to suggest facial contour consultation. Dark muted green blouse against an ivory backdrop, soft daylight. No younger/older comparison, no injection, no airbrushed perfect skin or claimed result.",
+    "asset": "public/images/treatments/dermal-fillers.webp",
+    "illustrative": true
+  },
+  {
+    "slug": "smile-makeovers",
+    "mode": "built-in image_gen",
+    "prompt": "Premium dental treatment editorial photography, portrait 4:5, high resolution. Restrained off-white limestone, charcoal and muted forest green palette. Warm soft side daylight, tactile realistic materials, elegant uncluttered composition, generous margins and centered subject safe for portrait and landscape crops. No text, labels, logos, watermarks, gore, before-after or actual-clinic claims. Treatment cover: smile-makeovers. Subject: An overhead editorial smile-design planning still life: an ivory full dental cast, a dental shade guide without printed marks, a small round mirror reflecting only the teeth cast, all arranged with intentional generous spacing on pale stone and dark green linen. A comprehensive planning composition, not a real patient case, no before-after, no writing.",
+    "asset": "public/images/treatments/smile-makeovers.webp",
+    "illustrative": true
+  }
+]

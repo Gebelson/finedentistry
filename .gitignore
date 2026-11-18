@@ -1,0 +1,9 @@
+node_modules/
+.next/
+.env*
+*.tsbuildinfo
+!.env.example
+.vercel/
+research/screenshots/
+research/videos/
+research/visual-qa/
