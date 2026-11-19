@@ -2694,3 +2694,28 @@ footer .office-hours .hours-note a {
     text-align: right;
   }
 }
+
+.workspace-preview-note { position: fixed; bottom: 12px; left: 12px; z-index: 99; padding: 7px 10px; background: #e9e7dd; color: #222; font: 10px Arial, sans-serif; text-align: center; border-radius: 2px; }
+.article-inline-image { display: block; max-width: 100%; height: auto; margin: 28px 0; }
+.clinic-chat { position:fixed; right:24px; bottom:24px; z-index:110; font:14px/1.5 Arial,sans-serif; color:#242625; }
+.clinic-chat-toggle { display:flex; justify-content:space-between; align-items:center; gap:32px; border:1px solid #d6d9cf; background:#202420; color:white; padding:14px 22px; border-radius:3px; margin:12px 0 0 auto; cursor:pointer; box-shadow:0 3px 18px #0002; }
+.clinic-chat-panel { background:#fafbf8; border:1px solid #dce0d6; width:350px; max-width:calc(100vw - 32px); box-shadow:0 14px 60px #0002; border-radius:5px; overflow:hidden; }
+.clinic-chat-heading { background:#202420; color:#fff; padding:18px 20px; display:flex; justify-content:space-between; align-items:center; }
+.clinic-chat-heading strong,.clinic-chat-heading small { display:block; }
+.clinic-chat-heading small { font-size:11px; opacity:.7; margin-top:4px; }
+.clinic-chat-heading button { background:transparent; border:0; color:white; font-size:25px; cursor:pointer; }
+.clinic-chat-privacy { font-size:11px; padding:12px 18px; margin:0; border-bottom:1px solid #e1e3dd; color:#656b61; }
+.clinic-chat-messages { overflow:auto; height:300px; max-height:35svh; padding:16px; overscroll-behavior:contain; }
+.chat-bubble { margin:0 0 12px; padding:10px 12px; background:#eeefe9; border-radius:3px; white-space:pre-wrap; overflow-wrap:anywhere; }
+.chat-bubble small { display:block; font-size:10px; opacity:.65; margin-bottom:4px; }
+.chat-bubble-visitor { margin-left:28px; background:#e0e5d9; }
+.clinic-chat-panel form { display:flex; gap:8px; padding:12px; border-top:1px solid #e1e3dd; }
+.clinic-chat-panel input { width:100%; min-width:0; padding:10px; border:1px solid #d7dbd1; background:white; font:inherit; }
+.clinic-chat-panel form button { background:#202420; color:white; border:0; padding:8px 14px; cursor:pointer; }
+.clinic-chat-panel button:disabled { opacity:.5; cursor:default; }
+.clinic-chat-phone { display:block; text-align:center; padding:0 14px 14px; font-size:11px; text-decoration:underline; }
+.clinic-chat-handoff { display:block; margin:0 16px 12px; background:none; border:0; padding:0; font:inherit; font-size:12px; text-decoration:underline; cursor:pointer; }
+.clinic-chat-error { padding:0 14px 12px; color:#9c312b; font-size:12px; }
+@media(max-width:767px) { .clinic-chat { right:16px; bottom:16px; } .clinic-chat-toggle { padding:12px 18px; } }
+
+.clinic-chat .sr-only { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }

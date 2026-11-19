@@ -15,7 +15,7 @@ export function AppointmentButton({
 }) {
   const open = useContext(BookingContext);
   return (
-    <button className={className} onClick={open}>
+    <button className={className} onClick={open} data-analytics-event="appointment_click">
       {children}
     </button>
   );
@@ -53,6 +53,13 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
   }, [step]);
   useEffect(() => {
     const header = document.querySelector(".header");
+    if (
+      pathname === "/workspace-preview" &&
+      document.querySelector("main.home")
+    ) {
+      header?.classList.remove("solid");
+      header?.classList.add("over-hero");
+    }
     const update = () =>
       header?.classList.toggle("scrolled", window.scrollY > 70);
     update();
@@ -215,6 +222,9 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             © {new Date().getFullYear()} Fine Dentistry of Downtown Orlando
           </span>
           <Link href="/privacy">Privacy information</Link>
+          <Link href="/admin" prefetch={false} className="clinic-login">
+            Clinic login
+          </Link>
           <span>Made for your smile.</span>
         </div>
       </footer>

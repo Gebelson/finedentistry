@@ -1,26 +1,26 @@
 import Link from "next/link";
 import { pages } from "@/lib/content";
-import { getBlogArticle } from "@/lib/blog-content";
+import { getJournal } from "@/lib/cms-content";
 export const journalPosts = pages
   .filter((p) => p.slug.startsWith("blog/"))
   .toReversed();
 export const journalPageCount = Math.ceil(journalPosts.length / 12);
-export function Journal({ page = 1 }: { page?: number }) {
+export async function Journal({ page = 1 }: { page?: number }) {
+  const posts = await getJournal();
+  const pageCount = Math.max(1, Math.ceil(posts.length / 12));
   return (
     <>
       <div className="journal-grid">
-        {journalPosts.slice((page - 1) * 12, page * 12).map((p) => (
+        {posts.slice((page - 1) * 12, page * 12).map((p) => (
           <article key={p.slug}>
             <span className="muted">Fine Dentistry Journal</span>
             <h2>
               <Link href={"/" + p.slug}>{p.title}</Link>
             </h2>
-            {getBlogArticle(p.slug)?.author && (
-              <span className="journal-byline">
-                {getBlogArticle(p.slug)!.author!.label}
-              </span>
+            {p.authorLabel && (
+              <span className="journal-byline">{p.authorLabel}</span>
             )}
-            <p>{p.paragraphs[0]?.slice(0, 180)}…</p>
+            <p>{p.excerpt.slice(0, 180)}…</p>
             <Link className="text-link" href={"/" + p.slug}>
               Read article ↗
             </Link>
@@ -37,9 +37,9 @@ export function Journal({ page = 1 }: { page?: number }) {
           </Link>
         )}
         <span>
-          Page {page} of {journalPageCount}
+          Page {page} of {pageCount}
         </span>
-        {page < journalPageCount && (
+        {page < pageCount && (
           <Link className="button" href={`/blog/page/${page + 1}`}>
             Next →
           </Link>

@@ -1,5 +1,7 @@
 import type { NextConfig } from "next";
+import { withPayload } from "@payloadcms/next/withPayload";
 const config: NextConfig = {
+  agentRules: false,
   poweredByHeader: false,
   images: {
     formats: ["image/avif", "image/webp"],
@@ -9,6 +11,13 @@ const config: NextConfig = {
   },
   async headers() {
     return [
+      ...["/admin/:path*", "/api/:path*"].map((source) => ({
+        source,
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex, nofollow" },
+          { key: "Cache-Control", value: "private, no-store" },
+        ],
+      })),
       {
         source: "/:path*",
         headers: [
@@ -20,4 +29,4 @@ const config: NextConfig = {
     ];
   },
 };
-export default config;
+export default withPayload(config);

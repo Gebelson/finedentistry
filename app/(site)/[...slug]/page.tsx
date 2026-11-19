@@ -24,6 +24,7 @@ const extra = [
   { slug: "technology", title: "Technology, Thoughtfully Applied" },
   { slug: "privacy", title: "Privacy Information" },
 ];
+export const revalidate = 3600;
 export function generateStaticParams() {
   return [...pages, ...extra].map((p) => ({ slug: p.slug.split("/") }));
 }
@@ -34,11 +35,12 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const p = [...pages, ...extra].find((p) => p.slug === slug.join("/"));
+  const article = slug[0] === 'blog' && slug[1] !== 'page' ? await getBlogArticle(slug.join('/')) : undefined;
   return {
-    title: p?.title || "Page not found",
-    description: p
+    title: article?.seoTitle || article?.title || p?.title || "Page not found",
+    description: article?.seoDescription || (p
       ? `Explore ${p.title.toLowerCase()} at Fine Dentistry of Downtown Orlando. Personalized care in Orlando, FL.`
-      : undefined,
+      : undefined),
     alternates: process.env.SITE_URL
       ? { canonical: new URL("/" + slug.join("/"), process.env.SITE_URL).href }
       : undefined,
@@ -53,9 +55,10 @@ export default async function ContentPage({
   const slug = parts.join("/"),
     page = pages.find((p) => p.slug === slug),
     special = extra.find((p) => p.slug === slug);
-  if (!page && !special) notFound();
-  const title = page?.title || special!.title;
-  const blogArticle = getBlogArticle(slug);
+  const isArticle = parts[0] === 'blog' && parts.length === 2 && parts[1] !== 'page';
+  const blogArticle = isArticle ? await getBlogArticle(slug) : undefined;
+  if ((isArticle && !blogArticle) || (!page && !special && !blogArticle)) notFound();
+  const title = blogArticle?.title || page?.title || special!.title;
   const isJournal = slug === "blog" || /^blog\/page\/\d+$/.test(slug);
   const blogPage = isJournal ? Number(parts[2]) || 1 : 1;
   const editorial =

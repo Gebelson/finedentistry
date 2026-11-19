@@ -5,7 +5,7 @@ const fs = require("fs");
   const b = await chromium.launch({ channel: "chrome", headless: true });
   const p = await b.newPage();
   try {
-    await p.goto("http://127.0.0.1:3000");
+    await p.goto(process.env.TEST_URL || "http://127.0.0.1:3000");
     assert.match(await p.title(), /Fine Dentistry/);
     await p
       .getByRole("button", { name: "Request an Appointment", exact: true })

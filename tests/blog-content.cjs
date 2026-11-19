@@ -67,7 +67,8 @@ function flatten(nodes) {
   try {
     for (const width of [320, 390, 768, 1440]) {
       await page.setViewportSize({ width, height: 900 });
-      await page.goto(`${base}/${sample}`, { waitUntil: "networkidle" });
+      await page.goto(`${base}/${sample}`, { waitUntil: "domcontentloaded" });
+      await page.locator(".prose table").waitFor({ state: "visible" });
       await page.waitForTimeout(1200);
       assert.equal(await page.locator(".prose table").count(), 1);
       assert.deepEqual(

@@ -2,6 +2,8 @@ research/
 tests/
 scripts/
 .cache/
+.data/
+docs/
 AGENTS.md
 PROMPT-MESTRE.md
 *.tsbuildinfo

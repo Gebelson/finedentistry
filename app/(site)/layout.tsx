@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
+import "../globals.css";
 import { SiteChrome } from "@/components/site-chrome";
 import { PageTransition } from "@/components/page-transition";
 import { Scrollbar } from "@/components/scrollbar";
+import { ClinicChat } from '@/components/clinic-chat';
+import { SiteAnalytics } from '@/components/site-analytics';
 import { siteConfig } from "@/lib/content";
 const siteUrl = process.env.SITE_URL;
 export const metadata: Metadata = {
@@ -41,6 +43,8 @@ export default function RootLayout({
         <SiteChrome>{children}</SiteChrome>
         <PageTransition />
         <Scrollbar />
+        <ClinicChat />
+        <SiteAnalytics />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

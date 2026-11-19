@@ -9,11 +9,36 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "node tests/smoke.cjs",
-    "test:audit": "node tests/audit.cjs"
+    "test:audit": "node tests/audit.cjs",
+    "admin:setup": "node scripts/admin-setup.mjs",
+    "admin:create": "node --import tsx scripts/admin-create.ts",
+    "admin:types": "node --import tsx node_modules/payload/bin.js generate:types --disable-transpile",
+    "admin:imports": "node --import tsx node_modules/payload/bin.js generate:importmap --disable-transpile",
+    "test:admin": "node tests/admin-access.cjs",
+    "test:admin:session": "node --import tsx tests/admin-session.mjs",
+    "content:seed": "node --import tsx scripts/content-seed.ts",
+    "test:content": "node tests/content-admin.cjs",
+    "test:chat": "node tests/clinic-chat.cjs",
+    "test:calendar": "node tests/clinic-calendar.cjs",
+    "test:analytics": "node --import tsx tests/site-analytics.mjs"
   },
   "dependencies": {
+    "@libsql/client": "^0.18.0",
+    "@payloadcms/db-postgres": "3.94.0",
+    "@payloadcms/db-sqlite": "3.94.0",
+    "@payloadcms/live-preview-react": "^3.94.0",
+    "@payloadcms/next": "3.94.0",
+    "@payloadcms/storage-vercel-blob": "^3.94.0",
     "@tailwindcss/postcss": "^4.1.0",
+    "@tiptap/extension-image": "^3.34.0",
+    "@tiptap/extension-table": "^3.34.0",
+    "@tiptap/pm": "^3.34.0",
+    "@tiptap/react": "^3.34.0",
+    "@tiptap/starter-kit": "^3.34.0",
+    "graphql": "^16.15.0",
     "next": "^16.0.0",
+    "payload": "3.94.0",
+    "pg": "^8.23.1",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.1.0"
@@ -21,12 +46,22 @@
   "devDependencies": {
     "@axe-core/playwright": "^4.10.0",
     "@types/node": "^24.0.0",
+    "@types/pg": "^8.23.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.0",
+    "node": "24.22.3",
     "playwright": "^1.56.0",
     "prettier": "^3.10.1",
+    "tsx": "^4.23.15",
     "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=24.22.3 <25"
+  },
+  "type": "module",
+  "overrides": {
+    "dompurify": "3.4.18"
   }
 }

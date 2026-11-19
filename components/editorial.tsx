@@ -5,6 +5,8 @@ import { FooterSocialIcons } from "@/components/footer-social-icons";
 import Link from "next/link";
 import { AppointmentButton } from "./site-chrome";
 import { doctors, siteConfig } from "@/lib/site-data";
+import { homeDefaults } from "@/cms/home-defaults";
+import { mediaSource, mediaAlt, type HomeContent } from "@/lib/cms-content";
 export function SectionHeading({
   label,
   title,
@@ -58,32 +60,39 @@ export function Doctors({ detailed = false }: { detailed?: boolean }) {
     </div>
   );
 }
-export function FinalCTA() {
+export function FinalCTA({
+  content = homeDefaults.cta,
+}: {
+  content?: HomeContent["cta"];
+}) {
   return (
     <section className="final-cta">
       <SiteImage
         sizes="(max-width: 767px) 1536px, 100vw"
-        src="/images/Dentist_orlando.webp"
-        alt="Dr. Trivedi speaking with a patient in the Orlando practice"
+        src={mediaSource(content.image, "/images/Dentist_orlando.webp")}
+        alt={mediaAlt(
+          content.image,
+          "Dr. Trivedi speaking with a patient in the Orlando practice",
+        )}
         loading="lazy"
         width="1600"
         height="1000"
       />
       <div className="wrap">
-        <p>Your smile. Your next chapter.</p>
+        <p>{content.label}</p>
         <div className="cta-composition">
           <h2 data-reveal="heading">
             <LineReveal>
-              Dental care,
+              {content.line1}
               <br />
-              <em>with you in mind.</em>
+              <em>{content.accent}</em>
             </LineReveal>
           </h2>
           <div className="cta-bottom">
             <p>
-              Discover a personal approach to dentistry.
+              {content.description1}
               <br />
-              Right here in Downtown Orlando.
+              {content.description2}
             </p>
             <AppointmentButton />
           </div>

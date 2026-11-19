@@ -1,6 +1,7 @@
 import { createElement, Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import type { ArticleNode, BlogArticle } from "@/lib/blog-content";
+import { safeArticleImage } from "@/lib/article-ast";
 
 const allowedTags = new Set([
   "p",
@@ -32,6 +33,16 @@ function renderNodes(nodes: ArticleNode[]): ReactNode {
   return nodes.map((node, index) => {
     if (typeof node === "string") return node;
     const children = renderNodes(node.children);
+    if (node.tag === "img")
+      return node.src && safeArticleImage(node.src) ? (
+        <img
+          key={index}
+          src={node.src}
+          alt={node.alt || ""}
+          loading="lazy"
+          className="article-inline-image"
+        />
+      ) : null;
     if (node.tag === "a") {
       if (
         !node.href ||

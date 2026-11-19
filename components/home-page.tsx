@@ -3,6 +3,11 @@ import { SiteImage } from "@/components/site-image";
 import { Recognition } from "@/components/recognition";
 import Link from "next/link";
 import Image from "next/image";
+import {
+  mediaSource,
+  mediaAlt,
+  type HomeContent as HomeData,
+} from "@/lib/cms-content";
 import { AppointmentButton } from "@/components/site-chrome";
 import {
   FAQ,
@@ -17,15 +22,21 @@ import {
   PatientResources,
   SectionHeading,
 } from "@/components/editorial";
-export default function Home() {
+export function HomeContent({ content }: { content: HomeData }) {
   return (
     <main id="main" className="home">
       <section className="hero">
         <div className="hero-image-reveal">
           <Image
             className="hero-photo"
-            src="/images/team-enhanced-v2.png"
-            alt="The Fine Dentistry of Downtown Orlando team"
+            src={mediaSource(
+              content.hero.image,
+              "/images/team-enhanced-v2.png",
+            )}
+            alt={mediaAlt(
+              content.hero.image,
+              "The Fine Dentistry of Downtown Orlando team",
+            )}
             fill
             priority
             sizes="(max-width: 767px) 1686px, (max-aspect-ratio: 9/5) 181vh, 100vw"
@@ -38,17 +49,18 @@ export default function Home() {
           <div className="hero-bottom hero-composition">
             <h1>
               <LineReveal>
-                Your smile.
+                {content.hero.line1}
                 <br />
-                Our dedication.
+                {content.hero.line2}
                 <br />
-                <em>Beautifully personal.</em>
+                <em>{content.hero.accent}</em>
               </LineReveal>
             </h1>
             <div className="hero-aside">
               <p>
-                Comprehensive care. Thoughtful details.
-                <br />A dental experience centered on you.
+                {content.hero.description1}
+                <br />
+                {content.hero.description2}
               </p>
               <AppointmentButton />
               <a className="hero-scroll hero-scroll-bottom" href="#about">
@@ -60,38 +72,37 @@ export default function Home() {
       </section>
       <div className="home-content">
         <section className="section wrap about-section" id="about">
-          <span className="section-label">
-            A different kind of dental experience
-          </span>
+          <span className="section-label">{content.about.label}</span>
           <div>
             <h2 className="statement" data-reveal="heading">
               <LineReveal>
-                Exceptional care begins
+                {content.about.line1}
                 <br />
-                with a simple idea.
+                {content.about.line2}
                 <br />
                 <span className="statement-muted">
-                  Getting to know <em>you.</em>
+                  {content.about.line3} <em>{content.about.accent}</em>
                 </span>
               </LineReveal>
             </h2>
             <div className="about-bottom">
               <SiteImage
-                src="/images/Dentist_orlando.webp"
+                src={mediaSource(
+                  content.about.image,
+                  "/images/Dentist_orlando.webp",
+                )}
                 sizes="(min-width: 1440px) 466px, (min-width: 768px) 33vw, calc(100vw - 40px)"
                 data-reveal="visual"
-                alt="A personal consultation with Dr. Trivedi"
+                alt={mediaAlt(
+                  content.about.image,
+                  "A personal consultation with Dr. Trivedi",
+                )}
                 width="600"
                 height="400"
                 loading="lazy"
               />
               <div>
-                <p>
-                  At Fine Dentistry of Downtown Orlando, we bring general,
-                  cosmetic and restorative care together in one welcoming
-                  practice. Our approach starts with listening, and continues
-                  with care shaped around your goals.
-                </p>
+                <p>{content.about.description}</p>
                 <Link className="bracket" href="/about">
                   Discover Our Practice
                 </Link>
@@ -108,12 +119,13 @@ export default function Home() {
                   label="Our treatments"
                   title={
                     <>
-                      Every smile has
+                      {content.treatments.line1}
                       <br />
-                      its own <em>possibilities.</em>
+                      {content.treatments.line2}{" "}
+                      <em>{content.treatments.accent}</em>
                     </>
                   }
-                  description="From everyday care to a new chapter for your smile. Explore treatments tailored to your needs, with your comfort at the heart of every visit."
+                  description={content.treatments.description}
                 />
                 <ServicesGrid featured />
               </div>
@@ -305,7 +317,7 @@ export default function Home() {
           />
           <ContactBlock />
         </section>
-        <FinalCTA />
+        <FinalCTA content={content.cta} />
       </div>
     </main>
   );
