@@ -53,12 +53,12 @@ export function SiteAnalytics() {
       if (href.startsWith("tel:")) send("phone_click");
       else if (href.startsWith("mailto:")) send("email_click");
     };
-    document.addEventListener("click", click);
+    document.addEventListener("click", click, true);
     const timer = setInterval(() => {
       if (document.visibilityState === "visible") send("heartbeat");
     }, 60000);
     return () => {
-      document.removeEventListener("click", click);
+      document.removeEventListener("click", click, true);
       clearInterval(timer);
     };
   }, [path]);

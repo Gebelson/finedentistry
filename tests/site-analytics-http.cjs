@@ -27,6 +27,13 @@ const base=process.env.TEST_URL||'http://127.0.0.1:3000';
   assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
   const publicPage=await guest.newPage();await publicPage.goto(base);assert.equal(await publicPage.locator('footer a[href="/admin"]').count(),1);await publicPage.getByRole('button',{name:'Let’s talk',exact:false}).waitFor();
   assert.ok((await publicPage.locator('meta[name="robots"]').getAttribute('content')).includes('noindex'));
+  const chatOpened=publicPage.waitForRequest(request=>new URL(request.url()).pathname==='/api/site-analytics'&&request.postDataJSON()?.event==='chat_open');
+  await publicPage.getByRole('button',{name:'Let’s talk',exact:false}).click();
+  assert.equal((await chatOpened).postDataJSON().path,'/');
+  await publicPage.locator('.clinic-chat-toggle').click();
+  const appointmentClicked=publicPage.waitForRequest(request=>new URL(request.url()).pathname==='/api/site-analytics'&&request.postDataJSON()?.event==='appointment_click');
+  await publicPage.getByRole('button',{name:'Request an Appointment',exact:true}).first().click();
+  assert.equal((await appointmentClicked).postDataJSON().path,'/');
   console.log('PASS analytics authentication, privacy controls, staff/bot/private-route exclusion, dashboard periods, responsive layout, footer login, public chat and noindex.');
  }finally{await browser.close();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

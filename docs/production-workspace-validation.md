@@ -30,3 +30,5 @@ Date: 2026-11-19. Target: existing finedentistry project, zapi-group, production
 ## Deliberate limits
 
 The assistant uses the clinic FAQ; generative AI is not configured. The calendar is internal planning and does not synchronize with an unknown practice-management system or confirm appointments. SMS, external email, telephone tracking, campaigns, payment processing and external marketing accounts are not connected. No claim of full DentalROI parity is made. Preview-domain indexing remains disabled.
+
+Post-release interaction check caught a click-capture ordering issue: React removed the chat-open tracking attribute while opening the widget, before the document bubble listener read it. The listener now uses capture phase. The focused browser regression checks actual chat-open and appointment analytics requests, and passed on the optimized local server. Private operational helper directories are excluded from source linting.
