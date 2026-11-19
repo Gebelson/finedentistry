@@ -26,6 +26,7 @@ const navigation = [
   ["Our Doctors", "/our-team"],
   ["For Patients", "/new-patients"],
   ["Contact", "/contact"],
+  ["Blog", "/blog"],
 ];
 export function SiteChrome({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -108,6 +109,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         <nav className="desktop-nav" aria-label="Main navigation">
           {navigation.map(([text, url]) => (
             <Link
+              className={url === "/blog" ? "nav-blog" : undefined}
               aria-current={pathname === url ? "page" : undefined}
               href={url}
               key={url}

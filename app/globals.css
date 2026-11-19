@@ -334,6 +334,19 @@ select:focus-visible {
 .desktop-nav {
   display: none;
 }
+.desktop-nav .nav-blog {
+  position: relative;
+}
+.desktop-nav .nav-blog::before {
+  content: "";
+  position: absolute;
+  left: -0.75rem;
+  top: 50%;
+  height: 1em;
+  border-left: 1px solid currentColor;
+  opacity: 0.3;
+  transform: translateY(-50%);
+}
 .menu-toggle {
   font-size: 0.85rem;
   min-width: 64px;
@@ -2477,6 +2490,9 @@ footer .office-hours .hours-note a {
 }
 .desktop-nav > a:nth-child(5) {
   animation-delay: 470ms;
+}
+.desktop-nav > a:nth-child(6) {
+  animation-delay: 540ms;
 }
 .header > .bracket,
 .menu-toggle {
