@@ -1324,6 +1324,7 @@ footer a {
   gap: 3rem;
 }
 .prose {
+  min-width: 0;
   font-size: 1.05rem;
   line-height: 1.8;
   max-width: 74ch;
@@ -1338,6 +1339,85 @@ footer a {
 .prose a {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+.article-meta {
+  display: grid;
+  gap: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+.journal-byline {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.8rem;
+}
+.article-table-wrap {
+  margin-block: 2rem;
+  max-width: 100%;
+}
+.article-table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.article-table-scroll:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+.article-table-scroll table {
+  width: 100%;
+  min-width: 32rem;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.article-table-scroll th,
+.article-table-scroll td {
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  text-align: left;
+  vertical-align: top;
+}
+.article-table-scroll th {
+  background: var(--soft);
+  font-weight: 600;
+}
+.article-table-scroll caption {
+  text-align: left;
+  margin-bottom: 0.75rem;
+  color: var(--muted);
+}
+.article-table-hint {
+  display: none;
+}
+.article-author {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+.prose .article-author h2 {
+  margin-top: 0;
+  font-size: 1.4rem;
+  color: var(--ink);
+}
+.article-author p {
+  margin-bottom: 1rem;
+}
+@media (max-width: 767px), (pointer: coarse) {
+  .article-table-hint {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+  }
+  .article-table-scroll {
+    scrollbar-width: none;
+  }
+  .article-table-scroll::-webkit-scrollbar {
+    display: none;
+  }
 }
 .prose .source-note {
   font-size: 0.75rem;

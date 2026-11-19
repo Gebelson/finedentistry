@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { pages } from "@/lib/content";
+import { getBlogArticle } from "@/lib/blog-content";
 export const journalPosts = pages
   .filter((p) => p.slug.startsWith("blog/"))
   .toReversed();
@@ -14,6 +15,11 @@ export function Journal({ page = 1 }: { page?: number }) {
             <h2>
               <Link href={"/" + p.slug}>{p.title}</Link>
             </h2>
+            {getBlogArticle(p.slug)?.author && (
+              <span className="journal-byline">
+                {getBlogArticle(p.slug)!.author!.label}
+              </span>
+            )}
             <p>{p.paragraphs[0]?.slice(0, 180)}…</p>
             <Link className="text-link" href={"/" + p.slug}>
               Read article ↗

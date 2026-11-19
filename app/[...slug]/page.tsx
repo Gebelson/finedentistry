@@ -1,5 +1,7 @@
 import { LineReveal } from "@/components/line-reveal";
 import { SiteImage } from "@/components/site-image";
+import { ArticleContent, ArticleMeta } from "@/components/article-content";
+import { getBlogArticle } from "@/lib/blog-content";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -53,6 +55,7 @@ export default async function ContentPage({
     special = extra.find((p) => p.slug === slug);
   if (!page && !special) notFound();
   const title = page?.title || special!.title;
+  const blogArticle = getBlogArticle(slug);
   const isJournal = slug === "blog" || /^blog\/page\/\d+$/.test(slug);
   const blogPage = isJournal ? Number(parts[2]) || 1 : 1;
   const editorial =
@@ -97,18 +100,22 @@ export default async function ContentPage({
           </h1>
         </div>
         <div className="page-intro">
-          <p>
-            {slug === "services"
-              ? "Comprehensive care, considered for you. Explore our general, cosmetic, restorative and aesthetic treatments."
-              : slug === "our-team"
-                ? "Different backgrounds. A shared commitment to personal, thoughtful care. Meet your Downtown Orlando dental team."
-                : slug === "technology"
-                  ? "Digital tools that help us see clearly, plan carefully and care personally."
-                  : slug === "blog"
-                    ? "Ideas, answers and guidance from the Fine Dentistry team."
-                    : page?.paragraphs[0] ||
-                      "Explore care at Fine Dentistry of Downtown Orlando."}
-          </p>
+          {blogArticle ? (
+            <ArticleMeta article={blogArticle} />
+          ) : (
+            <p>
+              {slug === "services"
+                ? "Comprehensive care, considered for you. Explore our general, cosmetic, restorative and aesthetic treatments."
+                : slug === "our-team"
+                  ? "Different backgrounds. A shared commitment to personal, thoughtful care. Meet your Downtown Orlando dental team."
+                  : slug === "technology"
+                    ? "Digital tools that help us see clearly, plan carefully and care personally."
+                    : slug === "blog"
+                      ? "Ideas, answers and guidance from the Fine Dentistry team."
+                      : page?.paragraphs[0] ||
+                        "Explore care at Fine Dentistry of Downtown Orlando."}
+            </p>
+          )}
           <AppointmentButton />
         </div>
       </section>
@@ -193,34 +200,38 @@ export default async function ContentPage({
                   height="700"
                 />
               )}
-              {page && "sections" in page && page.sections?.length
-                ? page.sections
-                    .filter(
-                      (s) =>
-                        s.text !== page.paragraphs[0] && s.text !== page.title,
-                    )
-                    .map((s, i) =>
-                      s.tag === "H2" ? (
-                        <h2 key={i}>{s.text}</h2>
-                      ) : s.tag === "H3" ? (
-                        <h3 key={i}>{s.text}</h3>
-                      ) : s.tag === "UL" ? (
-                        <ul key={i}>
-                          {s.items.map((item: string, j: number) => (
-                            <li key={j}>{item}</li>
-                          ))}
-                        </ul>
-                      ) : s.tag === "OL" ? (
-                        <ol key={i}>
-                          {s.items.map((item: string, j: number) => (
-                            <li key={j}>{item}</li>
-                          ))}
-                        </ol>
-                      ) : (
-                        <p key={i}>{s.text}</p>
-                      ),
-                    )
-                : page?.paragraphs.slice(1).map((p, i) => <p key={i}>{p}</p>)}
+              {blogArticle ? (
+                <ArticleContent article={blogArticle} />
+              ) : page && "sections" in page && page.sections?.length ? (
+                page.sections
+                  .filter(
+                    (s) =>
+                      s.text !== page.paragraphs[0] && s.text !== page.title,
+                  )
+                  .map((s, i) =>
+                    s.tag === "H2" ? (
+                      <h2 key={i}>{s.text}</h2>
+                    ) : s.tag === "H3" ? (
+                      <h3 key={i}>{s.text}</h3>
+                    ) : s.tag === "UL" ? (
+                      <ul key={i}>
+                        {s.items.map((item: string, j: number) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ul>
+                    ) : s.tag === "OL" ? (
+                      <ol key={i}>
+                        {s.items.map((item: string, j: number) => (
+                          <li key={j}>{item}</li>
+                        ))}
+                      </ol>
+                    ) : (
+                      <p key={i}>{s.text}</p>
+                    ),
+                  )
+              ) : (
+                page?.paragraphs.slice(1).map((p, i) => <p key={i}>{p}</p>)
+              )}
               {page?.paragraphs.length === 1 && (
                 <p>
                   Our team can discuss how this service fits your goals and

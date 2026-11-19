@@ -4,6 +4,7 @@ node_modules/
 *.tsbuildinfo
 !.env.example
 .vercel/
+.cache/
 research/screenshots/
 research/videos/
 research/visual-qa/
