@@ -1,0 +1,356 @@
+/* Working tools share the application palette, with large controls and clear states. */
+.clinic-calendar .clinic-calendar-note,
+.clinic-calendar .clinic-calendar-top p {
+  opacity: 1;
+  color: var(--ops-muted);
+}
+.field-type.date-time-field .field-description {
+  opacity: 1;
+  color: var(--ops-muted);
+}
+.workspace-calendar-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0 20px;
+}
+.workspace-calendar-toolbar .clinic-calendar-nav {
+  padding: 0;
+  gap: 10px;
+  justify-content: flex-start;
+}
+.workspace-calendar-toolbar .clinic-calendar-nav h2 {
+  font-size: 20px;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  margin: 0 10px 0 0;
+  min-width: 170px;
+}
+.workspace-calendar-toolbar button,
+.workspace-calendar-filters button,
+.workspace-calendar-error button {
+  min-height: 42px;
+  border: 1px solid var(--ops-border);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ops-text);
+  padding: 8px 13px;
+  cursor: pointer;
+  font: 500 13px/1.3 var(--font-body);
+}
+.workspace-calendar-toolbar .clinic-calendar-nav button {
+  display: grid;
+  place-items: center;
+  height: 42px;
+  width: 42px;
+  padding: 0;
+}
+.workspace-calendar-toolbar .clinic-calendar-nav button:last-child {
+  width: auto;
+  padding: 8px 13px;
+}
+.workspace-view-switch {
+  display: flex;
+  padding: 3px;
+  border: 1px solid var(--ops-border);
+  border-radius: 9px;
+  background: #eaf0f6;
+  gap: 3px;
+}
+.workspace-view-switch button {
+  border-color: transparent;
+  background: transparent;
+  min-height: 34px;
+}
+.workspace-view-switch button[aria-pressed="true"] {
+  background: white;
+  border-color: #d5deea;
+  color: var(--ops-blue);
+  box-shadow: 0 1px 3px #1b314d0b;
+}
+.workspace-calendar-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 16px;
+  margin: 0 0 22px;
+}
+.workspace-calendar-filters label {
+  display: grid;
+  gap: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ops-muted);
+  min-width: 170px;
+}
+.workspace-calendar-filters select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 42px;
+  max-width: 100%;
+  border: 1px solid var(--ops-border);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--ops-text);
+  padding: 8px 32px 8px 11px;
+  font: 400 13px/1.4 var(--font-body);
+}
+.workspace-calendar-filters > p {
+  margin: 0 auto 11px 0;
+  color: var(--ops-muted);
+  font-size: 12px;
+}
+.workspace-calendar-error {
+  padding: 16px;
+  background: #fff6f4;
+  border: 1px solid #efccc3;
+  border-radius: 9px;
+  margin-bottom: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+.workspace-calendar-error p {
+  margin: 0;
+}
+.clinic-calendar-grid {
+  border-radius: 10px;
+  overflow: hidden;
+  border-color: var(--ops-border);
+}
+.clinic-calendar-grid .clinic-calendar-weekday {
+  background: #edf2f8;
+  color: #53657d;
+  opacity: 1;
+  padding: 12px;
+  font-weight: 600;
+}
+.clinic-calendar-grid .clinic-calendar-day,
+.clinic-calendar-grid .clinic-calendar-empty {
+  min-height: 130px;
+  background: #fff;
+  border-color: var(--ops-border);
+}
+.clinic-calendar-grid .clinic-calendar-empty {
+  background: #fafbfd;
+}
+.clinic-calendar-grid .clinic-calendar-day > span {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  opacity: 1;
+  color: var(--ops-muted);
+}
+.clinic-calendar-grid .workspace-calendar-today > span {
+  background: var(--ops-blue);
+  color: white;
+  font-weight: 600;
+}
+.clinic-calendar .calendar-event {
+  background: #edf3fb;
+  border-left-color: #7b9fcf;
+  border-radius: 4px;
+  padding: 8px;
+  color: #244c7b;
+  transition: background-color 120ms ease;
+}
+.clinic-calendar .calendar-event:hover {
+  background: #e1ebf8;
+}
+.clinic-calendar .calendar-event time {
+  font-size: 11px;
+}
+.clinic-calendar .calendar-event strong {
+  margin: 3px 0;
+  font-size: 12px;
+  font-weight: 600;
+}
+.clinic-calendar .calendar-event small {
+  font-size: 10px;
+  opacity: 1;
+  color: #536985;
+}
+.clinic-calendar .calendar-event-completed {
+  border-left-color: #4b9a80;
+  background: #edf7f2;
+}
+.clinic-calendar .calendar-event-canceled {
+  opacity: 0.7;
+}
+.workspace-agenda {
+  border: 1px solid var(--ops-border);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+.workspace-agenda > section {
+  padding: 20px 22px;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr);
+  gap: 22px;
+  border-bottom: 1px solid var(--ops-border);
+}
+.workspace-agenda > section:last-child {
+  border-bottom: 0;
+}
+.workspace-agenda h3 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 8px 0;
+  color: var(--ops-text);
+}
+.workspace-agenda .calendar-event {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 95px minmax(0, 1fr);
+  gap: 2px 16px;
+  margin: 0 0 8px;
+  padding: 14px 16px;
+}
+.workspace-agenda .calendar-event time {
+  font-size: 13px;
+  grid-row: span 2;
+}
+.workspace-agenda .calendar-event strong {
+  font-size: 14px;
+}
+.workspace-agenda .calendar-event small {
+  font-size: 12px;
+}
+.workspace-calendar-empty {
+  padding: 28px 22px;
+  margin: 0;
+  background: #fff;
+  color: var(--ops-muted);
+  border: 1px solid var(--ops-border);
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  line-height: 1.6;
+}
+.workspace-calendar-toolbar button:focus-visible,
+.workspace-calendar-filters :is(select, button):focus-visible,
+.workspace-calendar-error button:focus-visible {
+  outline: 3px solid #8daed8;
+  outline-offset: 3px;
+}
+.clinic-inbox label {
+  color: var(--ops-muted);
+  font-weight: 500;
+}
+@media (max-width: 700px) {
+  .workspace-calendar-toolbar {
+    align-items: stretch;
+  }
+  .workspace-calendar-toolbar .clinic-calendar-nav {
+    width: 100%;
+    gap: 7px;
+  }
+  .workspace-calendar-toolbar .clinic-calendar-nav h2 {
+    font-size: 17px;
+    min-width: 0;
+    margin: 0 auto 0 0;
+  }
+  .workspace-calendar-filters {
+    gap: 12px;
+  }
+  .workspace-calendar-filters label {
+    flex: 1;
+    min-width: 125px;
+  }
+  .workspace-calendar-filters > p {
+    width: 100%;
+    margin: 0;
+  }
+  .clinic-calendar-grid .clinic-calendar-day,
+  .clinic-calendar-grid .clinic-calendar-empty {
+    min-height: 95px;
+    padding: 3px;
+  }
+  .clinic-calendar-grid .clinic-calendar-weekday {
+    padding: 9px 3px;
+    font-size: 10px;
+  }
+  .clinic-calendar-grid .calendar-event {
+    padding: 5px 3px;
+  }
+  .clinic-calendar-grid .calendar-event time,
+  .clinic-calendar-grid .calendar-event strong {
+    font-size: 9px;
+  }
+  .clinic-calendar-grid .calendar-event small {
+    display: none;
+  }
+  .workspace-agenda > section {
+    display: block;
+    padding: 15px;
+  }
+  .workspace-agenda h3 {
+    margin: 0 0 14px;
+  }
+  .workspace-agenda .calendar-event {
+    grid-template-columns: 75px minmax(0, 1fr);
+    gap: 2px 10px;
+    padding: 12px;
+  }
+  .workspace-agenda .calendar-event time,
+  .workspace-agenda .calendar-event strong {
+    font-size: 12px;
+  }
+  .workspace-calendar-error {
+    display: block;
+  }
+  .workspace-calendar-error button {
+    margin-top: 12px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .clinic-calendar .calendar-event {
+    transition: none;
+  }
+}
+@media (max-width: 1024px) {
+  .workspace-calendar-toolbar button,
+  .workspace-calendar-toolbar .clinic-calendar-nav button,
+  .workspace-calendar-filters button,
+  .workspace-calendar-filters select,
+  .workspace-view-switch button {
+    min-height: 44px;
+  }
+  .workspace-calendar-toolbar .clinic-calendar-nav button {
+    min-width: 44px;
+  }
+  .workspace-calendar-filters select {
+    font-size: 16px;
+  }
+  .clinic-calendar-top > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    align-self: flex-start;
+    line-height: 1.4;
+  }
+  .clinic-calendar-top {
+    row-gap: 16px;
+  }
+  .clinic-calendar .clinic-calendar-note {
+    margin-top: 16px;
+  }
+}
+@media (max-width: 700px) {
+  .clinic-calendar[data-auto-view="true"] .clinic-calendar-grid {
+    display: none;
+  }
+}
+@media (max-width: 600px) {
+  .workspace-calendar-filters {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

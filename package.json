@@ -23,6 +23,7 @@
     "test:analytics": "node --import tsx tests/site-analytics.mjs"
   },
   "dependencies": {
+    "@date-fns/tz": "1.2.0",
     "@libsql/client": "^0.18.0",
     "@payloadcms/db-postgres": "3.94.0",
     "@payloadcms/db-sqlite": "3.94.0",
@@ -36,6 +37,7 @@
     "@tiptap/react": "^3.34.0",
     "@tiptap/starter-kit": "^3.34.0",
     "graphql": "^16.15.0",
+    "jose": "5.10.0",
     "next": "^16.0.0",
     "payload": "3.94.0",
     "pg": "^8.23.1",
@@ -49,6 +51,7 @@
     "@types/pg": "^8.23.1",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "esbuild": "0.25.12",
     "eslint": "^9.0.0",
     "eslint-config-next": "^16.0.0",
     "node": "24.22.3",

@@ -1,4 +1,5 @@
 import { APIError, type CollectionConfig, type Access } from "payload";
+import { persistAuthenticatedSession, renewPersistentCookie, SESSION_COOKIE_SECONDS } from "./persistent-session";
 
 const administrator: Access = ({ req }) => req.user?.role === "admin";
 
@@ -8,8 +9,9 @@ export const Users: CollectionConfig = {
   admin: { useAsTitle: "name", defaultColumns: ["name", "email", "role"] },
   auth: {
     loginWithUsername: { allowEmailLogin: true, requireEmail: false, requireUsername: false },
-    // Cover a workday, with Payload's activity-aware session renewal.
-    tokenExpiration: 12 * 60 * 60,
+    // Cookie lifetime only. Supported hooks issue revocable tokens without an expiry claim.
+    tokenExpiration: SESSION_COOKIE_SECONDS,
+    useSessions: true,
     maxLoginAttempts: 5,
     lockTime: 15 * 60 * 1000,
     cookies: { sameSite: "Lax", secure: process.env.NODE_ENV === "production" },
@@ -25,6 +27,8 @@ export const Users: CollectionConfig = {
     unlock: administrator,
   },
   hooks: {
+    afterOperation: [persistAuthenticatedSession],
+    afterMe: [renewPersistentCookie],
     beforeChange: [
       ({ data, originalDoc, req }) => {
         const privateLocalSetup = req.context.bootstrapAdmin === true && process.env.DATABASE_URI?.startsWith('file:');

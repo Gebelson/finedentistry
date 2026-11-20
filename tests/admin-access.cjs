@@ -186,7 +186,6 @@ const editorPassword = randomBytes(24).toString("hex");
         : "PASS guest protection, closed registration, invalid login and mobile layout; authenticated cycle skipped (credentials not supplied)",
     );
   } catch (error) {
-    console.log((await page.locator("body").innerText()).slice(0, 1800));
     throw error;
   } finally {
     await browser.close();

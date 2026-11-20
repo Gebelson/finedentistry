@@ -3,6 +3,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useField } from "@payloadcms/ui";
 import { EditorContent, useEditor } from "@tiptap/react";
+import { Mark } from "@tiptap/core";
 import StarterKit from "@tiptap/starter-kit";
 import { TableKit } from "@tiptap/extension-table";
 import Image from "@tiptap/extension-image";
@@ -13,6 +14,15 @@ import {
   safeArticleImage,
   safeArticleLink,
 } from "@/lib/article-ast";
+
+// Original articles use these inline marks. Register them so editing does not
+// silently flatten the imported content when TipTap parses the article HTML.
+const inlineScript = (name: string, tag: string) =>
+  Mark.create({
+    name,
+    parseHTML: () => [{ tag }],
+    renderHTML: () => [tag, 0],
+  });
 
 export function ArticleEditor({
   path,
@@ -27,18 +37,30 @@ export function ArticleEditor({
     { id: number; url?: string; alt: string }[]
   >([]);
   const [mediaError, setMediaError] = useState("");
+  const [mediaLoading, setMediaLoading] = useState(false);
+  const [formatError, setFormatError] = useState("");
+  const mediaRequest = useRef(false);
   async function chooseImage() {
+    if (mediaRequest.current) return;
+    mediaRequest.current = true;
+    if (!mediaDialog.current?.open) mediaDialog.current?.showModal();
+    setMediaLoading(true);
     setMediaError("");
     try {
       const response = await fetch("/api/media?limit=100&sort=-createdAt");
       if (!response.ok) throw Error("Unable to load the image library.");
-      setMedia((await response.json()).docs);
+      const result = await response.json();
+      if (!Array.isArray(result.docs))
+        throw Error("Unable to load the image library.");
+      setMedia(result.docs);
     } catch (error) {
       setMediaError(
         error instanceof Error ? error.message : "Unable to load images.",
       );
+    } finally {
+      mediaRequest.current = false;
+      setMediaLoading(false);
     }
-    mediaDialog.current?.showModal();
   }
   const editor = useEditor({
     immediatelyRender: false,
@@ -46,6 +68,8 @@ export function ArticleEditor({
       StarterKit.configure({ link: { openOnClick: false } }),
       TableKit,
       Image.configure({ allowBase64: false }),
+      inlineScript("superscript", "sup"),
+      inlineScript("subscript", "sub"),
     ],
     content: articleHTML(value || []),
     editorProps: {
@@ -96,12 +120,21 @@ export function ArticleEditor({
           "Link URL",
           editor.getAttributes("link").href || "https://",
         );
-        if (href && safeArticleLink(href))
+        if (href === null) return;
+        const link = href.trim();
+        if (!safeArticleLink(link)) {
+          setFormatError(
+            "Enter a valid link beginning with https://, http://, mailto:, tel:, / or #.",
+          );
+          return;
+        }
+        setFormatError("");
+        if (link)
           editor
             .chain()
             .focus()
             .extendMarkRange("link")
-            .setLink({ href })
+            .setLink({ href: link })
             .run();
       },
     ],
@@ -164,6 +197,7 @@ export function ArticleEditor({
         </button>
       </div>
       <EditorContent editor={editor} />
+      {formatError && <p role="alert">{formatError}</p>}
       <dialog
         ref={mediaDialog}
         className="clinic-media-dialog"
@@ -188,7 +222,20 @@ export function ArticleEditor({
             Upload a new image ↗
           </Link>
         </p>
-        {mediaError && <p role="alert">{mediaError}</p>}
+        <button
+          type="button"
+          disabled={mediaLoading}
+          onClick={() => void chooseImage()}
+        >
+          {mediaLoading ? "Loading images…" : "Refresh image library"}
+        </button>
+        {mediaLoading && <p role="status">Loading image library…</p>}
+        {mediaError && (
+          <p role="alert">{mediaError} Please try refreshing the library.</p>
+        )}
+        {!mediaLoading && !mediaError && !media.length && (
+          <p>No images yet. Upload an image, then refresh this library.</p>
+        )}
         <div className="clinic-media-grid">
           {media
             .filter((image) => image.url)

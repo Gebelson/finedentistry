@@ -121,6 +121,9 @@ export const Appointments: CollectionConfig = {
       name: "startsAt",
       type: "date",
       admin: {
+        components: {
+          Field: "/appointment-date#AppointmentDate",
+        },
         date: {
           pickerAppearance: "dayAndTime",
           displayFormat: "MMM d, yyyy h:mm a",
@@ -131,6 +134,9 @@ export const Appointments: CollectionConfig = {
       name: "endsAt",
       type: "date",
       admin: {
+        components: {
+          Field: "/appointment-date#AppointmentDate",
+        },
         date: {
           pickerAppearance: "dayAndTime",
           displayFormat: "MMM d, yyyy h:mm a",

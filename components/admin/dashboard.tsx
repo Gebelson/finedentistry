@@ -32,6 +32,27 @@ const doctors: Record<string, string> = {
   perez: "Dr. Perez",
 };
 
+// Match Payload's native WhereBuilder shape so filters remain editable in the inbox.
+const conversationFilterHref = (status: "waiting" | "open") =>
+  `/admin/collections/conversations?${new URLSearchParams({
+    "where[or][0][and][0][status][equals]": status,
+    sort: "updatedAt",
+    page: "1",
+  })}`;
+
+function activityAge(value: string, now: number) {
+  const minutes = Math.max(
+    0,
+    Math.floor((now - new Date(value).getTime()) / 60_000),
+  );
+  if (minutes < 1) return "Just now";
+  if (minutes < 60) return `${minutes}m ago`;
+  const hours = Math.floor(minutes / 60);
+  if (hours < 24) return `${hours}h ago`;
+  const days = Math.floor(hours / 24);
+  return `${days}d ago`;
+}
+
 export async function ClinicDashboard({ payload, user }: ServerProps) {
   if (!user) return null;
   const canEdit = ["admin", "editor"].includes(user.role);
@@ -48,7 +69,8 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
     waiting,
     open,
     requested,
-    queue,
+    waitingQueue,
+    openQueue,
     appointments,
     recent,
     chat,
@@ -68,8 +90,18 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
     canReceive
       ? payload.find({
           collection: "conversations",
-          where: { status: { not_equals: "resolved" } },
-          sort: "-updatedAt",
+          where: { status: { equals: "waiting" } },
+          sort: "updatedAt",
+          limit: 5,
+          depth: 0,
+          ...access,
+        })
+      : null,
+    canReceive
+      ? payload.find({
+          collection: "conversations",
+          where: { status: { equals: "open" } },
+          sort: "updatedAt",
           limit: 5,
           depth: 0,
           ...access,
@@ -103,6 +135,11 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
       ? payload.findGlobal({ slug: "chat-settings", ...access })
       : null,
   ]);
+  const queue = [
+    ...(waitingQueue?.docs || []),
+    ...(openQueue?.docs || []),
+  ].slice(0, 5);
+  const now = new Date().getTime();
   const metrics =
     user.role === "editor"
       ? [
@@ -178,10 +215,23 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
     <section className="clinic-dashboard ops-dashboard">
       <header className="ops-page-header">
         <div>
+          <time className="ops-dashboard-date">
+            {new Intl.DateTimeFormat("en-US", {
+              timeZone: "America/New_York",
+              weekday: "long",
+              month: "long",
+              day: "numeric",
+            }).format(new Date())}
+          </time>
           <h1>Dashboard</h1>
-          <p>Your website, content and reception at a glance.</p>
+          <p>
+            {user.role === "editor"
+              ? "Your content, ready for its next chapter."
+              : "A clear view of your practice. Start with what needs attention."}
+          </p>
         </div>
         <Link href="/" className="ops-button ops-button-secondary">
+          <WorkspaceIcon name="external" />
           View website
         </Link>
       </header>
@@ -192,12 +242,14 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
               className="ops-button"
               href="/admin/collections/appointments/create"
             >
+              <WorkspaceIcon name="appointments" />
               New appointment
             </Link>
             <Link
               className="ops-button ops-button-secondary"
               href="/admin/collections/conversations"
             >
+              <WorkspaceIcon name="inbox" />
               Reception inbox{" "}
               {waiting?.totalDocs ? (
                 <span className="ops-count">{waiting.totalDocs}</span>
@@ -207,6 +259,7 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
               className="ops-button ops-button-secondary"
               href="/admin/collections/contacts/create"
             >
+              <WorkspaceIcon name="contacts" />
               Add contact
             </Link>
           </>
@@ -217,12 +270,14 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
               className="ops-button ops-button-secondary"
               href="/admin/collections/posts/create"
             >
+              <WorkspaceIcon name="articles" />
               New article
             </Link>
             <Link
               className="ops-button ops-button-secondary"
               href="/admin/globals/home-page"
             >
+              <WorkspaceIcon name="website" />
               Edit website
             </Link>
           </>
@@ -249,43 +304,48 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
           </Link>
         ))}
       </div>
-      {analytics && (
-        <section
-          aria-labelledby="dashboard-analytics-title"
-          className="ops-analytics-section"
-        >
-          <div className="ops-section-heading">
-            <h2 id="dashboard-analytics-title">Website analytics</h2>
-            <Link href="/admin/analytics">Detailed report</Link>
-          </div>
-          <WebsiteAnalytics initial={analytics} overview />
-        </section>
-      )}
-      <div className="ops-work-grid">
-        {canReceive && (
-          <>
-            <section className="ops-panel">
-              <div className="ops-panel-heading">
-                <h2>Reception queue</h2>
-                <Link href="/admin/collections/conversations">View all</Link>
-              </div>
-              <div className="ops-panel-summary">
-                <strong>{waiting?.totalDocs || 0}</strong> waiting{" "}
-                <span> / </span>
-                <strong>{open?.totalDocs || 0}</strong> open
-              </div>
-              {queue?.docs.length ? (
+      {canReceive && (
+        <div className="ops-work-grid ops-reception-grid">
+          <section className="ops-panel">
+            <div className="ops-panel-heading">
+              <h2>Reception queue</h2>
+              <Link href="/admin/collections/conversations">View all</Link>
+            </div>
+            <div className="ops-panel-summary">
+              <Link
+                className="ops-queue-filter"
+                href={conversationFilterHref("waiting")}
+              >
+                <span
+                  className="ops-queue-dot ops-queue-dot-waiting"
+                  aria-hidden="true"
+                />
+                Waiting <strong>{waiting?.totalDocs || 0}</strong>
+              </Link>
+              <Link
+                className="ops-queue-filter"
+                href={conversationFilterHref("open")}
+              >
+                <span className="ops-queue-dot" aria-hidden="true" />
+                Open <strong>{open?.totalDocs || 0}</strong>
+              </Link>
+            </div>
+            {queue.length ? (
+              <>
+                <p className="ops-panel-description ops-queue-description">
+                  Waiting first, then open. Oldest activity in each group.
+                </p>
                 <div className="ops-table-scroll">
                   <table className="ops-table">
                     <thead>
                       <tr>
                         <th>Conversation</th>
                         <th>Status</th>
-                        <th>Updated</th>
+                        <th>Last activity</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {queue.docs.map((item) => (
+                      {queue.map((item) => (
                         <tr key={item.id}>
                           <td>
                             <Link
@@ -301,90 +361,113 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
                               {item.status}
                             </span>
                           </td>
-                          <td>{date(item.updatedAt)}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              ) : (
-                <div className="ops-empty">
-                  <span className="ops-empty-icon">
-                    <WorkspaceIcon name="inbox" width="22" height="22" />
-                  </span>
-                  <strong>Your inbox is clear</strong>
-                  <p>
-                    Website chats will appear here when visitors send a message.
-                  </p>
-                </div>
-              )}
-              <div className="ops-panel-footer">
-                <span
-                  className={`ops-status ${chat?.enabled ? "ops-status-active" : ""}`}
-                >
-                  {chat?.enabled ? "Chat enabled" : "Chat disabled"}
-                </span>
-                <Link href="/admin/globals/chat-settings">Chat settings</Link>
-              </div>
-            </section>
-            <section className="ops-panel">
-              <div className="ops-panel-heading">
-                <h2>Upcoming appointments</h2>
-                <Link href="/admin/calendar">Calendar</Link>
-              </div>
-              <p className="ops-panel-description">
-                Internal planning · Orlando time
-              </p>
-              {appointments?.docs.length ? (
-                <div className="ops-table-scroll">
-                  <table className="ops-table">
-                    <thead>
-                      <tr>
-                        <th>Contact</th>
-                        <th>Date & time</th>
-                        <th>Doctor</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {appointments.docs.map((item) => (
-                        <tr key={item.id}>
                           <td>
-                            <Link
-                              href={`/admin/collections/appointments/${item.id}`}
+                            <time
+                              className="ops-activity-age"
+                              dateTime={item.updatedAt}
+                              title={date(item.updatedAt)}
                             >
-                              {item.contactName}
-                            </Link>
+                              <strong>
+                                {activityAge(item.updatedAt, now)}
+                              </strong>
+                              <span>{date(item.updatedAt)}</span>
+                            </time>
                           </td>
-                          <td>
-                            {item.startsAt
-                              ? date(item.startsAt)
-                              : "Unscheduled"}
-                          </td>
-                          <td>{doctors[item.doctor || ""] || "Unassigned"}</td>
                         </tr>
                       ))}
                     </tbody>
                   </table>
                 </div>
-              ) : (
-                <div className="ops-empty">
-                  <span className="ops-empty-icon">
-                    <WorkspaceIcon name="calendar" width="22" height="22" />
-                  </span>
-                  <strong>No upcoming appointments</strong>
-                  <p>Add an internal appointment or review pending requests.</p>
-                </div>
-              )}
-              <div className="ops-panel-footer">
-                <span>{requested?.totalDocs || 0} pending requests</span>
-                <Link href="/admin/collections/appointments">
-                  Manage appointments
-                </Link>
+              </>
+            ) : (
+              <div className="ops-empty">
+                <span className="ops-empty-icon">
+                  <WorkspaceIcon name="inbox" width="22" height="22" />
+                </span>
+                <strong>Your inbox is clear</strong>
+                <p>
+                  Website chats will appear here when visitors send a message.
+                </p>
               </div>
-            </section>
-          </>
-        )}
-        {canEdit && (
+            )}
+            <div className="ops-panel-footer">
+              <span
+                className={`ops-status ${chat?.enabled ? "ops-status-active" : ""}`}
+              >
+                {chat?.enabled ? "Chat enabled" : "Chat disabled"}
+              </span>
+              <Link href="/admin/globals/chat-settings">Chat settings</Link>
+            </div>
+          </section>
+          <section className="ops-panel">
+            <div className="ops-panel-heading">
+              <h2>Upcoming appointments</h2>
+              <Link href="/admin/calendar">Calendar</Link>
+            </div>
+            <p className="ops-panel-description">
+              Internal planning · Orlando time
+            </p>
+            {appointments?.docs.length ? (
+              <div className="ops-table-scroll">
+                <table className="ops-table">
+                  <thead>
+                    <tr>
+                      <th>Contact</th>
+                      <th>Date & time</th>
+                      <th>Doctor</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {appointments.docs.map((item) => (
+                      <tr key={item.id}>
+                        <td>
+                          <Link
+                            href={`/admin/collections/appointments/${item.id}`}
+                          >
+                            {item.contactName}
+                          </Link>
+                        </td>
+                        <td>
+                          {item.startsAt ? date(item.startsAt) : "Unscheduled"}
+                        </td>
+                        <td>{doctors[item.doctor || ""] || "Unassigned"}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            ) : (
+              <div className="ops-empty">
+                <span className="ops-empty-icon">
+                  <WorkspaceIcon name="calendar" width="22" height="22" />
+                </span>
+                <strong>No upcoming appointments</strong>
+                <p>Add an internal appointment or review pending requests.</p>
+              </div>
+            )}
+            <div className="ops-panel-footer">
+              <span>{requested?.totalDocs || 0} pending requests</span>
+              <Link href="/admin/collections/appointments">
+                Manage appointments
+              </Link>
+            </div>
+          </section>
+        </div>
+      )}
+      {analytics && (
+        <section
+          aria-labelledby="dashboard-analytics-title"
+          className="ops-analytics-section"
+        >
+          <div className="ops-section-heading">
+            <h2 id="dashboard-analytics-title">Website analytics</h2>
+            <Link href="/admin/analytics">Detailed report</Link>
+          </div>
+          <WebsiteAnalytics initial={analytics} overview />
+        </section>
+      )}
+      {canEdit && (
+        <div className="ops-work-grid">
           <section className="ops-panel">
             <div className="ops-panel-heading">
               <h2>Recent articles</h2>
@@ -428,50 +511,54 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
               <Link href="/admin/collections/media">Media library</Link>
             </div>
           </section>
-        )}
-        {user.role === "admin" && (
-          <section className="ops-panel">
-            <div className="ops-panel-heading">
-              <h2>Connections</h2>
-              <Link href="/admin/integrations">Manage</Link>
-            </div>
-            <ul className="ops-connections">
-              <li>
-                <span>Website & blog</span>
-                <span className="ops-status ops-status-active">Connected</span>
-              </li>
-              <li>
-                <span>Website analytics</span>
-                <span className="ops-status ops-status-active">Collecting</span>
-              </li>
-              <li>
-                <span>Website chat</span>
-                <span
-                  className={`ops-status ${chat?.enabled ? "ops-status-active" : ""}`}
-                >
-                  {chat?.enabled ? "Enabled" : "Disabled"}
-                </span>
-              </li>
-              <li>
-                <span>Practice-management calendar</span>
-                <span className="ops-status">Not connected</span>
-              </li>
-              <li>
-                <span>Payments, SMS & email</span>
-                <span className="ops-status">Not connected</span>
-              </li>
-            </ul>
-            <p className="ops-panel-description ops-panel-note">
-              The calendar is internal planning. The assistant answers from the
-              practice FAQ.
-            </p>
-            <div className="ops-panel-footer">
-              <Link href="/admin/collections/users">Team members</Link>
-              <Link href="/admin/reports">Workspace reports</Link>
-            </div>
-          </section>
-        )}
-      </div>
+          {user.role === "admin" && (
+            <section className="ops-panel">
+              <div className="ops-panel-heading">
+                <h2>Connections</h2>
+                <Link href="/admin/integrations">Manage</Link>
+              </div>
+              <ul className="ops-connections">
+                <li>
+                  <span>Website & blog</span>
+                  <span className="ops-status ops-status-active">
+                    Connected
+                  </span>
+                </li>
+                <li>
+                  <span>Website analytics</span>
+                  <span className="ops-status ops-status-active">
+                    Collecting
+                  </span>
+                </li>
+                <li>
+                  <span>Website chat</span>
+                  <span
+                    className={`ops-status ${chat?.enabled ? "ops-status-active" : ""}`}
+                  >
+                    {chat?.enabled ? "Enabled" : "Disabled"}
+                  </span>
+                </li>
+                <li>
+                  <span>Practice-management calendar</span>
+                  <span className="ops-status">Not connected</span>
+                </li>
+                <li>
+                  <span>Payments, SMS & email</span>
+                  <span className="ops-status">Not connected</span>
+                </li>
+              </ul>
+              <p className="ops-panel-description ops-panel-note">
+                The calendar is internal planning. The assistant answers from
+                the practice FAQ.
+              </p>
+              <div className="ops-panel-footer">
+                <Link href="/admin/collections/users">Team members</Link>
+                <Link href="/admin/reports">Workspace reports</Link>
+              </div>
+            </section>
+          )}
+        </div>
+      )}
       <footer className="ops-footer">
         Fine Dentistry Workspace <span>Powered by Praxis</span>
       </footer>

@@ -1,0 +1,80 @@
+.workspace-report-toolbar {
+  display: flex;
+  align-items: end;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin: 24px 0;
+}
+.workspace-report-toolbar label {
+  display: grid;
+  gap: 8px;
+  font-weight: 600;
+  color: var(--theme-elevation-800);
+}
+.workspace-report-toolbar select {
+  min-height: 44px;
+  min-width: 180px;
+  padding: 8px 12px;
+  border: 1px solid var(--theme-elevation-200);
+  border-radius: 8px;
+  background: var(--theme-elevation-0);
+  color: var(--theme-elevation-800);
+  font: inherit;
+}
+.workspace-report-toolbar button,
+.clinic-reports [role="alert"] button {
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--ops-blue, #315f9f);
+  border-radius: 8px;
+  background: var(--ops-blue, #315f9f);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.workspace-report-toolbar button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+.workspace-report-toolbar :focus-visible,
+.clinic-reports [role="alert"] button:focus-visible {
+  outline: 3px solid #60a5fa;
+  outline-offset: 3px;
+}
+.workspace-report-section {
+  margin: 24px 0;
+}
+.workspace-report-section h2 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+.workspace-report-section .clinic-report-grid {
+  margin-top: 0;
+}
+.workspace-report-section .clinic-report-grid dt {
+  opacity: 1;
+  color: var(--ops-muted, #5d6e84);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.clinic-reports [role="alert"] {
+  color: var(--theme-error-600, #b91c1c);
+}
+@media (max-width: 600px) {
+  .workspace-report-toolbar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .workspace-report-toolbar select {
+    width: 100%;
+  }
+  .workspace-report-section .clinic-report-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (max-width: 1024px) {
+  .workspace-report-toolbar select {
+    font-size: 16px;
+  }
+}

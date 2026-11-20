@@ -99,11 +99,14 @@ function faqReply(message: string): string {
   return "Our team can help with that question. Please call (407) 898-1621. This assistant provides general practice information and cannot confirm appointments or give a diagnosis.";
 }
 export async function chatGet(req: PayloadRequest) {
+  const query = new URL(req.url!).searchParams;
+  const id = Number(query.get("conversation"));
+  if (query.has("conversation") && (!Number.isSafeInteger(id) || id < 1))
+    throw new APIError("Invalid conversation.", 400);
   const settings = await req.payload.findGlobal({
     slug: "chat-settings",
     overrideAccess: true,
   });
-  const id = Number(new URL(req.url!).searchParams.get("conversation"));
   if (!id)
     return Response.json(
       {
@@ -140,7 +143,15 @@ export async function chatPost(req: PayloadRequest) {
   const origin = req.headers.get("origin");
   if (!origin || !req.payload.config.csrf.includes(origin))
     throw new APIError("Request origin is not allowed.", 403);
-  const body = (await req.json!()) as Record<string, unknown>;
+  let input: unknown;
+  try {
+    input = await req.json!();
+  } catch {
+    throw new APIError("Send a valid JSON request.", 400);
+  }
+  if (!input || typeof input !== "object" || Array.isArray(input))
+    throw new APIError("Send a valid chat request.", 400);
+  const body = input as Record<string, unknown>;
   const settings = await req.payload.findGlobal({
     slug: "chat-settings",
     overrideAccess: true,

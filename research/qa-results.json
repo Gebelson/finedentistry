@@ -1,11 +1,11 @@
 {
-  "origin": "http://127.0.0.1:3000",
-  "checkedAt": "2026-11-17T06:55:02.749Z",
+  "origin": "http://localhost:3000",
+  "checkedAt": "2026-11-20T18:27:47.211Z",
   "routes": [
     {
       "route": "/",
       "status": 200,
-      "h1": "Your smile.Our dedication.Beautifully personal."
+      "h1": "Your smile. Our dedication. Beautifully personal."
     },
     {
       "route": "/technology/comfort-options",
@@ -1509,10 +1509,10 @@
     }
   ],
   "interactions": [
-    "enhanced team hero and full-width compact map between location and final CTA",
+    "enhanced team hero; map removed",
     "mobile menu navigation and treatment filter",
     "FAQ accordion, patient carousel, gallery viewer and Escape",
-    "booking validation, back/preserved treatment, honest official fallback, Escape and focus return",
+    "request validation, back/preserved treatment, official fallback, intercepted receipt, Escape and focus return",
     "reduced motion",
     "200% equivalent reflow at 640 CSS pixels",
     "real 404"

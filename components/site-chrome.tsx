@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { createContext, useContext, useEffect, useRef, useState } from "react";
 import { services, siteConfig } from "@/lib/site-data";
 import { FooterSocialIcons } from "@/components/footer-social-icons";
+import { AppointmentRequestForm } from "./appointment-request-form";
 const BookingContext = createContext<() => void>(() => {});
 export function AppointmentButton({
   className = "bracket",
@@ -246,7 +247,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
         </button>
         <p className="eyebrow">Your next chapter starts here</p>
         <div className="steps" aria-label={`Step ${step} of 3`}>
-          {["Your care", "Your visit", "Get in touch"].map((s, i) => (
+          {["Your care", "Contact details", "Request received"].map((s, i) => (
             <span key={s} className={step === i + 1 ? "active" : ""}>
               {i + 1}. {s}
             </span>
@@ -256,8 +257,8 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
           {step === 1
             ? "Let’s start with you."
             : step === 2
-              ? "Care on your terms."
-              : "Let’s make it happen."}
+              ? "How can we reach you?"
+              : "Your request is with our team."}
         </h2>
         {step === 1 ? (
           <form
@@ -297,37 +298,16 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             </button>
           </form>
         ) : step === 2 ? (
-          <div>
-            <p>
-              You’re interested in <strong>{treatment}</strong>
-              {doctor !== "No preference" ? ` with ${doctor}` : ""}.
-            </p>
-            <p>
-              Speak with our team by phone, or continue to the clinic’s official
-              appointment form to share your contact details and preferred time.
-            </p>
-            <p className="notice">
-              This preview does not send appointment requests or store your
-              personal information. The clinic will confirm availability
-              directly.
-            </p>
-            <button className="button" onClick={() => setStep(3)}>
-              Continue
-            </button>
-          </div>
+          <AppointmentRequestForm treatment={treatment} doctor={doctor} onReceived={() => setStep(3)} />
         ) : (
           <div>
-            <p>Contact our Downtown Orlando team to request your visit.</p>
-            <a className="button" href={siteConfig.official + "/Contact"}>
-              Continue on the clinic website
-            </a>
-            <a className="text-link" href={siteConfig.tel}>
-              Call {siteConfig.phone}
-            </a>
+            <p role="status">Your appointment request was received by reception.</p>
+            <p>Our team will contact you to discuss availability and confirm the details of your visit. No appointment time has been reserved.</p>
+            <a className="text-link" href={siteConfig.tel}>Call {siteConfig.phone}</a>
             <p className="notice">Your appointment is not confirmed.</p>
           </div>
         )}
-        {step > 1 && (
+        {step === 2 && (
           <button className="back" onClick={() => setStep(step - 1)}>
             ← Back
           </button>

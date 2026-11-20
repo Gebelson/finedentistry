@@ -7,6 +7,8 @@ import { Posts, Media, HomePage } from "./cms/editorial";
 import { Conversations, Messages, ChatSettings } from "./cms/conversations";
 import { chatGet, chatPost } from "./cms/chat-endpoint";
 import { Contacts, Appointments } from "./cms/appointments";
+import { workspaceReportsHandler } from "./cms/reports-endpoint";
+import { appointmentRequestHandler } from "./cms/appointment-request";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 
 const secret = process.env.PAYLOAD_SECRET;
@@ -74,7 +76,7 @@ export default buildConfig({
   }),
   routes: { admin: "/admin", api: "/api" },
   admin: {
-    theme: 'light',
+    theme: "light",
     user: "users",
     timezones: { defaultTimezone: "America/New_York" },
     meta: {
@@ -83,7 +85,7 @@ export default buildConfig({
     },
     importMap: { baseDir: path.resolve(process.cwd(), "components/admin") },
     components: {
-      Nav: '/navigation#WorkspaceNav',
+      Nav: "/navigation#WorkspaceNav",
       views: {
         dashboard: { Component: "/workspace-views#DashboardView" },
         analytics: {
@@ -127,10 +129,21 @@ export default buildConfig({
       })
     : sqliteAdapter({
         client: { url: database },
+        transactionOptions: { behavior: "immediate" },
         push: process.env.CMS_SCHEMA_PUSH === "true",
       }),
   graphQL: { disable: true },
   endpoints: [
+    {
+      path: "/appointment-request",
+      method: "post",
+      handler: appointmentRequestHandler,
+    },
+    {
+      path: "/workspace-reports",
+      method: "get",
+      handler: workspaceReportsHandler,
+    },
     { path: "/clinic-chat", method: "get", handler: chatGet },
     { path: "/clinic-chat", method: "post", handler: chatPost },
     {

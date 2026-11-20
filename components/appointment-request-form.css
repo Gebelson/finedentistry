@@ -1,0 +1,63 @@
+.booking input:not([type="checkbox"]) {
+  width: 100%;
+  border: 1px solid #9b9b93;
+  background: white;
+  color: var(--ink);
+  padding: 0.8rem 0.5rem;
+  min-height: 48px;
+  font: inherit;
+  font-size: 0.9rem;
+}
+.booking .appointment-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  line-height: 1.5;
+}
+.booking .appointment-consent input {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  margin-top: 2px;
+}
+.booking input:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 3px;
+}
+.booking [aria-busy="true"] .button {
+  opacity: 0.65;
+  cursor: wait;
+}
+.booking [role="alert"] {
+  padding: 12px;
+  border: 1px solid #a1392c;
+  color: #8a2c22;
+}
+.booking form > .text-link {
+  display: block;
+  margin-top: 12px;
+}
+@media (max-width: 1023px) {
+  .booking input:not([type="checkbox"]),
+  .booking select {
+    font-size: 16px;
+  }
+  .booking {
+    max-height: calc(100dvh - 24px);
+    padding-bottom: max(24px, env(safe-area-inset-bottom));
+    scroll-padding-block: 24px;
+  }
+  .booking input {
+    scroll-margin-block: 24px;
+  }
+
+  .booking .appointment-consent {
+    min-height: 44px;
+    padding-block: 8px;
+  }
+  .booking .text-link {
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}

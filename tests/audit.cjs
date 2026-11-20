@@ -117,7 +117,10 @@ const origin = process.env.TEST_URL || "http://127.0.0.1:3000";
       "",
     );
     await page.getByRole("button", { name: "Next patient story" }).click();
-    assert.equal(await page.getByText("Lilibeth Villarroel", { exact: true }).count(), 1);
+    assert.equal(
+      await page.getByText("Lilibeth Villarroel", { exact: true }).count(),
+      1,
+    );
     await page.getByRole("button", { name: "View smile case 1" }).click();
     assert.equal(
       await page.getByRole("dialog", { name: "Smile case viewer" }).isVisible(),
@@ -151,14 +154,28 @@ const origin = process.env.TEST_URL || "http://127.0.0.1:3000";
       "Dental Implants",
     );
     await page.getByRole("button", { name: "Continue", exact: true }).click();
-    await page.getByRole("button", { name: "Continue", exact: true }).click();
+    await page.route("**/api/appointment-request", (route) =>
+      route.fulfill({
+        status: 202,
+        json: { received: true },
+      }),
+    );
+    await page.getByLabel("Your name", { exact: true }).fill("Browser Audit");
+    await page.getByLabel("Phone number", { exact: true }).fill("4075550199");
+    await page.getByRole("checkbox").check();
     assert.equal(
       await page
         .getByRole("link", { name: "Continue on the clinic website" })
         .getAttribute("href"),
       "https://www.finedentistryorlando.com/Contact",
     );
-    assert.equal(await page.locator("input").count(), 0);
+    await page
+      .getByRole("button", { name: "Send appointment request" })
+      .click();
+    await page
+      .getByText("Your appointment request was received by reception.")
+      .waitFor();
+    assert.equal(await page.getByRole("dialog").locator("input").count(), 0);
     await page.screenshot({ path: "research/visual-qa/booking-mobile.png" });
     await page.keyboard.press("Escape");
     assert.equal(await page.getByRole("dialog").count(), 0);
@@ -167,7 +184,7 @@ const origin = process.env.TEST_URL || "http://127.0.0.1:3000";
       "Request an Appointment",
     );
     results.interactions.push(
-      "booking validation, back/preserved treatment, honest official fallback, Escape and focus return",
+      "request validation, back/preserved treatment, official fallback, intercepted receipt, Escape and focus return",
     );
     for (const [url, width] of [
       ["/", 390],
@@ -178,6 +195,19 @@ const origin = process.env.TEST_URL || "http://127.0.0.1:3000";
     ]) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(origin + url);
+      // Inspect the completed entrance state, rather than a transient fade frame.
+      const documentHeight = await page.evaluate(
+        () => document.body.scrollHeight,
+      );
+      for (let top = 0; top < documentHeight; top += 500) {
+        await page.evaluate(
+          (top) => scrollTo({ top, behavior: "instant" }),
+          top,
+        );
+        await page.waitForTimeout(35);
+      }
+      await page.waitForTimeout(1500);
+      await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
       const scan = await new AxeBuilder({ page })
         .withTags([
           "wcag2a",

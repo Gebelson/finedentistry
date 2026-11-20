@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 type ChatSettings = { enabled: boolean; mode: string; welcome: string };
 type Session = { id: number; token: string };
-type Message = { id: number; sender: string; text: string };
+type Message = { id: number; sender: string; text: string; createdAt?: string };
 export function ClinicChat() {
   const [settings, setSettings] = useState<ChatSettings>();
   const [open, setOpen] = useState(false);
@@ -10,7 +10,11 @@ export function ClinicChat() {
   const [messages, setMessages] = useState<Message[]>([]);
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [loadError, setLoadError] = useState("");
   const [busy, setBusy] = useState(false);
+  const sending = useRef(false);
+  const refreshVersion = useRef(0);
+  const appliedRefreshVersion = useRef(0);
   const [controller, setController] = useState("reception");
   const end = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -25,26 +29,49 @@ export function ClinicChat() {
       .catch(() => {});
   }, []);
   const refresh = useCallback(async (current: Session) => {
-    const response = await fetch(
-      `/api/clinic-chat?conversation=${current.id}`,
-      { headers: { "x-conversation-token": current.token } },
-    );
-    if (response.ok) {
+    const version = ++refreshVersion.current;
+    try {
+      const response = await fetch(
+        `/api/clinic-chat?conversation=${current.id}`,
+        {
+          headers: { "x-conversation-token": current.token },
+          cache: "no-store",
+        },
+      );
+      if (!response.ok) throw Error("Unable to load messages.");
       const result = await response.json();
+      if (!Array.isArray(result.messages))
+        throw Error("Unable to load messages.");
+      if (version < appliedRefreshVersion.current) return;
+      appliedRefreshVersion.current = version;
       setMessages(result.messages);
       setController(result.controller);
+      setLoadError("");
+    } catch {
+      if (version >= appliedRefreshVersion.current) {
+        appliedRefreshVersion.current = version;
+        setLoadError(
+          "Unable to load replies. Reconnecting automatically… Your saved messages are safe.",
+        );
+      }
     }
   }, []);
   useEffect(() => {
     if (!open || !session) return;
+    const initial = setTimeout(() => void refresh(session), 0);
     const timer = setInterval(() => void refresh(session), 2500);
-    return () => clearInterval(timer);
+    return () => {
+      clearInterval(timer);
+      clearTimeout(initial);
+    };
   }, [open, session, refresh]);
   useEffect(() => {
     end.current?.scrollIntoView({ block: "nearest" });
   }, [messages.length]);
   async function send(action = "message") {
-    if (busy) return;
+    if (sending.current || (action === "message" && !message.trim())) return;
+    sending.current = true;
+    const submittedMessage = message;
     setBusy(true);
     setError("");
     try {
@@ -66,17 +93,23 @@ export function ClinicChat() {
           "Content-Type": "application/json",
           "x-conversation-token": current.token,
         },
-        body: JSON.stringify({ action, id: current.id, text: message }),
+        body: JSON.stringify({
+          action,
+          id: current.id,
+          text: submittedMessage,
+        }),
       });
       if (!response.ok)
         throw Error(
           "Your message was not saved. Please retry or call the practice.",
         );
-      setMessage("");
+      if (action === "message")
+        setMessage((draft) => (draft === submittedMessage ? "" : draft));
       await refresh(current);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Unable to connect.");
     } finally {
+      sending.current = false;
       setBusy(false);
     }
   }
@@ -121,6 +154,16 @@ export function ClinicChat() {
                       : "Practice assistant"}
                 </small>
                 {m.text}
+                {m.createdAt && (
+                  <small>
+                    <time dateTime={m.createdAt}>
+                      {new Date(m.createdAt).toLocaleTimeString([], {
+                        hour: "numeric",
+                        minute: "2-digit",
+                      })}
+                    </time>
+                  </small>
+                )}
               </p>
             ))}
             <div ref={end} />
@@ -162,6 +205,11 @@ export function ClinicChat() {
               {error}
             </p>
           )}
+          {loadError && (
+            <p role="status" className="clinic-chat-error">
+              {loadError}
+            </p>
+          )}
           <a className="clinic-chat-phone" href="tel:+14078981621">
             Or call (407) 898-1621
           </a>
@@ -170,7 +218,7 @@ export function ClinicChat() {
       <button
         type="button"
         className="clinic-chat-toggle"
-        data-analytics-event={open ? undefined : 'chat_open'}
+        data-analytics-event={open ? undefined : "chat_open"}
         aria-expanded={open}
         onClick={() => setOpen(!open)}
       >

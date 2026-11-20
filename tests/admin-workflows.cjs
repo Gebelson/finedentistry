@@ -146,6 +146,7 @@ const base = process.env.TEST_URL || "http://localhost:3000";
           ["/api/appointments?limit=1", role === "reception"],
           ["/api/conversations?limit=1", role === "reception"],
           ["/api/site-analytics", false],
+          ["/api/workspace-reports", false],
           ["/api/globals/home-page", role === "editor"],
         ])
           assert.equal(

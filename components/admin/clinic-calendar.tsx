@@ -1,6 +1,17 @@
 "use client";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { TZDate } from "@date-fns/tz";
+import {
+  calendarMonth,
+  calendarBounds,
+  calendarDateKey,
+  calendarDoctors,
+  calendarStatuses,
+  calendarDayLabel,
+  CLINIC_TIMEZONE,
+} from "@/lib/clinic-calendar";
+
 type Entry = {
   id: number;
   contactName: string;
@@ -8,50 +19,84 @@ type Entry = {
   status: string;
   startsAt?: string;
 };
-const dateKey = (value: string) =>
-  new Intl.DateTimeFormat("en-CA", {
-    timeZone: "America/New_York",
-    year: "numeric",
-    month: "2-digit",
-    day: "2-digit",
-  }).format(new Date(value));
-export function ClinicCalendar() {
-  const [month, setMonth] = useState(
-    () => new Date(new Date().getFullYear(), new Date().getMonth(), 1),
+const phoneQuery = "(max-width: 700px)";
+const subscribePhone = (notify: () => void) => {
+  const query = window.matchMedia(phoneQuery);
+  query.addEventListener("change", notify);
+  return () => query.removeEventListener("change", notify);
+};
+const phoneSnapshot = () => window.matchMedia(phoneQuery).matches;
+const serverPhoneSnapshot = () => false;
+const time = (value: string) =>
+  new Date(value).toLocaleTimeString("en-US", {
+    timeZone: CLINIC_TIMEZONE,
+    hour: "numeric",
+    minute: "2-digit",
+  });
+function CalendarEntry({ entry }: { entry: Entry }) {
+  return (
+    <Link
+      className={"calendar-event calendar-event-" + entry.status}
+      href={"/admin/collections/appointments/" + entry.id}
+    >
+      <time dateTime={entry.startsAt}>{time(entry.startsAt!)}</time>
+      <strong>{entry.contactName}</strong>
+      <small>
+        {entry.doctor
+          ? calendarDoctors[entry.doctor] || entry.doctor
+          : "Unassigned"}{" "}
+        · {calendarStatuses[entry.status] || entry.status}
+      </small>
+    </Link>
   );
-  const [entries, setEntries] = useState<Entry[]>([]),
-    [error, setError] = useState("");
+}
+export function ClinicCalendar() {
+  const [month, setMonth] = useState(() => calendarMonth());
+  const [entries, setEntries] = useState<Entry[]>([]);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [revision, setRevision] = useState(0);
+  const [doctor, setDoctor] = useState("");
+  const [status, setStatus] = useState("");
+  const [preferredView, setView] = useState<"month" | "agenda" | null>(null);
+  const phone = useSyncExternalStore(
+    subscribePhone,
+    phoneSnapshot,
+    serverPhoneSnapshot,
+  );
+  const view = preferredView ?? (phone ? "agenda" : "month");
   useEffect(() => {
     const controller = new AbortController();
     let active = true;
-    const before = new Date(
-        month.getFullYear(),
-        month.getMonth(),
-        0,
-      ).toISOString(),
-      after = new Date(
-        month.getFullYear(),
-        month.getMonth() + 1,
-        2,
-      ).toISOString();
-    const query = new URLSearchParams({
-      limit: "1000",
-      depth: "0",
-      "where[startsAt][greater_than_equal]": before,
-      "where[startsAt][less_than]": after,
-      sort: "startsAt",
-    });
-    fetch("/api/appointments?" + query, { signal: controller.signal })
-      .then(async (r) => {
-        if (!r.ok) throw Error("Unable to load the calendar.");
-        const result = await r.json();
-        if (active) setEntries(result.docs);
-      })
+    const bounds = calendarBounds(month);
+    async function load() {
+      const loaded: Entry[] = [];
+      let page = 1;
+      while (true) {
+        const query = new URLSearchParams({
+          limit: "200",
+          page: String(page),
+          depth: "0",
+          "where[startsAt][greater_than_equal]": bounds.start,
+          "where[startsAt][less_than]": bounds.end,
+          sort: "startsAt",
+        });
+        const response = await fetch("/api/appointments?" + query, {
+          signal: controller.signal,
+        });
+        if (!response.ok) throw Error("Calendar unavailable");
+        const result = await response.json();
+        loaded.push(...result.docs);
+        if (!result.hasNextPage) break;
+        page++;
+      }
+      if (active) setEntries(loaded);
+    }
+    void load()
       .catch(() => {
         if (active)
           setError(
-            "Unable to load the calendar. Please select the month again to retry.",
+            "Unable to load appointments. Your records have not changed. Please retry.",
           );
       })
       .finally(() => {
@@ -61,20 +106,56 @@ export function ClinicCalendar() {
       active = false;
       controller.abort();
     };
-  }, [month]);
-  function changeMonth(offset: number) {
+  }, [month, revision]);
+  function prepareLoad() {
     setLoading(true);
     setEntries([]);
     setError("");
-    setMonth(new Date(month.getFullYear(), month.getMonth() + offset, 1));
   }
-  const days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate(),
-    pad = month.getDay();
+  function changeMonth(offset: number) {
+    prepareLoad();
+    setMonth(
+      new TZDate(
+        month.getFullYear(),
+        month.getMonth() + offset,
+        1,
+        CLINIC_TIMEZONE,
+      ),
+    );
+  }
+  const filtered = useMemo(
+    () =>
+      entries.filter(
+        (entry) =>
+          (!doctor || entry.doctor === doctor) &&
+          (!status || entry.status === status),
+      ),
+    [entries, doctor, status],
+  );
+  const grouped = useMemo(() => {
+    const result = new Map<string, Entry[]>();
+    for (const entry of filtered)
+      if (entry.startsAt) {
+        const key = calendarDateKey(entry.startsAt);
+        result.set(key, [...(result.get(key) || []), entry]);
+      }
+    return result;
+  }, [filtered]);
+  const days = new TZDate(
+    month.getFullYear(),
+    month.getMonth() + 1,
+    0,
+    CLINIC_TIMEZONE,
+  ).getDate();
+  const today = calendarDateKey(new Date());
   return (
-    <section className="clinic-calendar">
+    <section
+      className="clinic-calendar"
+      data-auto-view={preferredView === null ? "true" : undefined}
+    >
       <div className="clinic-calendar-top">
         <div>
-          <p>RECEPTION / INTERNAL PLANNING</p>
+          <p>Reception / Internal planning</p>
           <h1>Appointments</h1>
         </div>
         <Link href="/admin/collections/appointments/create">
@@ -85,70 +166,174 @@ export function ClinicCalendar() {
         All times shown in Orlando time. This calendar is not synchronized with
         practice software and does not send patient confirmations.
       </p>
-      <div className="clinic-calendar-nav">
-        <button
-          type="button"
-          aria-label="Previous month"
-          onClick={() => changeMonth(-1)}
+      <div className="workspace-calendar-toolbar">
+        <div className="clinic-calendar-nav">
+          <button
+            type="button"
+            aria-label="Previous month"
+            onClick={() => changeMonth(-1)}
+          >
+            ←
+          </button>
+          <h2>
+            {month.toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+            })}
+          </h2>
+          <button
+            type="button"
+            aria-label="Next month"
+            onClick={() => changeMonth(1)}
+          >
+            →
+          </button>
+          <button
+            type="button"
+            onClick={() => {
+              prepareLoad();
+              setMonth(calendarMonth());
+            }}
+          >
+            Today
+          </button>
+        </div>
+        <div
+          className="workspace-view-switch"
+          role="group"
+          aria-label="Calendar view"
         >
-          ←
-        </button>
-        <h2>
-          {month.toLocaleDateString("en-US", {
-            month: "long",
-            year: "numeric",
-          })}
-        </h2>
-        <button
-          type="button"
-          aria-label="Next month"
-          onClick={() => changeMonth(1)}
-        >
-          →
-        </button>
+          <button
+            type="button"
+            aria-pressed={view === "month"}
+            onClick={() => setView("month")}
+          >
+            Month
+          </button>
+          <button
+            type="button"
+            aria-pressed={view === "agenda"}
+            onClick={() => setView("agenda")}
+          >
+            Agenda
+          </button>
+        </div>
       </div>
-      {error && <p role="alert">{error}</p>}
+      <div className="workspace-calendar-filters">
+        <label>
+          Doctor
+          <select
+            aria-label="Doctor"
+            value={doctor}
+            onChange={(event) => setDoctor(event.target.value)}
+          >
+            <option value="">All doctors</option>
+            {Object.entries(calendarDoctors).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label>
+          Status
+          <select
+            aria-label="Status"
+            value={status}
+            onChange={(event) => setStatus(event.target.value)}
+          >
+            <option value="">All statuses</option>
+            {Object.entries(calendarStatuses).map(([value, label]) => (
+              <option key={value} value={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </label>
+        <p aria-live="polite">
+          {loading
+            ? "Loading appointments…"
+            : `${filtered.length} appointment${filtered.length === 1 ? "" : "s"}`}
+        </p>
+        {(doctor || status) && (
+          <button
+            type="button"
+            onClick={() => {
+              setDoctor("");
+              setStatus("");
+            }}
+          >
+            Clear filters
+          </button>
+        )}
+      </div>
+      {error && (
+        <div className="workspace-calendar-error">
+          <p role="alert">{error}</p>
+          <button
+            type="button"
+            onClick={() => {
+              prepareLoad();
+              setRevision((value) => value + 1);
+            }}
+          >
+            Retry calendar
+          </button>
+        </div>
+      )}
       {loading && <p role="status">Loading appointments…</p>}
-      <div className="clinic-calendar-grid" aria-busy={loading}>
-        {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
-          <div className="clinic-calendar-weekday" key={d}>
-            {d}
-          </div>
-        ))}
-        {Array.from({ length: pad }, (_, i) => (
-          <div key={"pad" + i} className="clinic-calendar-empty" />
-        ))}
-        {Array.from({ length: days }, (_, i) => {
-          const day = i + 1,
-            key = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
-          return (
-            <div className="clinic-calendar-day" key={key}>
-              <span>{day}</span>
-              {entries
-                .filter((e) => e.startsAt && dateKey(e.startsAt) === key)
-                .map((e) => (
-                  <Link
-                    className={"calendar-event calendar-event-" + e.status}
-                    href={"/admin/collections/appointments/" + e.id}
-                    key={e.id}
-                  >
-                    <time>
-                      {new Date(e.startsAt!).toLocaleTimeString("en-US", {
-                        timeZone: "America/New_York",
-                        hour: "numeric",
-                        minute: "2-digit",
-                      })}
-                    </time>
-                    <strong>{e.contactName}</strong>
-                    <small>
-                      {e.doctor} · {e.status}
-                    </small>
-                  </Link>
-                ))}
+      {view === "month" ? (
+        <div className="clinic-calendar-grid" aria-busy={loading}>
+          {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((day) => (
+            <div className="clinic-calendar-weekday" key={day}>
+              {day}
             </div>
-          );
-        })}
-      </div>
+          ))}
+          {Array.from({ length: month.getDay() }, (_, index) => (
+            <div key={"pad" + index} className="clinic-calendar-empty" />
+          ))}
+          {Array.from({ length: days }, (_, index) => {
+            const day = index + 1,
+              key = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, "0")}-${String(day).padStart(2, "0")}`;
+            return (
+              <div
+                className={
+                  "clinic-calendar-day" +
+                  (key === today ? " workspace-calendar-today" : "")
+                }
+                key={key}
+              >
+                <span aria-current={key === today ? "date" : undefined}>
+                  {day}
+                </span>
+                {(grouped.get(key) || []).map((entry) => (
+                  <CalendarEntry entry={entry} key={entry.id} />
+                ))}
+              </div>
+            );
+          })}
+        </div>
+      ) : (
+        <div className="workspace-agenda" aria-busy={loading}>
+          {[...grouped].map(([key, items]) => (
+            <section key={key}>
+              <h3>{calendarDayLabel(key)}</h3>
+              <div>
+                {items.map((entry) => (
+                  <CalendarEntry entry={entry} key={entry.id} />
+                ))}
+              </div>
+            </section>
+          ))}
+        </div>
+      )}
+      {!loading && !error && !filtered.length && (
+        <p className="workspace-calendar-empty">
+          {doctor || status
+            ? "No appointments match these filters."
+            : "No dated appointments this month. Unscheduled requests are available in the appointment list."}
+        </p>
+      )}
       <Link
         className="clinic-calendar-list-link"
         href="/admin/collections/appointments"

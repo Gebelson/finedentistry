@@ -7,45 +7,68 @@ const base = process.env.TEST_URL || "http://localhost:3000";
     const context = await browser.newContext({
       extraHTTPHeaders: { Origin: base },
     });
-    const response = await context.request.post(base + "/api/users/login", {
+    const login = await context.request.post(base + "/api/users/login", {
       data: {
         username: process.env.TEST_ADMIN_USERNAME,
         password: process.env.TEST_ADMIN_PASSWORD,
       },
     });
-    assert.equal(response.status(), 200);
-    const session = await response.json();
-    const issuedAt = JSON.parse(
+    assert.equal(login.status(), 200);
+    const session = await login.json();
+    const claims = JSON.parse(
       Buffer.from(session.token.split(".")[1], "base64url").toString(),
-    ).iat;
-    assert.equal(
-      session.exp - issuedAt,
-      12 * 60 * 60,
-      "Login should last a full workday",
     );
+    assert.equal(
+      claims.exp,
+      undefined,
+      "Persistent login must not contain an expiry claim",
+    );
+    assert.equal(session.exp, undefined);
     const cookie = (await context.cookies()).find(
       (item) => item.name === "payload-token",
     );
     assert.ok(cookie.httpOnly);
     assert.equal(cookie.sameSite, "Lax");
     if (base.startsWith("https:")) assert.ok(cookie.secure);
-    assert.ok(cookie.expires * 1000 > Date.now() + 11.9 * 60 * 60 * 1000);
+    assert.ok(cookie.expires * 1000 > Date.now() + 390 * 86400000);
     const page = await context.newPage();
     await page.goto(base + "/admin");
     await page
       .getByRole("heading", { name: "Dashboard", exact: true })
       .waitFor();
-    await page.waitForTimeout(1100);
+    const me = await context.request.get(base + "/api/users/me");
+    assert.equal(me.status(), 200);
+    assert.match(me.headers()["set-cookie"], /Max-Age=34560000/);
+    assert.equal((await me.json()).exp, undefined);
+    const snapshot = await context.storageState();
+    const reopened = await browser.newContext({
+      storageState: snapshot,
+      extraHTTPHeaders: { Origin: base },
+    });
+    try {
+      assert.equal(
+        (await reopened.request.get(base + "/api/health")).status(),
+        200,
+      );
+    } finally {
+      await reopened.close();
+    }
     const refreshed = await context.request.post(
       base + "/api/users/refresh-token",
     );
     assert.equal(refreshed.status(), 200);
-    const renewal = await refreshed.json();
-    assert.ok(renewal.exp > session.exp, "Refresh must extend the session");
-    await page.reload();
-    await page
-      .getByRole("heading", { name: "Dashboard", exact: true })
-      .waitFor();
+    const renewed = await refreshed.json();
+    assert.equal(renewed.exp, undefined);
+    assert.equal(
+      JSON.parse(
+        Buffer.from(
+          renewed.refreshedToken.split(".")[1],
+          "base64url",
+        ).toString(),
+      ).exp,
+      undefined,
+    );
+    const bearer = renewed.refreshedToken;
     assert.equal(
       (await context.request.post(base + "/api/users/logout")).status(),
       200,
@@ -55,10 +78,22 @@ const base = process.env.TEST_URL || "http://localhost:3000";
         await context.request.post(base + "/api/users/refresh-token")
       ).status() >= 400,
     );
+    const replay = await browser.newContext({
+      extraHTTPHeaders: { Authorization: "JWT " + bearer },
+    });
+    try {
+      assert.equal(
+        (await replay.request.get(base + "/api/health")).status(),
+        401,
+        "Signed tokens must stop working once their server session is revoked",
+      );
+    } finally {
+      await replay.close();
+    }
     await page.goto(base + "/admin");
     await page.waitForURL("**/admin/login");
     console.log(
-      "PASS 12-hour session, persistent protected cookie, session renewal and explicit logout.",
+      "PASS non-expiring signed login, rolling protected cookie, browser-session restore, renewal, logout and revoked-token replay rejection.",
     );
   } finally {
     await browser.close();
