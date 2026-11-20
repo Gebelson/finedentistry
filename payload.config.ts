@@ -101,6 +101,7 @@ export default buildConfig({
           path: "/calendar",
         },
       },
+      beforeNavLinks: ["/workspace-views#DashboardLink"],
       afterNavLinks: ["/workspace-views#WorkspaceLinks"],
       graphics: {
         Logo: "/brand#AdminBrand",

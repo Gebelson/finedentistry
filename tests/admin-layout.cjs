@@ -29,6 +29,9 @@ const base = process.env.TEST_URL || 'http://localhost:3000';
           const closeMenu = page.locator('.template-default__nav-toggler');
           assert.match(await closeMenu.getAttribute('aria-label'), /^Close menu$/i);
           assert.equal(await page.locator('.clinic-workspace-links').count(), 1);
+          const dashboardLink = page.locator('.clinic-dashboard-link');
+          assert.equal(await dashboardLink.getAttribute('href'), '/admin');
+          assert.equal(await dashboardLink.getAttribute('aria-current'), 'page');
           await page.screenshot({ path: `.cache/admin-qa/navigation-${width}.png` });
           await page.locator(width >= 1024 ? '.template-default__nav-toggler' : '.nav__mobile-close').click();
           await page.waitForFunction(() => document.documentElement.scrollWidth <= innerWidth);
@@ -37,6 +40,11 @@ const base = process.env.TEST_URL || 'http://localhost:3000';
         assert.equal(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth), false, `${route} at ${width}px must not overflow`);
       }
     }
+    await page.goto(base + '/admin/analytics');
+    await page.locator('.app-header__mobile-nav-toggler').click();
+    await page.getByRole('link', { name: 'Dashboard', exact: true }).click();
+    await page.waitForURL(base + '/admin');
+    await page.getByRole('heading', { name: 'Your practice, in focus.' }).waitFor();
     assert.deepEqual(errors, []);
     console.log('PASS one admin layout/sidebar on dashboard, analytics, calendar, reports, integrations and articles; desktop, 571px dark and mobile; menu toggle and no horizontal overflow/runtime errors.');
   } finally { await browser.close(); }

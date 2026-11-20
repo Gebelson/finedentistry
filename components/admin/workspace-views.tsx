@@ -180,6 +180,11 @@ export async function IntegrationsView(props: AdminViewServerProps) {
     </DefaultTemplate>
   );
 }
+export function DashboardLink({ user, viewType }: ServerProps) {
+  if (!user) return null;
+  return <Link href="/admin" prefetch={false} className="clinic-dashboard-link" aria-current={viewType === 'dashboard' ? 'page' : undefined}>Dashboard</Link>;
+}
+
 export function WorkspaceLinks({ user }: ServerProps) {
   if (!user) return null;
   return (

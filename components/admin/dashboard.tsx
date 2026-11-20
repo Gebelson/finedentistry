@@ -30,7 +30,7 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
   return (
     <section className="clinic-dashboard">
       <div className="clinic-dashboard-top">
-        <span>FINE DENTISTRY / WORKSPACE</span>
+        <span>DASHBOARD / FINE DENTISTRY</span>
         <Link href="/">View website ↗</Link>
       </div>
       <h1>
