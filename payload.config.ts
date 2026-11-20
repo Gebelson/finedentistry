@@ -83,7 +83,24 @@ export default buildConfig({
       titleSuffix: "— Fine Dentistry · Praxis",
       robots: "noindex, nofollow",
     },
-    importMap: { baseDir: path.resolve(process.cwd(), "components/admin") },
+    importMap: {
+      baseDir: path.resolve(process.cwd(), "components/admin"),
+      // Payload forwards these settings to the client. Keep generator functions
+      // in the CLI process so runtime RSC configuration stays serializable.
+      ...(process.argv.includes("generate:importmap")
+        ? {
+            generators: [
+              ({ addToImportMap }) => {
+                // This provider is conditional on a production-only credential. Keep its
+                // registration stable when developers regenerate the map without Blob.
+                addToImportMap(
+                  "@payloadcms/storage-vercel-blob/client#VercelBlobClientUploadHandler",
+                );
+              },
+            ],
+          }
+        : {}),
+    },
     components: {
       Nav: "/navigation#WorkspaceNav",
       views: {
