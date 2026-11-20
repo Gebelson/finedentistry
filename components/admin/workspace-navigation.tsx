@@ -1,9 +1,31 @@
 "use client";
-import Link from "next/link";
+import Link, { useLinkStatus } from "next/link";
 import { usePathname } from "next/navigation";
 import { useNav } from "@payloadcms/ui";
 import { WorkspaceIcon, type WorkspaceIconName } from "./workspace-icon";
 type Destination = { label: string; href: string; icon: WorkspaceIconName };
+function NavigationLinkContent({
+  label,
+  icon,
+  current,
+}: Destination & { current: boolean }) {
+  const { pending } = useLinkStatus();
+  return (
+    <>
+      <WorkspaceIcon name={icon} />
+      <span>{label}</span>
+      {pending ? (
+        <span
+          className="workspace-link-pending"
+          role="status"
+          aria-label={`Opening ${label}`}
+        />
+      ) : (
+        current && <span className="workspace-active-mark" />
+      )}
+    </>
+  );
+}
 export function WorkspaceNavigation({
   name,
   role,
@@ -188,9 +210,7 @@ export function WorkspaceNavigation({
                     aria-current={current ? "page" : undefined}
                     className="workspace-nav-link"
                   >
-                    <WorkspaceIcon name={link.icon} />
-                    <span>{link.label}</span>
-                    {current && <span className="workspace-active-mark" />}
+                    <NavigationLinkContent {...link} current={current} />
                   </Link>
                 );
               })}

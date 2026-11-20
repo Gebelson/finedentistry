@@ -17,12 +17,12 @@
 .ops-dashboard,
 .clinic-reports,
 .clinic-calendar {
-  animation: workspace-page-enter 280ms var(--workspace-ease) backwards;
+  animation: workspace-page-enter 120ms var(--workspace-ease) backwards;
 }
 .collection-list,
 .collection-edit,
 .global-edit {
-  animation: workspace-content-fade 220ms ease-out backwards;
+  animation: workspace-content-fade 100ms ease-out backwards;
 }
 @keyframes workspace-content-fade {
   from {
@@ -42,6 +42,20 @@
   transition:
     background-color var(--workspace-quick) ease,
     color var(--workspace-quick) ease;
+}
+.workspace-nav-link:has(.workspace-link-pending) {
+  background: #263a53;
+  color: #fff;
+}
+.workspace-link-pending {
+  margin-left: auto;
+  width: 12px;
+  height: 12px;
+  flex: 0 0 12px;
+  border: 1.5px solid #ffffff40;
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: workspace-refresh-spin 0.7s linear infinite;
 }
 .workspace-nav-link::before {
   content: "";
@@ -130,7 +144,7 @@
 .ops-chart-series-line {
   stroke-dasharray: 100;
   stroke-dashoffset: 0;
-  animation: workspace-chart-draw 520ms var(--workspace-ease) both;
+  animation: workspace-chart-draw 180ms var(--workspace-ease) both;
 }
 @keyframes workspace-chart-draw {
   from {
@@ -145,7 +159,7 @@
 .ops-chart-series-bar {
   transform-box: fill-box;
   transform-origin: center bottom;
-  animation: workspace-bar-in 360ms var(--workspace-ease) both;
+  animation: workspace-bar-in 180ms var(--workspace-ease) both;
 }
 @keyframes workspace-bar-in {
   from {
@@ -159,7 +173,7 @@
 }
 .ops-metric-value {
   display: inline-block;
-  animation: workspace-value-in 220ms var(--workspace-ease) both;
+  animation: workspace-value-in 120ms var(--workspace-ease) both;
 }
 @keyframes workspace-value-in {
   from {
