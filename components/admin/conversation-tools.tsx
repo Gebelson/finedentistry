@@ -8,14 +8,22 @@ export function ConversationTools() {
   const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
   const [error, setError] = useState("");
+  const [loadError, setLoadError] = useState("");
   const [busy, setBusy] = useState(false);
   const refresh = useCallback(async () => {
     if (!id) return;
-    const response = await fetch(`/api/clinic-chat?conversation=${id}`);
-    if (!response.ok) return;
-    const result = await response.json();
-    setMessages(result.messages);
-    setStatus(`${result.status} · ${result.controller}`);
+    try {
+      const response = await fetch(`/api/clinic-chat?conversation=${id}`);
+      if (!response.ok) throw Error("Unable to load the conversation.");
+      const result = await response.json();
+      setMessages(result.messages);
+      setStatus(`${result.status} · ${result.controller}`);
+      setLoadError("");
+    } catch {
+      setLoadError(
+        "Unable to load the conversation. Reconnecting automatically…",
+      );
+    }
   }, [id]);
   useEffect(() => {
     void refresh();
@@ -92,6 +100,7 @@ export function ConversationTools() {
         </button>
       </div>
       {error && <p role="alert">{error}</p>}
+      {loadError && <p role="alert">{loadError}</p>}
       <p className="clinic-inbox-note">
         Replies appear in the visitor’s open website chat. SMS and email
         delivery are not connected.

@@ -68,9 +68,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:3010";
     assert.equal(invalid.status(), 400);
     const page = await context.newPage();
     await page.goto(`${base}/admin/calendar`);
-    await page
-      .getByRole("heading", { name: "Appointments" })
-      .waitFor();
+    await page.getByRole("heading", { name: "Appointments" }).waitFor();
     await page
       .locator(".calendar-event")
       .filter({ hasText: "Calendar verification" })
@@ -82,6 +80,37 @@ const base = process.env.TEST_URL || "http://127.0.0.1:3010";
         () => document.documentElement.scrollWidth > innerWidth,
       ),
       false,
+    );
+    const editedContact = await context.request.patch(
+      `${base}/api/contacts/${contact.id}`,
+      {
+        data: { preferredContact: "email", phone: "4075550100" },
+      },
+    );
+    assert.equal(editedContact.status(), 200);
+    const persistedContact = await (
+      await context.request.get(`${base}/api/contacts/${contact.id}`)
+    ).json();
+    assert.equal(persistedContact.preferredContact, "email");
+    assert.equal(persistedContact.phone, "4075550100");
+    assert.equal(
+      (
+        await context.request.patch(
+          `${base}/api/appointments/${appointment.id}`,
+          { data: { status: "completed" } },
+        )
+      ).status(),
+      200,
+    );
+    assert.equal(
+      (
+        await (
+          await context.request.get(
+            `${base}/api/appointments/${appointment.id}`,
+          )
+        ).json()
+      ).status,
+      "completed",
     );
     const guest = await browser.newContext();
     try {

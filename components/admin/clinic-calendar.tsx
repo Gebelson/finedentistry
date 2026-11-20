@@ -21,7 +21,10 @@ export function ClinicCalendar() {
   );
   const [entries, setEntries] = useState<Entry[]>([]),
     [error, setError] = useState("");
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
+    const controller = new AbortController();
+    let active = true;
     const before = new Date(
         month.getFullYear(),
         month.getMonth(),
@@ -39,14 +42,32 @@ export function ClinicCalendar() {
       "where[startsAt][less_than]": after,
       sort: "startsAt",
     });
-    fetch("/api/appointments?" + query)
+    fetch("/api/appointments?" + query, { signal: controller.signal })
       .then(async (r) => {
         if (!r.ok) throw Error("Unable to load the calendar.");
-        setEntries((await r.json()).docs);
-        setError("");
+        const result = await r.json();
+        if (active) setEntries(result.docs);
       })
-      .catch((e) => setError(e.message));
+      .catch(() => {
+        if (active)
+          setError(
+            "Unable to load the calendar. Please select the month again to retry.",
+          );
+      })
+      .finally(() => {
+        if (active) setLoading(false);
+      });
+    return () => {
+      active = false;
+      controller.abort();
+    };
   }, [month]);
+  function changeMonth(offset: number) {
+    setLoading(true);
+    setEntries([]);
+    setError("");
+    setMonth(new Date(month.getFullYear(), month.getMonth() + offset, 1));
+  }
   const days = new Date(month.getFullYear(), month.getMonth() + 1, 0).getDate(),
     pad = month.getDay();
   return (
@@ -68,9 +89,7 @@ export function ClinicCalendar() {
         <button
           type="button"
           aria-label="Previous month"
-          onClick={() =>
-            setMonth(new Date(month.getFullYear(), month.getMonth() - 1, 1))
-          }
+          onClick={() => changeMonth(-1)}
         >
           ←
         </button>
@@ -83,15 +102,14 @@ export function ClinicCalendar() {
         <button
           type="button"
           aria-label="Next month"
-          onClick={() =>
-            setMonth(new Date(month.getFullYear(), month.getMonth() + 1, 1))
-          }
+          onClick={() => changeMonth(1)}
         >
           →
         </button>
       </div>
       {error && <p role="alert">{error}</p>}
-      <div className="clinic-calendar-grid">
+      {loading && <p role="status">Loading appointments…</p>}
+      <div className="clinic-calendar-grid" aria-busy={loading}>
         {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
           <div className="clinic-calendar-weekday" key={d}>
             {d}
