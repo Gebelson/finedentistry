@@ -32,4 +32,4 @@
 - [x] Design: coherent application tokens/sidebar/dashboard, responsive/native form consistency and restrained motion.
 - [x] Reporting: useful actual period-based operational summaries/export if implementation remains schema-neutral.
 - [x] Integration gate: lint, type/build, full admin/site connected-flow regression, desktop/mobile screenshots, accessibility and console checks.
-- [ ] Review, release to authorized GitHub/Vercel target, verify public alias and changed workflows; restore/delete fixtures and report exact capabilities/limits.
+- [x] Review, release to authorized GitHub/Vercel target, verify public alias and changed workflows; restore/delete fixtures and report exact capabilities/limits.

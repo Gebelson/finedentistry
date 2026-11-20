@@ -9,12 +9,12 @@ const base = process.env.TEST_URL || "https://finedentistry.vercel.app";
     isMobile: true,
     hasTouch: true,
     reducedMotion: "reduce",
-    extraHTTPHeaders: { Origin: base },
   });
   try {
     assert.equal(
       (
         await c.request.post(base + "/api/users/login", {
+          headers: { Origin: base },
           data: {
             username: process.env.TEST_ADMIN_USERNAME,
             password: process.env.TEST_ADMIN_PASSWORD,
@@ -26,7 +26,14 @@ const base = process.env.TEST_URL || "https://finedentistry.vercel.app";
     const p = await c.newPage();
     const errors = [];
     p.on("pageerror", (e) => errors.push(e.message));
-    await p.goto(base + "/admin");
+    async function openAdmin(path) {
+      const sessionReady = p.waitForResponse(
+        (response) => new URL(response.url()).pathname === "/api/users/me",
+      );
+      await p.goto(base + path);
+      await (await sessionReady).finished();
+    }
+    await openAdmin("/admin");
     await p.getByRole("heading", { name: "Dashboard", exact: true }).waitFor();
     await p
       .locator(".workspace-nav.nav--nav-hydrated")
@@ -65,7 +72,13 @@ const base = process.env.TEST_URL || "https://finedentistry.vercel.app";
         .getAttribute("aria-pressed"),
       "true",
     );
-    await p.goto(base + "/admin/collections/appointments/create");
+    await p.waitForFunction(
+      () =>
+        document
+          .querySelector(".clinic-calendar-grid")
+          ?.getAttribute("aria-busy") === "false",
+    );
+    await openAdmin("/admin/collections/appointments/create");
     await p.locator("input[name=startsAt]").waitFor();
     assert.equal(await p.locator("input[name=startsAt]").inputValue(), "");
     await p.setViewportSize({ width: 390, height: 844 });
@@ -79,7 +92,7 @@ const base = process.env.TEST_URL || "https://finedentistry.vercel.app";
       await p.evaluate(() => document.documentElement.scrollWidth > innerWidth),
       false,
     );
-    await p.goto(base + "/admin/reports");
+    await openAdmin("/admin/reports");
     await p.getByRole("region", { name: "Report results" }).waitFor();
     await p.getByLabel("Reporting period", { exact: true }).selectOption("7");
     await p.waitForFunction(
@@ -125,7 +138,9 @@ const base = process.env.TEST_URL || "https://finedentistry.vercel.app";
       "PASS WebKit mobile touch navigation, Agenda/orientation, blank date form, 16px inputs, CSV download and keyboard-like booking viewport. No records submitted.",
     );
   } finally {
-    await c.request.post(base + "/api/users/logout").catch(() => {});
+    await c.request
+      .post(base + "/api/users/logout", { headers: { Origin: base } })
+      .catch(() => {});
     await b.close();
   }
 })().catch((e) => {
