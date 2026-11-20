@@ -124,11 +124,14 @@ export function ActivityChart({ daily }: { daily: AnalyticsSummary["daily"] }) {
                 width={Math.max(1, step * 0.56)}
                 height={(day.views / max) * height}
                 fill={activeIndex === index ? "#315f9f" : "#7998c7"}
+                className="ops-chart-series-bar"
               >
                 <title>{`${day.day}: ${day.views} views`}</title>
               </rect>
             ))}
             <polyline
+            className="ops-chart-series-line"
+            pathLength="100"
               points={points}
               fill="none"
               stroke="#24918b"

@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { WorkspaceIcon } from "./workspace-icon";
 import type { AnalyticsSummary } from "@/lib/analytics-types";
 import {
   ActivityChart,
@@ -23,16 +24,21 @@ export function WebsiteAnalytics({
   overview?: boolean;
 }) {
   const [data, setData] = useState(initial),
+    [period, setPeriod] = useState(initial.days),
+    [revision, setRevision] = useState(0),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
   async function refresh(days: number) {
+    setPeriod(days);
     setBusy(true);
     setError("");
     try {
       const response = await fetch("/api/site-analytics?days=" + days);
       if (!response.ok) throw Error();
       setData(await response.json());
+      setRevision((value) => value + 1);
     } catch {
+      setPeriod(data.days);
       setError("Analytics could not be refreshed. Please try again.");
     } finally {
       setBusy(false);
@@ -73,7 +79,7 @@ export function WebsiteAnalytics({
             Period{" "}
             <select
               aria-label="Period"
-              value={data.days}
+              value={period}
               disabled={busy}
               onChange={(event) => refresh(Number(event.target.value))}
             >
@@ -90,10 +96,35 @@ export function WebsiteAnalytics({
             disabled={busy}
             onClick={() => refresh(data.days)}
           >
+            <WorkspaceIcon
+              name="refresh"
+              className={
+                busy
+                  ? "ops-refresh-icon ops-refresh-icon-busy"
+                  : "ops-refresh-icon"
+              }
+            />
             {busy ? "Refreshing…" : "Refresh"}
           </button>
         </div>
+        <div className="ops-refresh-progress" aria-hidden="true">
+          <span />
+        </div>
       </div>
+      <p
+        data-testid="analytics-status"
+        className="ops-visually-hidden"
+        role="status"
+        aria-live="polite"
+      >
+        {busy
+          ? "Updating analytics."
+          : error
+            ? "Update failed. Previous data remains visible."
+            : revision
+              ? "Analytics updated."
+              : ""}
+      </p>
       {error && (
         <p className="ops-error" role="alert">
           {error}
@@ -108,7 +139,11 @@ export function WebsiteAnalytics({
         ].map(([label, value]) => (
           <div key={label}>
             <dt>{label}</dt>
-            <dd>{format(Number(value))}</dd>
+            <dd>
+              <span key={revision} className="ops-metric-value">
+                {format(Number(value))}
+              </span>
+            </dd>
           </div>
         ))}
       </dl>
@@ -119,7 +154,7 @@ export function WebsiteAnalytics({
             <span>Daily · Orlando time</span>
           </div>
           <div className="ops-panel-body">
-            <ActivityChart daily={data.daily} />
+            <ActivityChart key={revision} daily={data.daily} />
             {!overview && (
               <details className="ops-daily-details">
                 <summary>View daily figures</summary>

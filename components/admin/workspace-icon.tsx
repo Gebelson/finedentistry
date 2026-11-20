@@ -17,8 +17,10 @@ export type WorkspaceIconName =
   | "logout"
   | "external"
   | "collapse"
+  | "refresh"
   | "close";
 const paths: Record<WorkspaceIconName, string[]> = {
+  refresh: ["M20 7v5h-5", "M4 17v-5h5", "M6.1 6.1a8 8 0 0 1 13 3L20 12", "M17.9 17.9a8 8 0 0 1-13-3L4 12"],
   collapse: ["M3 4h18v16H3z", "M9 4v16", "M16 9l-3 3 3 3"],
   dashboard: ["M3 3h7v7H3z", "M14 3h7v7h-7z", "M3 14h7v7H3z", "M14 14h7v7h-7z"],
   analytics: ["M4 3v17h17", "M8 15v-4", "M13 15V7", "M18 15V4"],

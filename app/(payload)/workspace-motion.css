@@ -1,0 +1,299 @@
+/* Motion follows actions; content remains readable without animation. */
+:root {
+  --workspace-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --workspace-quick: 160ms;
+  --nav-trans-time: 240ms;
+}
+@keyframes workspace-page-enter {
+  from {
+    opacity: 0.35;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ops-dashboard,
+.clinic-reports,
+.clinic-calendar {
+  animation: workspace-page-enter 280ms var(--workspace-ease) backwards;
+}
+.collection-list,
+.collection-edit,
+.global-edit {
+  animation: workspace-content-fade 220ms ease-out backwards;
+}
+@keyframes workspace-content-fade {
+  from {
+    opacity: 0.35;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.workspace-nav.nav--nav-animate,
+.template-default--nav-animate .template-default__wrap {
+  transition-duration: 240ms;
+  transition-timing-function: var(--workspace-ease);
+}
+.workspace-nav-link {
+  isolation: isolate;
+  transition:
+    background-color var(--workspace-quick) ease,
+    color var(--workspace-quick) ease;
+}
+.workspace-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 10px;
+  bottom: 10px;
+  width: 2px;
+  background: #9cbce7;
+  border-radius: 2px;
+  opacity: 0;
+  transform: scaleY(0.5);
+  transition:
+    opacity 150ms ease,
+    transform 180ms var(--workspace-ease);
+}
+.workspace-nav-link[aria-current="page"] {
+  box-shadow: none;
+}
+.workspace-nav-link[aria-current="page"]::before {
+  opacity: 1;
+  transform: scaleY(1);
+}
+.workspace-nav-link > svg {
+  transition:
+    transform 180ms var(--workspace-ease),
+    color var(--workspace-quick) ease;
+}
+.workspace-nav-collapse,
+.workspace-nav-close,
+.workspace-signout {
+  transition:
+    background-color var(--workspace-quick) ease,
+    border-color var(--workspace-quick) ease,
+    color var(--workspace-quick) ease;
+}
+.ops-kpi {
+  transition:
+    transform 180ms var(--workspace-ease),
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+.ops-kpi-label > svg {
+  transition:
+    color var(--workspace-quick) ease,
+    transform 180ms var(--workspace-ease);
+}
+.ops-kpi > small > span {
+  transition: transform 180ms var(--workspace-ease);
+}
+.ops-button {
+  transition:
+    transform 120ms var(--workspace-ease),
+    background-color var(--workspace-quick) ease,
+    box-shadow var(--workspace-quick) ease,
+    border-color var(--workspace-quick) ease;
+}
+.ops-button:not(.ops-button-secondary):not(:disabled) {
+  box-shadow:
+    0 1px 2px #1f456f20,
+    inset 0 1px 0 #ffffff16;
+}
+.ops-button:not(:disabled):active {
+  transform: translateY(1px) scale(0.985);
+}
+.ops-button:disabled {
+  transform: none;
+}
+.ops-table tbody tr,
+.collection-list table tbody tr {
+  transition: background-color 140ms ease;
+}
+.ops-chart-tooltip {
+  animation: workspace-tooltip-in 100ms ease-out;
+}
+@keyframes workspace-tooltip-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 3px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+.ops-chart-series-line {
+  stroke-dasharray: 100;
+  stroke-dashoffset: 0;
+  animation: workspace-chart-draw 520ms var(--workspace-ease) both;
+}
+@keyframes workspace-chart-draw {
+  from {
+    stroke-dashoffset: 100;
+    opacity: 0.4;
+  }
+  to {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+.ops-chart-series-bar {
+  transform-box: fill-box;
+  transform-origin: center bottom;
+  animation: workspace-bar-in 360ms var(--workspace-ease) both;
+}
+@keyframes workspace-bar-in {
+  from {
+    opacity: 0.35;
+    transform: scaleY(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+}
+.ops-metric-value {
+  display: inline-block;
+  animation: workspace-value-in 220ms var(--workspace-ease) both;
+}
+@keyframes workspace-value-in {
+  from {
+    opacity: 0.45;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.ops-analytics-toolbar {
+  position: relative;
+  padding-bottom: 4px;
+}
+.ops-refresh-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+.ops-refresh-icon-busy {
+  animation: workspace-refresh-spin 0.9s linear infinite;
+}
+@keyframes workspace-refresh-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.ops-refresh-progress {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  overflow: hidden;
+  border-radius: 2px;
+  opacity: 0;
+  background: #e4ebf4;
+  transition: opacity 140ms ease;
+  pointer-events: none;
+}
+.ops-refresh-progress > span {
+  display: block;
+  width: 32%;
+  height: 100%;
+  background: #6f94c5;
+}
+.ops-analytics[aria-busy="true"] .ops-refresh-progress {
+  opacity: 1;
+}
+.ops-analytics[aria-busy="true"] .ops-refresh-progress > span {
+  animation: workspace-progress-travel 1.2s ease-in-out infinite;
+}
+@keyframes workspace-progress-travel {
+  from {
+    transform: translateX(-110%);
+  }
+  to {
+    transform: translateX(420%);
+  }
+}
+.ops-traffic-kpis {
+  transition:
+    background-color 140ms ease,
+    border-color 140ms ease;
+}
+.ops-analytics[aria-busy="true"] .ops-traffic-kpis {
+  background-color: #fafbfd;
+  border-color: #b7c9e1;
+}
+@media (hover: hover) and (pointer: fine) {
+  .workspace-nav-link:hover > svg {
+    transform: translateX(1px);
+  }
+  .ops-kpi:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 16px #2039570a;
+    border-color: #bccce0;
+  }
+  .ops-kpi:hover .ops-kpi-label > svg {
+    color: #315f9f;
+    transform: translateY(-1px);
+  }
+  .ops-kpi:hover > small > span {
+    transform: translateX(3px);
+  }
+  .ops-button:not(.ops-button-secondary):not(:disabled):hover {
+    box-shadow:
+      0 3px 9px #294f7b24,
+      inset 0 1px 0 #ffffff1c;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --nav-trans-time: 0ms;
+  }
+  .ops-dashboard,
+  .clinic-reports,
+  .clinic-calendar,
+  .collection-list,
+  .collection-edit,
+  .global-edit,
+  .workspace-nav,
+  .workspace-nav *,
+  .template-default--nav-animate .template-default__wrap,
+  .ops-kpi,
+  .ops-kpi *,
+  .ops-button,
+  .ops-table tbody tr,
+  .collection-list table tbody tr,
+  .ops-chart-tooltip,
+  .ops-chart-series-line,
+  .ops-chart-series-bar,
+  .ops-metric-value,
+  .ops-refresh-icon,
+  .ops-refresh-progress,
+  .ops-refresh-progress > span,
+  .ops-traffic-kpis {
+    animation: none !important;
+    transition: none !important;
+  }
+  .ops-kpi:hover,
+  .ops-kpi:hover .ops-kpi-label > svg,
+  .ops-kpi:hover > small > span,
+  .ops-button:active,
+  .workspace-nav-link:hover > svg {
+    transform: none;
+  }
+  .ops-chart-series-line {
+    stroke-dashoffset: 0;
+  }
+  .ops-analytics[aria-busy="true"] .ops-refresh-progress > span {
+    width: 100%;
+    opacity: 0.45;
+    transform: none;
+  }
+}

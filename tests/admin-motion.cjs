@@ -1,0 +1,24 @@
+const assert=require('node:assert/strict');
+const{chromium}=require('playwright');
+const base=process.env.TEST_URL||'http://localhost:3000';
+(async()=>{const browser=await chromium.launch({channel:'chrome',headless:true});let release;try{
+ const c=await browser.newContext({viewport:{width:1440,height:1000},reducedMotion:'no-preference',extraHTTPHeaders:{Origin:base}});
+ assert.equal((await c.request.post(base+'/api/users/login',{data:{username:process.env.TEST_ADMIN_USERNAME,password:process.env.TEST_ADMIN_PASSWORD}})).status(),200);
+ const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));await p.goto(base+'/admin');await p.getByRole('heading',{name:'Dashboard',exact:true}).waitFor();
+ assert.notEqual(await p.locator('.ops-dashboard').evaluate(n=>getComputedStyle(n).animationName),'none');
+ await p.locator('.ops-kpi').first().hover();await p.waitForFunction(()=>getComputedStyle(document.querySelector('.ops-kpi')).transform!=='none');
+ let caught;const intercepted=new Promise(resolve=>{caught=resolve;});
+ await p.route('**/api/site-analytics?days=7',async route=>{caught();await new Promise(resolve=>{release=resolve;});await route.continue();});
+ await p.getByLabel('Period',{exact:true}).selectOption('7');await intercepted;
+ assert.equal(await p.getByLabel('Period',{exact:true}).inputValue(),'7');
+ assert.equal(await p.locator('.ops-analytics').getAttribute('aria-busy'),'true');
+ assert.notEqual(await p.locator('.ops-refresh-progress>span').evaluate(n=>getComputedStyle(n).animationName),'none');
+ assert.ok(await p.getByRole('button',{name:'Refreshing…',exact:false}).isDisabled());
+ release();await p.locator('.ops-analytics[aria-busy="false"]').waitFor();assert.match(await p.getByTestId('analytics-status').innerText(),/updated/i);
+ await p.route('**/api/site-analytics?days=90',route=>route.fulfill({status:503,json:{error:'Verification failure'}}));
+ await p.getByLabel('Period',{exact:true}).selectOption('90');await p.getByRole('alert').waitFor();assert.equal(await p.getByLabel('Period',{exact:true}).inputValue(),'7');
+ await p.emulateMedia({reducedMotion:'reduce'});
+ assert.equal(await p.locator('.ops-dashboard').evaluate(n=>getComputedStyle(n).animationName),'none');
+ await p.locator('.ops-kpi').first().hover();assert.equal(await p.locator('.ops-kpi').first().evaluate(n=>getComputedStyle(n).transform),'none');
+ assert.deepEqual(errors,[]);console.log('PASS page/hover motion, honest busy/success/error feedback, requested-period retention, failure recovery and reduced-motion behavior.');
+}finally{release?.();await browser.close();}})().catch(e=>{console.error(e);process.exitCode=1;});

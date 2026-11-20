@@ -19,3 +19,11 @@ Self-hosted the original Inter variable WOFF2 from the Inter project, retaining 
 KPI cards now use meaningful outline icons and destination-specific action labels. Empty reception/calendar states give clearer context. Chart dates use readable month/day labels; count axes use integer ticks and adapt to low traffic. The activity chart now supports pointer/touch inspection, arrow keys, Home/End and Escape, with a visible tooltip and an accessible live announcement. No new visitor identifiers or storage were introduced.
 
 Verification: lint, typecheck and optimized build passed; navigation/dashboard/layout suites passed, including self-hosted font loading, collapse/reopen and chart pointer/keyboard interactions. The existing scoped WCAG A/AA checks and runtime-error collection passed. Analytics HTTP/privacy/filter suite also passed. Visual refinements include natural-height content panels and properly sized decorative empty-state icons.
+
+## Interaction motion — 2026-11-20
+
+Added admin-only page-entry, sidebar timing, active-link, hover/press, chart-series and returned-value motion. Analytics refresh uses an indeterminate progress line and rotating icon, announces busy/success/failure, keeps the requested period selected while loading, and restores the actual previous period after failure. Existing results remain readable and no artificial counter interpolation is used.
+
+Reduced-motion preferences disable decorative animation, hover displacement, chart drawing and menu transition timing; a static loading indicator and text feedback remain available. Native collection/form entrances use opacity only, and page movement does not retain a transformed ancestor after entry. This avoids changing fixed/table overflow behavior on mobile.
+
+Validated: optimized build, TypeScript and lint; focused browser checks for page/hover motion, held refresh, success/error recovery and reduced motion; existing navigation (including scoped axe WCAG checks), dashboard/filter and layout suites passed. A detected 16px mobile article-list overflow from a retained transform was corrected and the 571px regression passed. No schema changes or extra integration dependencies.
