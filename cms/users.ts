@@ -8,7 +8,8 @@ export const Users: CollectionConfig = {
   admin: { useAsTitle: "name", defaultColumns: ["name", "email", "role"] },
   auth: {
     loginWithUsername: { allowEmailLogin: true, requireEmail: false, requireUsername: false },
-    tokenExpiration: 60 * 60,
+    // Cover a workday, with Payload's activity-aware session renewal.
+    tokenExpiration: 12 * 60 * 60,
     maxLoginAttempts: 5,
     lockTime: 15 * 60 * 1000,
     cookies: { sameSite: "Lax", secure: process.env.NODE_ENV === "production" },
