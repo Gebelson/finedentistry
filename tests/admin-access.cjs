@@ -134,6 +134,12 @@ const editorPassword = randomBytes(24).toString("hex");
           ).status(),
           403,
         );
+        const editorPage = await editor.newPage();
+        await editorPage.goto(`${base}/admin`);
+        const editorNav = editorPage.locator('.workspace-nav');
+        assert.equal(await editorNav.getByRole('link', { name: 'Blog articles', exact: true, includeHidden: true }).count(), 1);
+        assert.equal(await editorNav.getByRole('link', { name: 'Inbox', exact: true, includeHidden: true }).count(), 0);
+        assert.equal(await editorNav.getByRole('link', { name: 'Team members', exact: true, includeHidden: true }).count(), 0);
         assert.equal(
           (
             await editor.request.post(`${base}/api/users`, {

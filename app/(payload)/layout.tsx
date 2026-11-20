@@ -5,6 +5,7 @@ import "@payloadcms/next/css";
 import { importMap } from "./admin/importMap";
 import "./custom.css";
 import "./operational.css";
+import "./workspace-shell.css";
 
 const serverFunction: ServerFunctionClient = async (args) => {
   "use server";

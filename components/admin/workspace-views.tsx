@@ -1,5 +1,5 @@
 import { DefaultTemplate } from "@payloadcms/next/templates";
-import type { AdminViewServerProps, ServerProps } from "payload";
+import type { AdminViewServerProps } from "payload";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { ClinicDashboard } from "./dashboard";
@@ -178,35 +178,5 @@ export async function IntegrationsView(props: AdminViewServerProps) {
         </p>
       </section>
     </DefaultTemplate>
-  );
-}
-export function DashboardLink({ user, viewType }: ServerProps) {
-  if (!user) return null;
-  return <Link href="/admin" prefetch={false} className="clinic-dashboard-link" aria-current={viewType === 'dashboard' ? 'page' : undefined}>Dashboard</Link>;
-}
-
-export function WorkspaceLinks({ user }: ServerProps) {
-  if (!user) return null;
-  return (
-    <div className="clinic-workspace-links">
-      {["admin", "reception"].includes(user.role) && (
-        <Link href="/admin/calendar" prefetch={false}>
-          Calendar ↗
-        </Link>
-      )}
-      {user.role === "admin" && (
-        <>
-          <Link href="/admin/analytics" prefetch={false}>
-            Website analytics ↗
-          </Link>
-          <Link href="/admin/reports" prefetch={false}>
-            Reports ↗
-          </Link>
-          <Link href="/admin/integrations" prefetch={false}>
-            Integrations ↗
-          </Link>
-        </>
-      )}
-    </div>
   );
 }

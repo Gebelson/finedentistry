@@ -83,6 +83,7 @@ export default buildConfig({
     },
     importMap: { baseDir: path.resolve(process.cwd(), "components/admin") },
     components: {
+      Nav: '/navigation#WorkspaceNav',
       views: {
         dashboard: { Component: "/workspace-views#DashboardView" },
         analytics: {
@@ -102,8 +103,6 @@ export default buildConfig({
           path: "/calendar",
         },
       },
-      beforeNavLinks: ["/workspace-views#DashboardLink"],
-      afterNavLinks: ["/workspace-views#WorkspaceLinks"],
       graphics: {
         Logo: "/brand#AdminBrand",
         Icon: "/brand#AdminIcon",

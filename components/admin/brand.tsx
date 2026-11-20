@@ -15,12 +15,7 @@ export function AdminBrand() {
 export function AdminIcon() {
   return (
     <span className="clinic-admin-icon" aria-label="Fine Dentistry">
-      <img
-        src="/images/bannerlogo.webp"
-        width="947"
-        height="357"
-        alt="Fine Dentistry of Downtown Orlando"
-      />
+      <span className="workspace-header-title">Fine Dentistry <span>Workspace</span></span>
     </span>
   );
 }
