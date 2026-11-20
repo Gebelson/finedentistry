@@ -9,6 +9,8 @@ import { chatGet, chatPost } from "./cms/chat-endpoint";
 import { Contacts, Appointments } from "./cms/appointments";
 import { workspaceReportsHandler } from "./cms/reports-endpoint";
 import { appointmentRequestHandler } from "./cms/appointment-request";
+import { connectionChecksHandler } from "./cms/connections-endpoint";
+import { calendarExportHandler } from "./cms/calendar-export";
 import { vercelBlobStorage } from "@payloadcms/storage-vercel-blob";
 
 const secret = process.env.PAYLOAD_SECRET;
@@ -151,6 +153,17 @@ export default buildConfig({
       }),
   graphQL: { disable: true },
   endpoints: [
+    {
+      path: "/workspace-connections",
+      method: "get",
+      handler: connectionChecksHandler,
+    },
+    {
+      path: "/workspace-connections",
+      method: "post",
+      handler: connectionChecksHandler,
+    },
+    { path: "/calendar-export", method: "get", handler: calendarExportHandler },
     {
       path: "/appointment-request",
       method: "post",

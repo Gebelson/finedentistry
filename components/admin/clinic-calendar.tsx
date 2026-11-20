@@ -54,6 +54,8 @@ export function ClinicCalendar() {
   const [month, setMonth] = useState(() => calendarMonth());
   const [entries, setEntries] = useState<Entry[]>([]);
   const [error, setError] = useState("");
+  const [downloadError, setDownloadError] = useState("");
+  const [downloading, setDownloading] = useState(false);
   const [loading, setLoading] = useState(true);
   const [revision, setRevision] = useState(0);
   const [doctor, setDoctor] = useState("");
@@ -123,6 +125,37 @@ export function ClinicCalendar() {
       ),
     );
   }
+  async function downloadCalendar() {
+    setDownloading(true);
+    setDownloadError("");
+    const selectedMonth = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, "0")}`;
+    try {
+      const response = await fetch(
+        "/api/calendar-export?" + new URLSearchParams({ month: selectedMonth }),
+        { cache: "no-store", credentials: "same-origin" },
+      );
+      if (
+        !response.ok ||
+        !response.headers.get("content-type")?.includes("text/calendar")
+      )
+        throw new Error("Calendar download unavailable");
+      const url = URL.createObjectURL(await response.blob());
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = `fine-dentistry-busy-${selectedMonth}.ics`;
+      document.body.append(link);
+      link.click();
+      link.remove();
+      // Allow the browser to consume the file before releasing its in-memory URL.
+      window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+    } catch {
+      setDownloadError(
+        "Unable to download the calendar. Please retry. Your records have not changed.",
+      );
+    } finally {
+      setDownloading(false);
+    }
+  }
   const filtered = useMemo(
     () =>
       entries.filter(
@@ -166,6 +199,11 @@ export function ClinicCalendar() {
         All times shown in Orlando time. This calendar is not synchronized with
         practice software and does not send patient confirmations.
       </p>
+      <p className="clinic-calendar-note">
+        Download this month’s scheduled busy times and doctors as an .ics file.
+        Patient details are excluded. Imports are snapshots; changes require a
+        new download.
+      </p>
       <div className="workspace-calendar-toolbar">
         <div className="clinic-calendar-nav">
           <button
@@ -198,6 +236,15 @@ export function ClinicCalendar() {
             Today
           </button>
         </div>
+        <button
+          type="button"
+          className="workspace-calendar-download"
+          disabled={downloading}
+          aria-busy={downloading}
+          onClick={() => void downloadCalendar()}
+        >
+          {downloading ? "Downloading…" : "Download calendar"}
+        </button>
         <div
           className="workspace-view-switch"
           role="group"
@@ -219,6 +266,7 @@ export function ClinicCalendar() {
           </button>
         </div>
       </div>
+      {downloadError && <p role="alert">{downloadError}</p>}
       <div className="workspace-calendar-filters">
         <label>
           Doctor

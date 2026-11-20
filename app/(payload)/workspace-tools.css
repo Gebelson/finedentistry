@@ -51,6 +51,13 @@
   width: auto;
   padding: 8px 13px;
 }
+.workspace-calendar-toolbar .workspace-calendar-download {
+  min-height: 44px;
+}
+.workspace-calendar-toolbar .workspace-calendar-download:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
 .workspace-view-switch {
   display: flex;
   padding: 3px;

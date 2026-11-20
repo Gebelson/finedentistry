@@ -95,7 +95,7 @@ export const ChatSettings: GlobalConfig = {
   admin: {
     group: "Reception",
     description:
-      "The built-in assistant answers from the practice FAQ. Generative AI, SMS and external inboxes are not connected.",
+      "The assistant uses the public practice FAQ. Optional AI generation and its live connection test are shown in Connections. SMS and external inboxes require separate integrations.",
   },
   access: {
     read: staffAccess,

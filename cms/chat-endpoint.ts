@@ -1,6 +1,6 @@
 import { randomBytes, createHash, timingSafeEqual } from "node:crypto";
 import { APIError, type PayloadRequest } from "payload";
-import { sourceFAQs } from "@/lib/content";
+import { practiceReply } from "./practice-assistant";
 
 const hash = (value: string) =>
   createHash("sha256").update(value).digest("hex");
@@ -62,41 +62,6 @@ async function append(
     overrideAccess: true,
     data: { conversation: id, sender, text: message },
   });
-}
-function faqReply(message: string): string {
-  if (
-    /\b(pain|hurts?|toothache|bleeding|swelling|fever|dose|medication|emergency)\b/i.test(
-      message,
-    )
-  )
-    return "For symptoms, medication questions or urgent dental concerns, please call (407) 898-1621 so the practice team can advise you. This assistant provides general practice information only.";
-  const words = new Set(message.toLowerCase().match(/[a-z]{4,}/g) || []);
-  const skip = new Set([
-    "what",
-    "when",
-    "where",
-    "with",
-    "that",
-    "have",
-    "does",
-    "your",
-    "this",
-    "please",
-    "would",
-    "could",
-    "about",
-  ]);
-  const ranked = sourceFAQs
-    .filter((faq) => faq.a.trim())
-    .map((faq) => ({
-      faq,
-      score: [...words].filter(
-        (word) => !skip.has(word) && faq.q.toLowerCase().includes(word),
-      ).length,
-    }))
-    .sort((a, b) => b.score - a.score);
-  if (ranked[0]?.score >= 1) return ranked[0].faq.a.slice(0, 2200);
-  return "Our team can help with that question. Please call (407) 898-1621. This assistant provides general practice information and cannot confirm appointments or give a diagnosis.";
 }
 export async function chatGet(req: PayloadRequest) {
   const query = new URL(req.url!).searchParams;
@@ -246,13 +211,23 @@ export async function chatPost(req: PayloadRequest) {
     settings.mode !== "reception" &&
     conversation.controller === "assistant"
   ) {
-    const latest = await req.payload.findByID({
-      collection: "conversations",
-      id,
-      overrideAccess: true,
-    });
-    if (latest.controller === "assistant")
-      await append(req, id, "assistant", faqReply(message));
+    const reply = await practiceReply(message, req);
+    // Reception can take over while generation is pending. Re-read both controls.
+    const [latest, latestSettings] = await Promise.all([
+      req.payload.findByID({
+        collection: "conversations",
+        id,
+        overrideAccess: true,
+      }),
+      req.payload.findGlobal({ slug: "chat-settings", overrideAccess: true }),
+    ]);
+    if (
+      latest.controller === "assistant" &&
+      latest.status !== "resolved" &&
+      latestSettings.enabled &&
+      latestSettings.mode !== "reception"
+    )
+      await append(req, id, "assistant", reply.text);
   } else if (conversation.status === "resolved") {
     await req.payload.update({
       collection: "conversations",

@@ -1,0 +1,193 @@
+.workspace-connections {
+  padding-bottom: 40px;
+}
+.connections-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+}
+.connections-heading h1 {
+  margin: 0 0 10px;
+}
+.connections-heading p {
+  color: var(--ops-muted);
+  line-height: 1.6;
+  margin: 0;
+}
+.connections-heading .connections-kicker {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  margin-bottom: 12px;
+}
+.workspace-connections button {
+  font: inherit;
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid var(--ops-line, #d9e3ef);
+  border-radius: 8px;
+  min-height: 44px;
+  padding: 10px 16px;
+  color: var(--ops-ink, #203449);
+  font-weight: 600;
+}
+.workspace-connections button:hover:not(:disabled) {
+  background: #edf3fa;
+  border-color: #8ca7c6;
+}
+.workspace-connections button:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+.workspace-connections button:focus-visible,
+.workspace-connections a:focus-visible {
+  outline: 2px solid #315f9c;
+  outline-offset: 4px;
+}
+.connections-heading > button {
+  flex-shrink: 0;
+}
+.workspace-connections .connections-explanation {
+  margin: 24px 0 16px;
+  max-width: 100ch;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #435a72;
+}
+.workspace-connections .connections-summary {
+  margin-bottom: 16px;
+  color: #435a72;
+  font-size: 12px;
+  min-height: 20px;
+}
+.workspace-connections .clinic-connections {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.workspace-connections .clinic-connections article {
+  padding: 22px;
+  background: #fff;
+  border: 1px solid var(--ops-line, #d9e3ef);
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+.workspace-connections .connection-title {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+}
+.workspace-connections .connection-title h2 {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.5;
+  color: #203449;
+}
+.workspace-connections .connection-badge {
+  opacity: 1;
+  display: inline-flex;
+  flex-shrink: 0;
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 600;
+  background: #fff2de;
+  color: #75470c;
+  padding: 5px 9px;
+  border-radius: 6px;
+}
+.workspace-connections [data-status="verified"] .connection-badge {
+  background: #e3f4ef;
+  color: #17634d;
+}
+.workspace-connections [data-status="disabled"] .connection-badge,
+.workspace-connections [data-status="needs_verification"] .connection-badge {
+  background: #edf2f8;
+  color: #465c74;
+}
+.workspace-connections [data-status="error"] .connection-badge {
+  background: #fff0ef;
+  color: #943b36;
+}
+.workspace-connections .clinic-connections article > p {
+  opacity: 1;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #425a73;
+  margin: 16px 0 0;
+}
+.workspace-connections .clinic-connections article > .connection-next {
+  color: #51667c;
+  font-size: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5ebf2;
+  margin-top: 14px;
+}
+.connection-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  padding-top: 16px;
+  margin-top: auto;
+}
+.connection-actions a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 44px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #315f9c;
+  text-decoration: none;
+}
+.connection-actions a:hover {
+  text-decoration: underline;
+}
+.connection-actions button {
+  font-size: 12px;
+}
+.connections-error {
+  border: 1px solid #dbb3ac;
+  border-radius: 8px;
+  background: #fff4f2;
+  padding: 16px;
+  color: #823930;
+  margin: 20px 0;
+}
+.connections-error p {
+  margin-top: 0;
+}
+.workspace-connections .connections-footnote {
+  max-width: 100ch;
+  font-size: 12px;
+  line-height: 1.8;
+  color: #51667c;
+  margin-top: 24px;
+}
+@media (max-width: 900px) {
+  .workspace-connections .clinic-connections {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+@media (max-width: 600px) {
+  .connections-heading {
+    flex-direction: column;
+    gap: 18px;
+  }
+  .workspace-connections .clinic-connections article {
+    padding: 18px;
+  }
+  .workspace-connections .connection-title {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .workspace-connections .connection-title h2 {
+    font-size: 16px;
+  }
+  .connections-heading > button {
+    align-self: flex-start;
+  }
+}
