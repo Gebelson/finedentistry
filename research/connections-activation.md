@@ -25,4 +25,10 @@ Focused tests cover role/CSRF access, secret/error suppression, real-check isola
 
 Compiled browser checks passed actual internal appointment creation → ICS response, connections refresh/error recovery, 1440/768/390/320 layouts for Connections and calendar, touch sizing, zero scoped Axe violations and no runtime errors. The existing full visitor/reception chat flow and native single-shell layout regression passed. Temporary appointments were deleted by finally cleanup. Production generation verification is a separate release gate; no account capability is inferred solely from the environment toggle.
 
+## Actual production result
+
+Release `2a07de2` reached Ready and the public alias https://finedentistry.vercel.app pointed to `finedentistry-bunew1so5-zapi-group.vercel.app`. The same browser/API test passed against that alias, including a real saved appointment overlapping the month boundary, private ICS output, Connections/mobile/error recovery and scoped Axe checks. Its temporary appointment was removed.
+
+The real neutral Gateway generation test returned `customer_verification_required`, mapped to `needs_setup`: “Vercel requires account verification before model access is available.” Project authentication reached the Gateway, but generation is NOT active. `PRACTICE_AI_ENABLED` is configured for the zero-price path; this toggle is not proof of access. No payment method, credit purchase or paid account verification step was performed. Website chat keeps the public FAQ fallback. This external verification gate remains outstanding alongside Resend/Stripe terms, telephony provisioning and clinic PMS access.
+
 References: [Gateway OIDC authentication](https://vercel.com/docs/ai-gateway/authentication-and-byok), [Gateway pricing](https://vercel.com/docs/ai-gateway/pricing), [public model catalog](https://ai-gateway.vercel.sh/v1/models), [Resend Marketplace setup](https://resend.com/docs/guides/vercel-marketplace-integration).
