@@ -5,14 +5,13 @@ import Link from "next/link";
 import { ClinicDashboard } from "./dashboard";
 
 export function DashboardView(props: AdminViewServerProps) {
-  const { req, visibleEntities } = props.initPageResult;
+  const { req } = props.initPageResult;
   if (!req.user) redirect("/admin/login");
+  // Payload already supplies DefaultTemplate for the dashboard route.
   return (
-    <DefaultTemplate {...props} req={req} visibleEntities={visibleEntities}>
-      <div className="gutter--left gutter--right">
-        <ClinicDashboard {...props} payload={req.payload} user={req.user} />
-      </div>
-    </DefaultTemplate>
+    <div className="gutter--left gutter--right">
+      <ClinicDashboard {...props} payload={req.payload} user={req.user} />
+    </div>
   );
 }
 
