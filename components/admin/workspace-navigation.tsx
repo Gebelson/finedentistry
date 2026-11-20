@@ -173,7 +173,6 @@ export function WorkspaceNavigation({
               alt="Fine Dentistry of Downtown Orlando"
             />
           </Link>
-          <span>Practice workspace</span>
           <button
             type="button"
             className="workspace-nav-collapse"
