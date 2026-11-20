@@ -27,12 +27,8 @@ export function AdminIcon() {
 export function LoginIntroduction() {
   return (
     <div className="clinic-login-intro">
-      <h1>
-        A little more control.
-        <br />
-        <em>A lot more possibility.</em>
-      </h1>
-      <p>Sign in to your clinic workspace.</p>
+      <h1>Clinic workspace</h1>
+      <p>Sign in to manage your website and reception.</p>
       <Link href="/">← Back to the website</Link>
     </div>
   );

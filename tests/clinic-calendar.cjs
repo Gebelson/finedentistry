@@ -69,7 +69,7 @@ const base = process.env.TEST_URL || "http://127.0.0.1:3010";
     const page = await context.newPage();
     await page.goto(`${base}/admin/calendar`);
     await page
-      .getByRole("heading", { name: "Your practice calendar." })
+      .getByRole("heading", { name: "Appointments" })
       .waitFor();
     await page
       .locator(".calendar-event")

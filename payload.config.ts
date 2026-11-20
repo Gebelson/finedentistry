@@ -74,6 +74,7 @@ export default buildConfig({
   }),
   routes: { admin: "/admin", api: "/api" },
   admin: {
+    theme: 'light',
     user: "users",
     timezones: { defaultTimezone: "America/New_York" },
     meta: {

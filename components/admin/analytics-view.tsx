@@ -11,7 +11,7 @@ export async function AnalyticsView(props: AdminViewServerProps) {
     <DefaultTemplate {...props} req={req} visibleEntities={visibleEntities}>
       <section className="gutter--left gutter--right clinic-reports">
         <p className="clinic-report-kicker">WEBSITE / ANALYTICS</p>
-        <h1>A closer look at your audience.</h1>
+        <h1>Website analytics</h1>
         <p>
           Real activity from your website. Collected from activation, with no
           historical estimates added.

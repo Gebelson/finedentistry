@@ -64,7 +64,7 @@ export async function ReportsView(props: AdminViewServerProps) {
     <DefaultTemplate {...props} req={req} visibleEntities={visibleEntities}>
       <section className="gutter--left gutter--right clinic-reports">
         <p className="clinic-report-kicker">WORKSPACE / REPORTS</p>
-        <h1>A clear view of the work.</h1>
+        <h1>Workspace reports</h1>
         <p>
           Live totals from this workspace. These figures do not represent the
           clinic’s historical records or external marketing results.
@@ -157,7 +157,7 @@ export async function IntegrationsView(props: AdminViewServerProps) {
     <DefaultTemplate {...props} req={req} visibleEntities={visibleEntities}>
       <section className="gutter--left gutter--right clinic-reports">
         <p className="clinic-report-kicker">WORKSPACE / CONNECTIONS</p>
-        <h1>Built to connect.</h1>
+        <h1>Connections</h1>
         <p>
           Actual capability and configuration status. Supplying a credential
           alone does not activate an integration.

@@ -1,14 +1,26 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import type { AnalyticsSummary } from "@/lib/analytics-types";
-const format = (n: number) => new Intl.NumberFormat("en-US").format(n);
+import {
+  ActivityChart,
+  InteractionChart,
+  Breakdown,
+} from "./analytics-visuals";
+const format = (value: number) => new Intl.NumberFormat("en-US").format(value);
 const labels: Record<string, string> = {
-  appointment_click: "Appointment button clicks",
-  phone_click: "Telephone link clicks",
-  email_click: "Email link clicks",
+  appointment_click: "Appointment clicks",
+  phone_click: "Telephone clicks",
+  email_click: "Email clicks",
   chat_open: "Chat opens",
 };
-export function WebsiteAnalytics({ initial }: { initial: AnalyticsSummary }) {
+export function WebsiteAnalytics({
+  initial,
+  overview = false,
+}: {
+  initial: AnalyticsSummary;
+  overview?: boolean;
+}) {
   const [data, setData] = useState(initial),
     [busy, setBusy] = useState(false),
     [error, setError] = useState("");
@@ -25,138 +37,156 @@ export function WebsiteAnalytics({ initial }: { initial: AnalyticsSummary }) {
       setBusy(false);
     }
   }
-  const max = Math.max(1, ...data.daily.map((day) => day.views));
+  const conversions = data.conversions.map((row) => ({
+    ...row,
+    name: labels[row.name],
+  }));
+  const interactionTotal = conversions.reduce((sum, row) => sum + row.count, 0);
+  const breakdowns: [string, { name: string; count: number }[]][] = overview
+    ? [
+        ["Referral sources", data.sources],
+        ["Devices", data.devices],
+      ]
+    : [
+        ["Most viewed pages", data.pages],
+        ["Referral sources", data.sources],
+        ["Devices", data.devices],
+        ["Countries", data.countries],
+      ];
   return (
-    <div aria-busy={busy} className="clinic-analytics">
-      <div className="clinic-analytics-toolbar">
-        <label>
-          Period{" "}
-          <select
-            value={data.days}
+    <div
+      className={`clinic-analytics ops-analytics ${overview ? "ops-analytics-overview" : ""}`}
+      aria-busy={busy}
+    >
+      <div className="ops-analytics-toolbar">
+        <p>
+          {data.firstRecordedDay
+            ? `Tracking since ${data.firstRecordedDay}`
+            : "Tracking starts with the first eligible visit"}{" "}
+          <span className="ops-status ops-status-active">
+            First-party analytics
+          </span>
+        </p>
+        <div>
+          <label>
+            Period{" "}
+            <select
+              aria-label="Period"
+              value={data.days}
+              disabled={busy}
+              onChange={(event) => refresh(Number(event.target.value))}
+            >
+              {[7, 30, 90].map((days) => (
+                <option key={days} value={days}>
+                  Last {days} days
+                </option>
+              ))}
+            </select>
+          </label>
+          <button
+            className="ops-button ops-button-secondary"
+            type="button"
             disabled={busy}
-            onChange={(event) => refresh(Number(event.target.value))}
+            onClick={() => refresh(data.days)}
           >
-            {[7, 30, 90].map((days) => (
-              <option key={days} value={days}>
-                Last {days} days
-              </option>
-            ))}
-          </select>
-        </label>
-        <button
-          type="button"
-          disabled={busy}
-          onClick={() => refresh(data.days)}
-        >
-          {busy ? "Refreshing…" : "Refresh ↻"}
-        </button>
+            {busy ? "Refreshing…" : "Refresh"}
+          </button>
+        </div>
       </div>
-      {error && <p role="alert">{error}</p>}
-      <dl className="clinic-report-grid">
+      {error && (
+        <p className="ops-error" role="alert">
+          {error}
+        </p>
+      )}
+      <dl className="ops-traffic-kpis">
         {[
           ["Page views", data.views],
           ["Estimated visitor-days", data.visitorDays],
-          ["Active in the last 5 minutes", data.active],
-          [
-            "Contact interactions",
-            data.conversions.reduce((sum, row) => sum + row.count, 0),
-          ],
-        ].map(([name, value]) => (
-          <div key={name}>
-            <dt>{name}</dt>
+          ["Active in last 5 minutes", data.active],
+          ["Contact interactions", interactionTotal],
+        ].map(([label, value]) => (
+          <div key={label}>
+            <dt>{label}</dt>
             <dd>{format(Number(value))}</dd>
           </div>
         ))}
       </dl>
-      <article className="clinic-analytics-panel">
-        <h2>Daily website activity</h2>
-        <p>Page views · America/New_York</p>
-        <div
-          className="clinic-analytics-chart"
-          role="img"
-          aria-label={`Daily page views for the last ${data.days} days. ${data.views} total views.`}
-        >
-          {data.daily.map((day) => (
-            <div
-              key={day.day}
-              title={`${day.day}: ${day.views} views, ${day.visitors} estimated visitors`}
-            >
-              <span style={{ height: `${(day.views / max) * 100}%` }} />
-            </div>
-          ))}
-        </div>
-        <div className="clinic-analytics-dates">
-          <span>{data.daily[0]?.day}</span>
-          <span>{data.daily.at(-1)?.day}</span>
-        </div>
-        <details>
-          <summary>View daily figures</summary>
-          <div className="clinic-analytics-table-scroll">
-            <table>
-              <thead>
-                <tr>
-                  <th>Date</th>
-                  <th>Views</th>
-                  <th>Estimated visitors</th>
-                </tr>
-              </thead>
-              <tbody>
-                {data.daily.map((day) => (
-                  <tr key={day.day}>
-                    <td>{day.day}</td>
-                    <td>{format(day.views)}</td>
-                    <td>{format(day.visitors)}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+      <div className="ops-analytics-main">
+        <article className="ops-panel">
+          <div className="ops-panel-heading">
+            <h2>Website activity</h2>
+            <span>Daily · Orlando time</span>
           </div>
-        </details>
-      </article>
-      <div className="clinic-analytics-panels">
-        {(
-          [
-            ["Most viewed pages", data.pages],
-            ["Referral sources", data.sources],
-            ["Devices", data.devices],
-            ["Countries", data.countries],
-            [
-              "Contact interactions",
-              data.conversions.map((row) => ({
-                ...row,
-                name: labels[row.name],
-              })),
-            ],
-          ] as [string, { name: string; count: number }[]][]
-        ).map(([title, rows]) => (
-          <article className="clinic-analytics-panel" key={title}>
-            <h2>{title}</h2>
-            {rows.length ? (
-              <ul>
-                {rows.map((row) => (
-                  <li key={row.name}>
-                    <span>{row.name}</span>
-                    <strong>{format(row.count)}</strong>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <p>No activity recorded in this period.</p>
+          <div className="ops-panel-body">
+            <ActivityChart daily={data.daily} />
+            {!overview && (
+              <details className="ops-daily-details">
+                <summary>View daily figures</summary>
+                <div className="ops-table-scroll">
+                  <table className="ops-table">
+                    <thead>
+                      <tr>
+                        <th>Date</th>
+                        <th>Page views</th>
+                        <th>Daily visitor estimates</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {data.daily.map((day) => (
+                        <tr key={day.day}>
+                          <td>{day.day}</td>
+                          <td>{format(day.views)}</td>
+                          <td>{format(day.visitors)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </details>
             )}
+          </div>
+        </article>
+        <article className="ops-panel">
+          <div className="ops-panel-heading">
+            <h2>Contact interactions</h2>
+            <span>{format(interactionTotal)} total</span>
+          </div>
+          <div className="ops-panel-body">
+            <InteractionChart rows={conversions} />
+          </div>
+          <p className="ops-panel-description ops-panel-note">
+            Button and link clicks, not confirmed appointments.
+          </p>
+        </article>
+      </div>
+      <div className="ops-analytics-breakdowns">
+        {breakdowns.map(([title, rows]) => (
+          <article className="ops-panel" key={title}>
+            <div className="ops-panel-heading">
+              <h2>{title}</h2>
+              <span>Page views</span>
+            </div>
+            <div className="ops-panel-body">
+              <Breakdown rows={rows} />
+            </div>
           </article>
         ))}
       </div>
-      <p className="clinic-report-note">
-        {data.firstRecordedDay
-          ? `Tracking began ${data.firstRecordedDay}. `
-          : "Tracking starts with the first eligible visit. "}
-        Visitor estimates reset each day; visitor-days add those daily estimates
-        and are not unique people across the selected period. Contact clicks are
-        expressions of interest, not confirmed appointments. Staff visits,
-        recognized bots and browsers requesting Do Not Track or Global Privacy
-        Control are excluded. No patient information, messages, search terms or
-        form contents are collected.
-      </p>
+      <div className="ops-analytics-note">
+        <p>
+          Visitor-days add daily estimates; they are not unique people across
+          the period. Staff, known bots and browsers requesting DNT/GPC are
+          excluded.
+        </p>
+        {overview ? (
+          <Link href="/admin/analytics">View all analytics</Link>
+        ) : (
+          <p>
+            No patient information, messages, query strings or form contents are
+            collected.
+          </p>
+        )}
+      </div>
     </div>
   );
 }

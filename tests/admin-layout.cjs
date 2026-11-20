@@ -23,7 +23,7 @@ const base = process.env.TEST_URL || 'http://localhost:3000';
         assert.equal(await page.locator('.template-default').count(), 1, `${route} at ${width}px must have one admin layout`);
         assert.equal(await page.locator('.template-default .template-default').count(), 0);
         if (route === '/admin') {
-          await page.getByRole('heading', { name: 'Your practice, in focus.' }).waitFor();
+          await page.getByRole('heading', { name: 'Dashboard' }).waitFor();
           const toggle = page.locator(width >= 1024 ? '.template-default__nav-toggler' : '.app-header__mobile-nav-toggler');
           if (/^open menu$/i.test(await toggle.getAttribute('aria-label'))) await toggle.click();
           const closeMenu = page.locator('.template-default__nav-toggler');
@@ -44,7 +44,7 @@ const base = process.env.TEST_URL || 'http://localhost:3000';
     await page.locator('.app-header__mobile-nav-toggler').click();
     await page.getByRole('link', { name: 'Dashboard', exact: true }).click();
     await page.waitForURL(base + '/admin');
-    await page.getByRole('heading', { name: 'Your practice, in focus.' }).waitFor();
+    await page.getByRole('heading', { name: 'Dashboard' }).waitFor();
     assert.deepEqual(errors, []);
     console.log('PASS one admin layout/sidebar on dashboard, analytics, calendar, reports, integrations and articles; desktop, 571px dark and mobile; menu toggle and no horizontal overflow/runtime errors.');
   } finally { await browser.close(); }

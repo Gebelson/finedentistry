@@ -54,7 +54,7 @@ export function ClinicCalendar() {
       <div className="clinic-calendar-top">
         <div>
           <p>RECEPTION / INTERNAL PLANNING</p>
-          <h1>Your practice calendar.</h1>
+          <h1>Appointments</h1>
         </div>
         <Link href="/admin/collections/appointments/create">
           New appointment ↗

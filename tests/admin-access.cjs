@@ -70,7 +70,7 @@ const editorPassword = randomBytes(24).toString("hex");
       await page.getByRole("button", { name: "Login", exact: true }).click();
       await page.waitForURL(/\/admin$/);
       await page
-        .getByRole("heading", { name: "Your practice, in focus." })
+        .getByRole("heading", { name: "Dashboard" })
         .waitFor();
       fs.mkdirSync(".cache/admin-qa", { recursive: true });
       await page.screenshot({
