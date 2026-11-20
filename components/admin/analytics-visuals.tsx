@@ -1,21 +1,69 @@
+"use client";
+import { useId, useState, type KeyboardEvent, type PointerEvent } from "react";
 import type { AnalyticsSummary } from "@/lib/analytics-types";
+import { WorkspaceIcon } from "./workspace-icon";
 type Row = { name: string; count: number };
+const shortDate = new Intl.DateTimeFormat("en-US", {
+  month: "short",
+  day: "numeric",
+  timeZone: "UTC",
+});
+export const analyticsDate = (day: string) =>
+  shortDate.format(new Date(day + "T12:00:00Z"));
 export function ActivityChart({ daily }: { daily: AnalyticsSummary["daily"] }) {
+  const [activeIndex, setActiveIndex] = useState<number | null>(null);
+  const helpId = useId();
   const maximum = Math.max(
-    4,
+    1,
     ...daily.flatMap((day) => [day.views, day.visitors]),
   );
-  const max = Math.ceil(maximum / 4) * 4;
+  const max = maximum <= 4 ? maximum : Math.ceil(maximum / 4) * 4,
+    ticks = Math.min(4, max);
   const width = 600,
     height = 160,
     step = width / Math.max(daily.length, 1);
+  const total = daily.reduce((sum, day) => sum + day.views, 0);
+  const active = activeIndex === null ? null : daily[activeIndex];
   const points = daily
     .map(
       (day, index) =>
         `${index * step + step / 2},${height - (day.visitors / max) * height}`,
     )
     .join(" ");
-  const total = daily.reduce((sum, day) => sum + day.views, 0);
+  function point(event: PointerEvent<HTMLDivElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    if (!rect.width || !daily.length) return;
+    setActiveIndex(
+      Math.max(
+        0,
+        Math.min(
+          daily.length - 1,
+          Math.floor(((event.clientX - rect.left) / rect.width) * daily.length),
+        ),
+      ),
+    );
+  }
+  function key(event: KeyboardEvent<HTMLDivElement>) {
+    if (!daily.length) return;
+    const current = activeIndex ?? 0;
+    const next =
+      event.key === "ArrowRight"
+        ? Math.min(daily.length - 1, current + 1)
+        : event.key === "ArrowLeft"
+          ? Math.max(0, current - 1)
+          : event.key === "Home"
+            ? 0
+            : event.key === "End"
+              ? daily.length - 1
+              : undefined;
+    if (next !== undefined) {
+      event.preventDefault();
+      setActiveIndex(next);
+    } else if (event.key === "Escape") {
+      event.preventDefault();
+      setActiveIndex(null);
+    }
+  }
   return (
     <>
       <div className="ops-chart-legend">
@@ -30,26 +78,39 @@ export function ActivityChart({ daily }: { daily: AnalyticsSummary["daily"] }) {
       </div>
       <div className="ops-chart-area">
         <div className="ops-chart-y" aria-hidden="true">
-          {[4, 3, 2, 1, 0].map((value) => (
-            <span key={value}>
-              {((max * value) / 4).toLocaleString("en-US")}
-            </span>
+          {Array.from(
+            { length: ticks + 1 },
+            (_, i) => max - (i * max) / ticks,
+          ).map((value) => (
+            <span key={value}>{value.toLocaleString("en-US")}</span>
           ))}
         </div>
-        <div className="ops-chart-plot">
+        <div
+          className="ops-chart-plot ops-chart-interactive"
+          role="group"
+          aria-label="Website activity chart"
+          aria-describedby={helpId}
+          tabIndex={0}
+          onPointerMove={point}
+          onPointerDown={point}
+          onPointerLeave={() => setActiveIndex(null)}
+          onFocus={() => setActiveIndex(daily.length ? 0 : null)}
+          onBlur={() => setActiveIndex(null)}
+          onKeyDown={key}
+        >
           <svg
             viewBox={`0 0 ${width} ${height}`}
             preserveAspectRatio="none"
             role="img"
             aria-label={`Daily website activity: ${total} page views over ${daily.length} days.`}
           >
-            {[0, 1, 2, 3, 4].map((index) => (
+            {Array.from({ length: ticks + 1 }, (_, i) => (
               <line
-                key={index}
+                key={i}
                 x1="0"
                 x2={width}
-                y1={(index * height) / 4}
-                y2={(index * height) / 4}
+                y1={(i * height) / ticks}
+                y2={(i * height) / ticks}
                 stroke="var(--ops-border)"
                 strokeWidth="1"
                 vectorEffect="non-scaling-stroke"
@@ -62,7 +123,7 @@ export function ActivityChart({ daily }: { daily: AnalyticsSummary["daily"] }) {
                 y={height - (day.views / max) * height}
                 width={Math.max(1, step * 0.56)}
                 height={(day.views / max) * height}
-                fill="#6a9ce2"
+                fill={activeIndex === index ? "#315f9f" : "#7998c7"}
               >
                 <title>{`${day.day}: ${day.views} views`}</title>
               </rect>
@@ -70,21 +131,74 @@ export function ActivityChart({ daily }: { daily: AnalyticsSummary["daily"] }) {
             <polyline
               points={points}
               fill="none"
-              stroke="#22a58a"
+              stroke="#24918b"
               strokeWidth="2"
               vectorEffect="non-scaling-stroke"
             />
+            {active && activeIndex !== null && (
+              <>
+                <line
+                  x1={activeIndex * step + step / 2}
+                  x2={activeIndex * step + step / 2}
+                  y1="0"
+                  y2={height}
+                  stroke="#8a9bb2"
+                  strokeWidth="1"
+                  strokeDasharray="3 3"
+                  vectorEffect="non-scaling-stroke"
+                />
+                <circle
+                  cx={activeIndex * step + step / 2}
+                  cy={height - (active.visitors / max) * height}
+                  r="3"
+                  fill="#24918b"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </>
+            )}
           </svg>
-          {!total && (
-            <p className="ops-chart-empty">
-              No website activity recorded for this period
-            </p>
+          {!total && !active && (
+            <div className="ops-chart-empty ops-chart-empty-detail">
+              <WorkspaceIcon name="analytics" width="26" height="26" />
+              <strong>Your traffic overview starts here</strong>
+              <span>Eligible website visits will appear in this chart.</span>
+            </div>
+          )}
+          {active && activeIndex !== null && (
+            <div
+              data-testid="activity-tooltip"
+              className="ops-chart-tooltip"
+              aria-hidden="true"
+              style={{
+                left: `clamp(84px, ${((activeIndex + 0.5) / daily.length) * 100}%, calc(100% - 84px))`,
+              }}
+            >
+              <strong>{analyticsDate(active.day)}</strong>
+              <span>
+                <i className="ops-key ops-key-blue" />
+                Page views <b>{active.views.toLocaleString("en-US")}</b>
+              </span>
+              <span>
+                <i className="ops-key ops-key-green" />
+                Visitor estimates{" "}
+                <b>{active.visitors.toLocaleString("en-US")}</b>
+              </span>
+            </div>
           )}
         </div>
       </div>
+      <p id={helpId} className="ops-visually-hidden">
+        Use the left and right arrow keys to explore dates, Home or End to jump,
+        or Escape to clear the selection.
+      </p>
+      <p className="ops-visually-hidden" aria-live="polite">
+        {active
+          ? `${active.day}: ${active.views} page views, ${active.visitors} estimated visitors.`
+          : ""}
+      </p>
       <div className="ops-chart-dates">
-        <span>{daily[0]?.day}</span>
-        <span>{daily.at(-1)?.day}</span>
+        <span>{daily[0] ? analyticsDate(daily[0].day) : ""}</span>
+        <span>{daily.at(-1) ? analyticsDate(daily.at(-1)!.day) : ""}</span>
       </div>
     </>
   );

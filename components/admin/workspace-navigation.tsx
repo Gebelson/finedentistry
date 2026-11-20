@@ -154,6 +154,15 @@ export function WorkspaceNavigation({
           <span>Practice workspace</span>
           <button
             type="button"
+            className="workspace-nav-collapse"
+            aria-label="Collapse navigation"
+            title="Collapse navigation"
+            onClick={() => setNavOpen(false)}
+          >
+            <WorkspaceIcon name="collapse" />
+          </button>
+          <button
+            type="button"
             className="nav__mobile-close workspace-nav-close"
             aria-label="Close navigation"
             onClick={() => setNavOpen(false)}

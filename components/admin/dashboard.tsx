@@ -2,6 +2,21 @@ import type { CollectionSlug, ServerProps, Where } from "payload";
 import Link from "next/link";
 import { siteAnalyticsSummary } from "@/lib/analytics-store";
 import { WebsiteAnalytics } from "./website-analytics";
+import { WorkspaceIcon, type WorkspaceIconName } from "./workspace-icon";
+
+const metricActions: Record<
+  string,
+  { icon: WorkspaceIconName; action: string }
+> = {
+  waiting: { icon: "inbox", action: "Open inbox" },
+  requests: { icon: "appointments", action: "Review requests" },
+  "published-articles": { icon: "articles", action: "Manage articles" },
+  contacts: { icon: "contacts", action: "View contacts" },
+  drafts: { icon: "articles", action: "Review drafts" },
+  media: { icon: "media", action: "Open media library" },
+  articles: { icon: "articles", action: "Manage articles" },
+  open: { icon: "inbox", action: "Open conversations" },
+};
 
 const date = (value: string) =>
   new Intl.DateTimeFormat("en-US", {
@@ -164,9 +179,7 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
       <header className="ops-page-header">
         <div>
           <h1>Dashboard</h1>
-          <p>
-            Welcome, {user.name}. Website performance and practice operations.
-          </p>
+          <p>Your website, content and reception at a glance.</p>
         </div>
         <Link href="/" className="ops-button ops-button-secondary">
           View website
@@ -222,12 +235,16 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
             href={metric.href}
             className={`ops-kpi ops-kpi-${metric.color}`}
           >
-            <span>{metric.label}</span>
+            <span className="ops-kpi-label">
+              <span>{metric.label}</span>
+              <WorkspaceIcon name={metricActions[metric.key].icon} />
+            </span>
             <strong data-metric={metric.key}>
               {metric.value.toLocaleString("en-US")}
             </strong>
             <small>
-              View records <span aria-hidden="true">→</span>
+              {metricActions[metric.key].action}{" "}
+              <span aria-hidden="true">→</span>
             </small>
           </Link>
         ))}
@@ -292,7 +309,10 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
                 </div>
               ) : (
                 <div className="ops-empty">
-                  <strong>No conversations in the queue</strong>
+                  <span className="ops-empty-icon">
+                    <WorkspaceIcon name="inbox" width="22" height="22" />
+                  </span>
+                  <strong>Your inbox is clear</strong>
                   <p>
                     Website chats will appear here when visitors send a message.
                   </p>
@@ -348,6 +368,9 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
                 </div>
               ) : (
                 <div className="ops-empty">
+                  <span className="ops-empty-icon">
+                    <WorkspaceIcon name="calendar" width="22" height="22" />
+                  </span>
                   <strong>No upcoming appointments</strong>
                   <p>Add an internal appointment or review pending requests.</p>
                 </div>

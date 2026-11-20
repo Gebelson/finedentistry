@@ -33,7 +33,7 @@ const base = process.env.TEST_URL || 'http://localhost:3000';
           assert.equal(await dashboardLink.getAttribute('href'), '/admin');
           assert.equal(await dashboardLink.getAttribute('aria-current'), 'page');
           await page.screenshot({ path: `.cache/admin-qa/navigation-${width}.png` });
-          await page.locator(width >= 1024 ? '.template-default__nav-toggler' : '.nav__mobile-close').click();
+          await page.locator(width >= 1024 ? '.workspace-nav-collapse' : '.nav__mobile-close').click();
           await page.waitForFunction(() => document.documentElement.scrollWidth <= innerWidth);
           await page.screenshot({ path: `.cache/admin-qa/navigation-content-${width}.png` });
         }

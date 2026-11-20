@@ -16,8 +16,10 @@ export type WorkspaceIconName =
   | "account"
   | "logout"
   | "external"
+  | "collapse"
   | "close";
 const paths: Record<WorkspaceIconName, string[]> = {
+  collapse: ["M3 4h18v16H3z", "M9 4v16", "M16 9l-3 3 3 3"],
   dashboard: ["M3 3h7v7H3z", "M14 3h7v7h-7z", "M3 14h7v7H3z", "M14 14h7v7h-7z"],
   analytics: ["M4 3v17h17", "M8 15v-4", "M13 15V7", "M18 15V4"],
   reports: ["M6 3h9l4 4v14H6z", "M14 3v5h5", "M9 12h7", "M9 16h7"],

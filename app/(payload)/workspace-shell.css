@@ -682,3 +682,354 @@ body:has(.workspace-nav.nav--nav-open)
   outline: 2px solid #85ace0;
   outline-offset: 3px;
 }
+@font-face {
+  font-family: "Admin Inter";
+  src: url("/fonts/admin-inter.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+:root {
+  --font-body: "Admin Inter", system-ui, sans-serif;
+  --ops-bg: #f6f8fb;
+  --ops-border: #e1e7ef;
+}
+body {
+  font-optical-sizing: auto;
+}
+.clinic-login-intro h1 {
+  font-family: var(--font-body);
+}
+.workspace-nav-brand {
+  padding: 24px 22px 18px;
+}
+.workspace-nav-brand > a,
+.workspace-nav-brand img {
+  width: 152px;
+}
+.workspace-nav-brand > span {
+  font-size: 10px;
+  margin-top: 9px;
+  color: #a1b1c5;
+}
+.workspace-nav-collapse {
+  display: none;
+}
+.workspace-nav-link {
+  font-weight: 450;
+}
+.workspace-nav-group-title {
+  font-weight: 550;
+  color: #a1b1c5;
+}
+.workspace-nav-link[aria-current="page"] {
+  background: #2c405b;
+  box-shadow: inset 2px 0 #8caedc;
+}
+.workspace-active-mark {
+  display: none;
+}
+.workspace-header-title {
+  font-weight: 550;
+}
+.workspace-header-title > span {
+  border: 1px solid #e3e8f0;
+  border-radius: 4px;
+  padding: 3px 6px;
+  background: #f8fafc;
+  font-size: 10px;
+}
+.clinic-dashboard .ops-page-header h1,
+.clinic-reports h1,
+.clinic-calendar h1 {
+  font-size: 27px;
+  font-weight: 650;
+  letter-spacing: -0.8px;
+}
+.ops-page-header p {
+  font-size: 12px;
+  margin-top: 7px;
+}
+.ops-page-header {
+  align-items: flex-start;
+}
+.ops-quick-actions {
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+.ops-kpi {
+  padding: 17px 18px 15px;
+  gap: 9px;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px #182d4904;
+}
+.ops-kpi .ops-kpi-label {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  line-height: 1.5;
+  font-size: 11px;
+}
+.ops-kpi-label > svg {
+  color: #7d8da3;
+  flex-shrink: 0;
+  width: 17px;
+  height: 17px;
+}
+.ops-kpi > strong {
+  font-size: 31px;
+  line-height: 1.2;
+  letter-spacing: -1.1px;
+  font-weight: 600;
+}
+.ops-kpi > small {
+  border: 0;
+  padding-top: 0;
+  margin-top: 0;
+  font-size: 10px;
+  color: #536c8e;
+}
+.ops-panel,
+.ops-traffic-kpis {
+  border-radius: 10px;
+  box-shadow: 0 1px 2px #182d4904;
+}
+.ops-panel-heading {
+  min-height: 52px;
+  padding: 16px 20px;
+}
+.ops-panel-heading h2 {
+  font-weight: 600;
+  font-size: 12px;
+}
+.ops-panel-body {
+  padding: 20px;
+}
+.ops-section-heading h2 {
+  font-weight: 600;
+  font-size: 15px;
+}
+.ops-traffic-kpis dt {
+  font-size: 10px;
+}
+.ops-traffic-kpis dd {
+  font-weight: 600;
+  font-size: 25px;
+}
+.ops-traffic-kpis > div {
+  padding: 16px 19px;
+}
+.ops-status {
+  font-weight: 500;
+}
+.ops-table {
+  font-size: 12px;
+}
+.ops-table td {
+  line-height: 1.7;
+}
+.ops-empty {
+  padding: 20px;
+  min-height: 146px;
+  gap: 7px;
+}
+.ops-empty-icon {
+  display: flex;
+  width: 38px;
+  height: 38px;
+  border: 1px solid #e5ebf2;
+  border-radius: 10px;
+  background: #f8fafc;
+  align-items: center;
+  justify-content: center;
+  color: #6c82a0;
+  margin: 0 auto 4px;
+}
+.ops-empty strong {
+  color: #43556e;
+  font-size: 12px;
+  font-weight: 550;
+}
+.ops-empty p {
+  font-size: 11px;
+}
+.ops-chart-interactive {
+  border-radius: 4px;
+  cursor: crosshair;
+}
+.ops-chart-interactive:focus-visible {
+  outline: 2px solid #739acd;
+  outline-offset: 5px;
+}
+.ops-chart-tooltip {
+  position: absolute;
+  top: 9px;
+  width: 168px;
+  transform: translateX(-50%);
+  background: #fff;
+  border: 1px solid #dbe3ee;
+  border-radius: 7px;
+  padding: 10px 11px;
+  box-shadow: 0 4px 16px #21395618;
+  pointer-events: none;
+  z-index: 2;
+}
+.ops-chart-tooltip > strong {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #334b69;
+  margin-bottom: 8px;
+}
+.ops-chart-tooltip > span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 9px;
+  color: #60718a;
+}
+.ops-chart-tooltip b {
+  margin-left: auto;
+  font-size: 10px;
+  font-weight: 600;
+  color: #253b58;
+  font-variant-numeric: tabular-nums;
+}
+.ops-chart-tooltip .ops-key {
+  width: 6px;
+  height: 6px;
+}
+.ops-chart-empty-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  align-items: center;
+  pointer-events: none;
+}
+.ops-chart-empty-detail > svg {
+  color: #7c92ae;
+  margin-bottom: 2px;
+}
+.ops-chart-empty-detail > strong {
+  color: #50657f;
+  font-size: 11px;
+  font-weight: 550;
+}
+.ops-chart-empty-detail > span {
+  color: #60718a;
+  font-size: 10px;
+}
+.ops-visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+.ops-key-blue {
+  background: #7998c7;
+}
+.ops-key-green {
+  background: #24918b;
+}
+.ops-analytics-note {
+  margin-top: 10px;
+}
+.ops-analytics-note p {
+  font-size: 10px;
+}
+@media (min-width: 1025px) {
+  html[data-theme="light"] {
+    --nav-width: 256px;
+    --gutter-h: 32px;
+  }
+  .workspace-nav-brand {
+    padding: 23px 22px 19px;
+  }
+  .workspace-nav-brand > a,
+  .workspace-nav-brand img {
+    width: 148px;
+  }
+  .workspace-nav-collapse {
+    display: flex;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 14px;
+    top: 31px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid #ffffff20;
+    border-radius: 5px;
+    color: #b6c7dd;
+    cursor: pointer;
+  }
+  .workspace-nav-collapse:hover {
+    background: #ffffff0b;
+    color: #fff;
+    border-color: #ffffff40;
+  }
+  body:has(.workspace-nav.nav--nav-open)
+    .template-default__nav-toggler-wrapper {
+    visibility: hidden;
+    pointer-events: none;
+  }
+  .workspace-nav-links {
+    padding-top: 16px;
+  }
+  .workspace-nav-group + .workspace-nav-group {
+    margin-top: 20px;
+  }
+}
+@media (max-width: 600px) {
+  .workspace-nav-brand {
+    padding: 24px;
+  }
+  .workspace-nav-brand > a,
+  .workspace-nav-brand img {
+    width: 155px;
+  }
+  .ops-page-header {
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .clinic-dashboard .ops-page-header h1,
+  .clinic-reports h1,
+  .clinic-calendar h1 {
+    font-size: 25px;
+  }
+  .ops-kpi {
+    padding: 14px 13px;
+  }
+  .ops-kpi .ops-kpi-label {
+    font-size: 10px;
+    gap: 5px;
+  }
+  .ops-kpi-label > svg {
+    width: 15px;
+    height: 15px;
+  }
+  .ops-kpi > strong {
+    font-size: 28px;
+  }
+  .ops-kpi > small {
+    font-size: 9px;
+  }
+  .ops-panel-body {
+    padding: 16px;
+  }
+  .ops-panel-heading {
+    padding: 15px 16px;
+  }
+}
+.ops-chart-empty-detail > svg { width:26px; height:26px; flex:0 0 26px; }
+.ops-work-grid > .ops-panel:nth-last-child(-n+2) { align-self:start; }
+.workspace-header-title { max-width:none; text-overflow:clip; }

@@ -6,6 +6,7 @@ import {
   ActivityChart,
   InteractionChart,
   Breakdown,
+  analyticsDate,
 } from "./analytics-visuals";
 const format = (value: number) => new Intl.NumberFormat("en-US").format(value);
 const labels: Record<string, string> = {
@@ -61,7 +62,7 @@ export function WebsiteAnalytics({
       <div className="ops-analytics-toolbar">
         <p>
           {data.firstRecordedDay
-            ? `Tracking since ${data.firstRecordedDay}`
+            ? `Tracking since ${analyticsDate(data.firstRecordedDay)}`
             : "Tracking starts with the first eligible visit"}{" "}
           <span className="ops-status ops-status-active">
             First-party analytics

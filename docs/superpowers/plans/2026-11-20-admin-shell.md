@@ -9,3 +9,5 @@ Implementation: custom role-aware Payload Nav server/client components using the
 Verification: browser regression for navigation groups, active nested routes, role-specific links, mobile drawer open/close/navigation, account/logout destinations, one sidebar/layout, dashboard/filter behavior, native collection/editor display. Inspect desktop with sidebar open plus mobile. Lint/build and publish with existing authorization; verify deployed routes.
 
 Execute inline, following the user's standing direction to choose details without additional questions and avoid extra agents.
+
+Second refinement: self-hosted Inter with bundled OFL license; deliberate type scale, correctly placed desktop collapse control, quieter cards with meaningful actions/icons, contextual empty states, human-readable chart dates, integer-scaled axes and pointer/touch/keyboard chart inspection. Retain the existing role, authentication and data behavior. Verify font loading, collapse/reopen, tooltip and arrow-key interactions, then run the existing dashboard/navigation accessibility checks.

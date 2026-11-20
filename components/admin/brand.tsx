@@ -15,7 +15,7 @@ export function AdminBrand() {
 export function AdminIcon() {
   return (
     <span className="clinic-admin-icon" aria-label="Fine Dentistry">
-      <span className="workspace-header-title">Fine Dentistry <span>Workspace</span></span>
+      <span className="workspace-header-title">Fine Dentistry</span>
     </span>
   );
 }
