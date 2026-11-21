@@ -1,4 +1,5 @@
 "use client";
+import { HeadingInfo } from "./info-tip";
 import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
@@ -99,21 +100,25 @@ export function WorkspaceConnections() {
       <div className="connections-heading">
         <div>
           <p className="connections-kicker">WORKSPACE / CONNECTIONS</p>
-          <h1>Connections</h1>
-          <p>
-            Live database checks, available tools and external account
-            requirements.
-          </p>
+          <HeadingInfo title="Connections" level={1}>
+            <p>
+              Verified means the described check succeeded. Email, telephone,
+              payments and clinic-software synchronization need their own
+              authorized service accounts. Credentials alone do not activate
+              them.
+            </p>
+            <p>
+              AI testing sends a fixed public practice question, with no visitor
+              transcript or personal details. Checks never send email or SMS,
+              place calls or charge a payment. Search indexing stays disabled
+              for the preview domain.
+            </p>
+          </HeadingInfo>
         </div>
         <button type="button" onClick={() => void load()} disabled={loading}>
           {loading && !testing ? "Checking…" : "Refresh checks"}
         </button>
       </div>
-      <p className="connections-explanation">
-        Verified means the described check succeeded. Email, telephone, payments
-        and clinic-software synchronization need their own authorized service
-        accounts. Credentials alone do not activate them.
-      </p>
       {error && (
         <div className="connections-error" role="alert">
           <p>{error}</p>
@@ -152,11 +157,12 @@ export function WorkspaceConnections() {
           {report.connections.map((item) => (
             <article key={item.id} data-status={item.status}>
               <div className="connection-title">
-                <h2>{item.name}</h2>
+                <HeadingInfo title={item.name}>
+                  <p>{item.detail}</p>
+                  <p>{item.next}</p>
+                </HeadingInfo>
                 <span className="connection-badge">{labels[item.status]}</span>
               </div>
-              <p>{item.detail}</p>
-              <p className="connection-next">{item.next}</p>
               <div className="connection-actions">
                 {item.id === "ai" && (
                   <button
@@ -176,7 +182,10 @@ export function WorkspaceConnections() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {item.linkLabel} <span aria-hidden="true"><ArrowUpRight /></span>
+                      {item.linkLabel}{" "}
+                      <span aria-hidden="true">
+                        <ArrowUpRight />
+                      </span>
                     </a>
                   ))}
               </div>
@@ -184,12 +193,6 @@ export function WorkspaceConnections() {
           ))}
         </div>
       )}
-      <p className="connections-footnote">
-        AI testing sends a fixed public practice question, with no visitor
-        transcript or personal details. Checks never send email or SMS, place
-        calls or charge a payment. Search indexing stays disabled for the
-        preview domain.
-      </p>
     </section>
   );
 }

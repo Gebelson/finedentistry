@@ -1,4 +1,5 @@
 "use client";
+import { HeadingInfo } from "./info-tip";
 import { ArrowUpRight } from "@/components/arrow-up-right";
 import Link from "next/link";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
@@ -189,22 +190,23 @@ export function ClinicCalendar() {
     >
       <div className="clinic-calendar-top">
         <div>
-          <p>Reception / Internal planning</p>
-          <h1>Appointments</h1>
+          <p>Reception</p>
+          <HeadingInfo title="Appointments" level={1}>
+            <p>
+              All times shown in Orlando time. This calendar is not synchronized
+              with practice software and does not send patient confirmations.
+            </p>
+            <p>
+              Download this month’s scheduled busy times and doctors as an .ics
+              file. Patient details are excluded. Imports are snapshots; changes
+              require a new download.
+            </p>
+          </HeadingInfo>
         </div>
         <Link href="/admin/collections/appointments/create">
           New appointment <ArrowUpRight />
         </Link>
       </div>
-      <p className="clinic-calendar-note">
-        All times shown in Orlando time. This calendar is not synchronized with
-        practice software and does not send patient confirmations.
-      </p>
-      <p className="clinic-calendar-note">
-        Download this month’s scheduled busy times and doctors as an .ics file.
-        Patient details are excluded. Imports are snapshots; changes require a
-        new download.
-      </p>
       <div className="workspace-calendar-toolbar">
         <div className="clinic-calendar-nav">
           <button

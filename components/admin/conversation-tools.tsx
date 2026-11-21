@@ -1,4 +1,5 @@
 "use client";
+import { HeadingInfo } from "./info-tip";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { useDocumentInfo } from "@payloadcms/ui";
 type Message = { id: number; sender: string; text: string; createdAt: string };
@@ -93,7 +94,13 @@ export function ConversationTools() {
   return (
     <section className="clinic-inbox" aria-label="Conversation">
       <div className="clinic-inbox-heading">
-        <h2>Conversation</h2>
+        <HeadingInfo title="Conversation">
+          {" "}
+          <p>
+            Replies appear in the visitor’s open website chat. SMS and email
+            delivery are not connected.
+          </p>
+        </HeadingInfo>
         <span>{status}</span>
       </div>
       <div className="clinic-inbox-messages" aria-live="polite">
@@ -166,10 +173,6 @@ export function ConversationTools() {
       </div>
       {error && <p role="alert">{error}</p>}
       {loadError && <p role="alert">{loadError}</p>}
-      <p className="clinic-inbox-note">
-        Replies appear in the visitor’s open website chat. SMS and email
-        delivery are not connected.
-      </p>
     </section>
   );
 }

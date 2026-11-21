@@ -9,6 +9,7 @@ import "./workspace-shell.css";
 import "./workspace-motion.css";
 import "./workspace-tools.css";
 import "@/components/admin/workspace-reports.css";
+import "@/components/admin/info-tip.css";
 
 const serverFunction: ServerFunctionClient = async (args) => {
   "use server";

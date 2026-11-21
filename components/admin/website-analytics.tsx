@@ -1,4 +1,5 @@
 "use client";
+import { HeadingInfo } from "./info-tip";
 import { useState } from "react";
 import Link from "next/link";
 import { WorkspaceIcon } from "./workspace-icon";
@@ -184,15 +185,15 @@ export function WebsiteAnalytics({
         </article>
         <article className="ops-panel">
           <div className="ops-panel-heading">
-            <h2>Contact interactions</h2>
+            <HeadingInfo title="Contact interactions">
+              {" "}
+              <p>Button and link clicks, not confirmed appointments.</p>
+            </HeadingInfo>
             <span>{format(interactionTotal)} total</span>
           </div>
           <div className="ops-panel-body">
             <InteractionChart rows={conversions} />
           </div>
-          <p className="ops-panel-description ops-panel-note">
-            Button and link clicks, not confirmed appointments.
-          </p>
         </article>
       </div>
       <div className="ops-analytics-breakdowns">
@@ -208,21 +209,11 @@ export function WebsiteAnalytics({
           </article>
         ))}
       </div>
-      <div className="ops-analytics-note">
-        <p>
-          Visitor-days add daily estimates; they are not unique people across
-          the period. Staff, known bots and browsers requesting DNT/GPC are
-          excluded.
-        </p>
-        {overview ? (
+      {overview && (
+        <div className="ops-analytics-note">
           <Link href="/admin/analytics">View all analytics</Link>
-        ) : (
-          <p>
-            No patient information, messages, query strings or form contents are
-            collected.
-          </p>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 }

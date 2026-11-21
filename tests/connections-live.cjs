@@ -59,9 +59,16 @@ const base = process.env.TEST_URL || "http://localhost:3000";
       const small = await page
         .locator(".workspace-connections button,.workspace-connections a")
         .evaluateAll(
-          (nodes) =>
-            nodes.filter((node) => node.getBoundingClientRect().height < 44)
-              .length,
+          (nodes, viewportWidth) =>
+            nodes.filter(
+              (node) =>
+                node.getBoundingClientRect().height <
+                (viewportWidth > 1024 &&
+                node.matches(".workspace-info-tip-trigger")
+                  ? 24
+                  : 44),
+            ).length,
+          width,
         );
       assert.equal(small, 0);
     }

@@ -1,3 +1,5 @@
+import { HeadingInfo } from "./info-tip";
+import { AnalyticsHelp } from "./analytics-help";
 import type { CollectionSlug, ServerProps, Where } from "payload";
 import Link from "next/link";
 import { siteAnalyticsSummary } from "@/lib/analytics-store";
@@ -223,12 +225,14 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
               day: "numeric",
             }).format(new Date())}
           </time>
-          <h1>Dashboard</h1>
-          <p>
-            {user.role === "editor"
-              ? "Your content, ready for its next chapter."
-              : "A clear view of your practice. Start with what needs attention."}
-          </p>
+          <HeadingInfo title="Dashboard" level={1}>
+            {" "}
+            <p>
+              {user.role === "editor"
+                ? "Your content, ready for its next chapter."
+                : "A clear view of your practice. Start with what needs attention."}
+            </p>
+          </HeadingInfo>
         </div>
         <Link href="/" className="ops-button ops-button-secondary">
           <WorkspaceIcon name="external" />
@@ -308,7 +312,9 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
         <div className="ops-work-grid ops-reception-grid">
           <section className="ops-panel">
             <div className="ops-panel-heading">
-              <h2>Reception queue</h2>
+              <HeadingInfo title="Reception queue">
+                <p>Waiting first, then open. Oldest activity in each group.</p>
+              </HeadingInfo>
               <Link href="/admin/collections/conversations">View all</Link>
             </div>
             <div className="ops-panel-summary">
@@ -332,9 +338,6 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
             </div>
             {queue.length ? (
               <>
-                <p className="ops-panel-description ops-queue-description">
-                  Waiting first, then open. Oldest activity in each group.
-                </p>
                 <div className="ops-table-scroll">
                   <table className="ops-table">
                     <thead>
@@ -401,12 +404,12 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
           </section>
           <section className="ops-panel">
             <div className="ops-panel-heading">
-              <h2>Upcoming appointments</h2>
+              <HeadingInfo title="Upcoming appointments">
+                <p>Internal planning · Orlando time</p>
+              </HeadingInfo>
               <Link href="/admin/calendar">Calendar</Link>
             </div>
-            <p className="ops-panel-description">
-              Internal planning · Orlando time
-            </p>
+
             {appointments?.docs.length ? (
               <div className="ops-table-scroll">
                 <table className="ops-table">
@@ -460,7 +463,12 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
           className="ops-analytics-section"
         >
           <div className="ops-section-heading">
-            <h2 id="dashboard-analytics-title">Website analytics</h2>
+            <HeadingInfo
+              title="Website analytics"
+              id="dashboard-analytics-title"
+            >
+              <AnalyticsHelp />
+            </HeadingInfo>
             <Link href="/admin/analytics">Detailed report</Link>
           </div>
           <WebsiteAnalytics initial={analytics} overview />
@@ -514,7 +522,12 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
           {user.role === "admin" && (
             <section className="ops-panel">
               <div className="ops-panel-heading">
-                <h2>Connections</h2>
+                <HeadingInfo title="Connections">
+                  <p>
+                    The calendar is internal planning. The assistant answers
+                    from the practice FAQ.
+                  </p>
+                </HeadingInfo>
                 <Link href="/admin/integrations">Manage</Link>
               </div>
               <ul className="ops-connections">
@@ -547,10 +560,7 @@ export async function ClinicDashboard({ payload, user }: ServerProps) {
                   <span className="ops-status">Not connected</span>
                 </li>
               </ul>
-              <p className="ops-panel-description ops-panel-note">
-                The calendar is internal planning. The assistant answers from
-                the practice FAQ.
-              </p>
+
               <div className="ops-panel-footer">
                 <Link href="/admin/collections/users">Team members</Link>
                 <Link href="/admin/reports">Workspace reports</Link>

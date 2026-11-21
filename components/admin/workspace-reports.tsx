@@ -1,4 +1,5 @@
 "use client";
+import { HeadingInfo } from "./info-tip";
 import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -89,11 +90,31 @@ export function WorkspaceReports() {
   return (
     <section className="gutter--left gutter--right clinic-reports">
       <p className="clinic-report-kicker">WORKSPACE / REPORTS</p>
-      <h1>Workspace reports</h1>
-      <p>
-        Real activity recorded in this workspace. Choose a period and download
-        an aggregate report for your team.
-      </p>
+      <HeadingInfo title="Workspace reports" level={1}>
+        {" "}
+        <p>
+          Real activity recorded in this workspace. Choose a period and download
+          an aggregate report for your team.
+        </p>
+        <p>
+          Contacts, conversations and appointment records are selected by their
+          creation date. Status counts show their current status, rather than
+          when a status changed. Sources may be unassigned, so source counts may
+          not add up to all contacts.
+        </p>
+        <p>
+          Published articles use their saved publication date and current
+          published status. Periods start at midnight in Orlando and include
+          today through the report time. All time includes only records
+          available in this workspace.
+        </p>
+        <p>
+          These records are not a deduplicated patient funnel. Internal
+          appointments are not synchronized with practice software. Ad spend,
+          revenue and financial ROI are not connected. CSV files contain
+          aggregate counts only.
+        </p>
+      </HeadingInfo>
       <div className="workspace-report-toolbar">
         <label htmlFor="workspace-report-period">
           Reporting period
@@ -156,26 +177,9 @@ export function WorkspaceReports() {
         </div>
       )}
       <div className="clinic-report-note">
-        <h2>Understand these numbers</h2>
-        <p>
-          Contacts, conversations and appointment records are selected by their
-          creation date. Status counts show their current status, rather than
-          when a status changed. Sources may be unassigned, so source counts may
-          not add up to all contacts.
-        </p>
-        <p>
-          Published articles use their saved publication date and current
-          published status. Periods start at midnight in Orlando and include
-          today through the report time. All time includes only records
-          available in this workspace.
-        </p>
-        <p>
-          These records are not a deduplicated patient funnel. Internal
-          appointments are not synchronized with practice software. Ad spend,
-          revenue and financial ROI are not connected. CSV files contain
-          aggregate counts only.
-        </p>
-        <Link href="/admin/analytics">Open website analytics <ArrowUpRight /></Link>
+        <Link href="/admin/analytics">
+          Open website analytics <ArrowUpRight />
+        </Link>
       </div>
     </section>
   );

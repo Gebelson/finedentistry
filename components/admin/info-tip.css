@@ -1,0 +1,76 @@
+/* Class specificity keeps the small icon independent of section action buttons. */
+.workspace-heading-with-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.workspace-heading-with-info > :is(h1, h2, h3) {
+  min-width: 0;
+  margin: 0;
+}
+.workspace-info-tip.workspace-info-tip-trigger[type="button"] {
+  display: inline-grid;
+  flex: 0 0 auto;
+  place-items: center;
+  box-sizing: border-box;
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  min-height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  vertical-align: middle;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+.workspace-info-tip.workspace-info-tip-trigger[type="button"]:hover,
+.workspace-info-tip.workspace-info-tip-trigger[type="button"][aria-expanded="true"] {
+  background: color-mix(in srgb, currentColor 9%, transparent);
+}
+.workspace-info-tip.workspace-info-tip-trigger[type="button"]:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+.workspace-info-tip-panel {
+  position: fixed;
+  z-index: 100000;
+  visibility: hidden;
+  box-sizing: border-box;
+  width: 320px;
+  max-width: calc(100vw - 24px);
+  max-height: calc(100dvh - 24px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 15px 17px;
+  border: 1px solid #d9e1ea;
+  border-radius: 10px;
+  background: #fff;
+  color: #31435b;
+  box-shadow: 0 8px 32px #142b4729;
+  font: 400 13px/1.6 var(--font-body, system-ui, sans-serif);
+  text-align: left;
+  overflow-wrap: anywhere;
+}
+.workspace-info-tip-panel > :first-child {
+  margin-top: 0;
+}
+.workspace-info-tip-panel > :last-child {
+  margin-bottom: 0;
+}
+.workspace-info-tip-panel p {
+  margin: 0 0 10px;
+}
+@media (max-width: 1024px), (pointer: coarse) {
+  .workspace-info-tip.workspace-info-tip-trigger[type="button"] {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
