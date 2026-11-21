@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { LineReveal } from "@/components/line-reveal";
 import { SiteImage } from "@/components/site-image";
 import { ArticleContent, ArticleMeta } from "@/components/article-content";
@@ -134,7 +135,7 @@ export default async function ContentPage({
               className="button"
               href={siteConfig.official + "/Patient-Reviews"}
             >
-              Read official patient reviews ↗
+              Read official patient reviews <ArrowUpRight />
             </a>
           </>
         )}
@@ -150,19 +151,19 @@ export default async function ContentPage({
                 <h2>{t.title}</h2>
                 <p>{t.paragraphs[0]}</p>
                 <Link className="text-link" href={"/" + t.slug}>
-                  Explore technology ↗
+                  Explore technology <ArrowUpRight />
                 </Link>
               </article>
             ))}
             <article>
               <h2>CEREC Same-Day Crowns</h2>
               <p>Digital scanning and in-office restoration milling.</p>
-              <Link href="/services/same-day-crowns">Explore CEREC ↗</Link>
+              <Link href="/services/same-day-crowns">Explore CEREC <ArrowUpRight /></Link>
             </article>
             <article>
               <h2>iTero & Digital Impressions</h2>
               <p>Learn how digital scans support Invisalign planning.</p>
-              <Link href="/invisalign">Explore Invisalign ↗</Link>
+              <Link href="/invisalign">Explore Invisalign <ArrowUpRight /></Link>
             </article>
           </div>
         )}
@@ -262,7 +263,7 @@ export default async function ContentPage({
                     )
                     .map((l, i) => (
                       <a key={i} href={l.url}>
-                        {l.text} ↗
+                        {l.text} <ArrowUpRight />
                       </a>
                     ))}
                 </div>
@@ -272,7 +273,7 @@ export default async function ContentPage({
                   className="text-link"
                   href={siteConfig.official + "/Membership-Plans"}
                 >
-                  Review current plans on the clinic website ↗
+                  Review current plans on the clinic website <ArrowUpRight />
                 </a>
               )}
               {slug === "specials" && (
@@ -280,7 +281,7 @@ export default async function ContentPage({
                   className="text-link"
                   href={siteConfig.official + "/New-Patient-Specials"}
                 >
-                  Review current offers with the clinic ↗
+                  Review current offers with the clinic <ArrowUpRight />
                 </a>
               )}
               {slug === "news" && (
@@ -297,7 +298,7 @@ export default async function ContentPage({
                         target="_blank"
                         rel="noreferrer"
                       >
-                        {l.text} ↗
+                        {l.text} <ArrowUpRight />
                       </a>
                     ))}
                 </div>
@@ -314,7 +315,7 @@ export default async function ContentPage({
               {page?.source && (
                 <p className="source-note">
                   Adapted from the practice’s published information.{" "}
-                  <a href={page.source}>View the official source ↗</a>
+                  <a href={page.source}>View the official source <ArrowUpRight /></a>
                 </p>
               )}
             </article>
@@ -344,10 +345,10 @@ export default async function ContentPage({
       <section className="section wrap related">
         <h2>Continue exploring</h2>
         <div className="inline-links">
-          <Link href="/services">All treatments ↗</Link>
-          <Link href="/our-team">Meet the doctors ↗</Link>
-          <Link href="/new-patients">Your first visit ↗</Link>
-          <Link href="/contact">Visit our practice ↗</Link>
+          <Link href="/services">All treatments <ArrowUpRight /></Link>
+          <Link href="/our-team">Meet the doctors <ArrowUpRight /></Link>
+          <Link href="/new-patients">Your first visit <ArrowUpRight /></Link>
+          <Link href="/contact">Visit our practice <ArrowUpRight /></Link>
         </div>
       </section>
       <FinalCTA />

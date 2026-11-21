@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import Link from "next/link";
 import { pages } from "@/lib/content";
 import { getJournal } from "@/lib/cms-content";
@@ -22,7 +23,7 @@ export async function Journal({ page = 1 }: { page?: number }) {
             )}
             <p>{p.excerpt.slice(0, 180)}…</p>
             <Link className="text-link" href={"/" + p.slug}>
-              Read article ↗
+              Read article <ArrowUpRight />
             </Link>
           </article>
         ))}

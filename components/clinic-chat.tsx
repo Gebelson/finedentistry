@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useCallback, useEffect, useRef, useState } from "react";
 type ChatSettings = { enabled: boolean; mode: string; welcome: string };
 type Session = { id: number; token: string };
@@ -175,7 +176,7 @@ export function ClinicChat() {
               disabled={busy}
               onClick={() => void send("handoff")}
             >
-              Ask reception to help ↗
+              Ask reception to help <ArrowUpRight />
             </button>
           )}
           <form
@@ -223,7 +224,7 @@ export function ClinicChat() {
         onClick={() => setOpen(!open)}
       >
         {open ? "Close chat" : "Let’s talk"}
-        <span aria-hidden="true">{open ? "−" : "↗"}</span>
+        <span aria-hidden="true">{open ? "−" : <ArrowUpRight />}</span>
       </button>
     </aside>
   );

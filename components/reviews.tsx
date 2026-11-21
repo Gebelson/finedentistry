@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { siteConfig, testimonials } from "@/lib/site-data";
 
 export function ReviewAttribution({
@@ -51,7 +52,7 @@ export function ReviewAttribution({
           rel="noopener noreferrer"
           aria-label="Google review · excerpt — Read this review on Google"
         >
-          Google review · excerpt <span aria-hidden="true">↗</span>
+          Google review · excerpt <span aria-hidden="true"><ArrowUpRight /></span>
         </a>
       </div>
     </div>
@@ -72,7 +73,7 @@ export function ReviewGrid() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          See all reviews on Google ↗
+          See all reviews on Google <ArrowUpRight />
         </a>
       </div>
       <div className="reviews-grid">

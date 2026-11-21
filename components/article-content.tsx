@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { createElement, Fragment, type ReactNode } from "react";
 import Link from "next/link";
 import type { ArticleNode, BlogArticle } from "@/lib/blog-content";
@@ -139,7 +140,7 @@ export function ArticleContent({ article }: { article: BlogArticle }) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Contributor website ↗
+              Contributor website <ArrowUpRight />
             </a>
           )}
         </section>

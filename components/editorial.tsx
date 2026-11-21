@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { LineReveal } from "@/components/line-reveal";
 import { SiteImage } from "@/components/site-image";
 import { OfficeHours } from "@/components/visit-information";
@@ -117,7 +118,7 @@ export function ContactBlock() {
           target="_blank"
           rel="noreferrer"
         >
-          Get directions ↗
+          Get directions <ArrowUpRight />
         </a>
       </div>
       <div>
@@ -169,7 +170,7 @@ export function PatientResources() {
           <span>0{i + 1}</span>
           <h3>{t}</h3>
           <p>{p}</p>
-          <Link href={u.startsWith("http") ? u : "/" + u}>Learn more ↗</Link>
+          <Link href={u.startsWith("http") ? u : "/" + u}>Learn more <ArrowUpRight /></Link>
         </article>
       ))}
     </div>

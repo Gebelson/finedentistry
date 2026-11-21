@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import type { ReportPeriod, WorkspaceReport } from "../../cms/reports-endpoint";
@@ -174,7 +175,7 @@ export function WorkspaceReports() {
           revenue and financial ROI are not connected. CSV files contain
           aggregate counts only.
         </p>
-        <Link href="/admin/analytics">Open website analytics ↗</Link>
+        <Link href="/admin/analytics">Open website analytics <ArrowUpRight /></Link>
       </div>
     </section>
   );

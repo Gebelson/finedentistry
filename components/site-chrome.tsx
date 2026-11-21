@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import Link from "next/link";
 import { ScrollReveals } from "@/components/scroll-reveals";
 import { usePathname } from "next/navigation";
@@ -179,7 +180,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <a href={siteConfig.directions} target="_blank" rel="noreferrer">
               429 N Fern Creek Avenue
               <br />
-              Orlando, FL 32803 ↗
+              Orlando, FL 32803 <ArrowUpRight />
             </a>
             <a href={siteConfig.tel}>{siteConfig.phone}</a>
             <a href={"mailto:" + siteConfig.email}>{siteConfig.email}</a>
@@ -215,7 +216,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
             <Link href="/careers">Careers</Link>
             <Link href="/news">News & Media</Link>
             <Link href="/post-op">Post-op Instructions</Link>
-            <a href={siteConfig.official + "/BillPay"}>Make a Payment ↗</a>
+            <a href={siteConfig.official + "/BillPay"}>Make a Payment <ArrowUpRight /></a>
           </div>
         </div>
         <div className="footer-bottom">

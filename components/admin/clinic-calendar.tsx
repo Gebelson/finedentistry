@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import Link from "next/link";
 import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { TZDate } from "@date-fns/tz";
@@ -192,7 +193,7 @@ export function ClinicCalendar() {
           <h1>Appointments</h1>
         </div>
         <Link href="/admin/collections/appointments/create">
-          New appointment ↗
+          New appointment <ArrowUpRight />
         </Link>
       </div>
       <p className="clinic-calendar-note">
@@ -386,7 +387,7 @@ export function ClinicCalendar() {
         className="clinic-calendar-list-link"
         href="/admin/collections/appointments"
       >
-        View requests and appointment list ↗
+        View requests and appointment list <ArrowUpRight />
       </Link>
     </section>
   );

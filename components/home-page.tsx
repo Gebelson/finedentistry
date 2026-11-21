@@ -1,3 +1,4 @@
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { LineReveal } from "@/components/line-reveal";
 import { SiteImage } from "@/components/site-image";
 import { Recognition } from "@/components/recognition";
@@ -189,7 +190,7 @@ export function HomeContent({ content }: { content: HomeData }) {
                     <h3>{t}</h3>
                     <p>{p}</p>
                   </div>
-                  <span aria-hidden="true">↗</span>
+                  <span aria-hidden="true"><ArrowUpRight /></span>
                 </Link>
               ))}
             </div>

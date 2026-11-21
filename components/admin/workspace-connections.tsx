@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useCallback, useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import type {
@@ -175,7 +176,7 @@ export function WorkspaceConnections() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      {item.linkLabel} <span aria-hidden="true">↗</span>
+                      {item.linkLabel} <span aria-hidden="true"><ArrowUpRight /></span>
                     </a>
                   ))}
               </div>

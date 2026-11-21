@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { useField } from "@payloadcms/ui";
@@ -219,7 +220,7 @@ export function ArticleEditor({
             target="_blank"
             prefetch={false}
           >
-            Upload a new image ↗
+            Upload a new image <ArrowUpRight />
           </Link>
         </p>
         <button

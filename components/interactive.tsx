@@ -1,4 +1,5 @@
 "use client";
+import { ArrowUpRight } from "@/components/arrow-up-right";
 import { SiteImage } from "@/components/site-image";
 import Link from "next/link";
 import { useLayoutEffect, useRef, useState } from "react";
@@ -335,7 +336,7 @@ export function SmileGallery({ full = false }: { full?: boolean }) {
               />
             </div>
             <span>
-              {item.title} <span aria-hidden="true">↗</span>
+              {item.title} <span aria-hidden="true"><ArrowUpRight /></span>
             </span>
           </button>
         ))}
